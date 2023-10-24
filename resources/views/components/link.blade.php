@@ -1,9 +1,14 @@
 <a wire:navigate href="{{ route($route) }}">
     @php
-        $is_active = request()->routeIs($route) || (request()->routeIs($route) && isset($is_settings));
+        $is_settings =
+            explode(
+                '/',
+                request()
+                    ->route()
+                    ->uri(),
+            )[0] === 'settings' && $route === 'settings.account';
     @endphp
-    @dump(explode('.', Route::currentRouteName())[0])
-    <li class="{{ request()->routeIs($route) ? 'active' : '' }}">
+    <li class="{{ request()->routeIs($route) || $is_settings ? 'active' : '' }}">
         <i class="fa-solid {{ $icon }}"></i>
         <span>{{ isset($name) ? $name : $route }}</span>
     </li>
