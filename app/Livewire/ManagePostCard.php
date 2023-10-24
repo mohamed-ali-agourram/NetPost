@@ -3,15 +3,19 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ManagePostCard extends Component
 {
     public Post $post;
 
-    public function deletePost()
+    #[On("delete-post")]
+    public function deletePost(string $data)
     {
-        $this->post->delete();
+        if ($data == $this->post->id) {
+            $this->post->delete();
+        }
     }
 
     public function render()

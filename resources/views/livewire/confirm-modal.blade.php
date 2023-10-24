@@ -5,7 +5,7 @@
         <span>Are you sure you want to preform this action ?</span>
         <div class="btns">
             <button wire:click='close()' class="cancel">Cancel</button>
-            <button class="delete">Confirm</button>
+            <button wire:click='confirm()' class="delete">Confirm</button>
         </div>
     </div>
 </div>

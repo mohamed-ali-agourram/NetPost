@@ -8,10 +8,14 @@ use Livewire\Component;
 class ConfirmModal extends Component
 {
     public $is_open = false;
+    public $action = '';
+    public $data;
 
     #[On("toggle-confirm-modal")]
-    public function open()
+    public function open(string $action, $data)
     {
+        $this->action = $action;
+        $this->data = $data;
         $this->is_open = true;
     }
 
@@ -21,9 +25,9 @@ class ConfirmModal extends Component
     }
 
     #[On("confirm-action")]
-    public function confirm(string $action)
+    public function confirm()
     {
-        $this->dispatch($action);
+        $this->dispatch($this->action, $this->data);
         $this->close();
     }
 
