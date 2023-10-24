@@ -2,11 +2,11 @@
     <div class="settings_content">
         <div class="acount_settings_header">
             <div class="profile_img">
-                <img src="../assets/images/profile_img.jpg" alt="">
+                <img src="{{ auth()->user()->image() }}" alt="{{ auth()->user()->name }}">
                 <button class="pp_btn"><i class='bx bx-camera'></i></button>
             </div>
             <div class="profile_info">
-                <h1>Lorem Ipsum User</h1>
+                <h1>{{ auth()->user()->name }}</h1>
                 <p class="status"><span style="color: grey; font-size: 15px;">status:</span> Availabale</p>
                 <div class="user_activity">
                     <p>
@@ -29,7 +29,7 @@
             <li>
                 <div>
                     <label for="user_name">User Name</label>
-                    <input type="text" id="user_name" name="user_name" value="Lorem Ipsum User">
+                    <input type="text" id="user_name" name="user_name" value="{{ auth()->user()->name }}">
                 </div>
                 <button><i class="fa-solid fa-pen"></i><span>Edit</span></button>
             </li>
@@ -43,7 +43,7 @@
             <li>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" value="loremipsum@gmail.com">
+                    <input type="text" value="{{ auth()->user()->email }}">
                 </div>
                 <button><i class="fa-solid fa-pen"></i><span>Edit</span></button>
             </li>

@@ -2,7 +2,7 @@
     <div class="open_model" @click="$dispatch('form-toggle')">
         <div class="open_ps">
             <a href="./profie.html">
-                <img src="{{ asset('images/profile_img.jpg') }}" alt="user">
+                <img src="{{ auth()->user()->image() }}" alt="user">
             </a>
             <input type="text" placeholder="What are you thinking about?" readonly>
         </div>

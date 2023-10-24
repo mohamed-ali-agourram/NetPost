@@ -16,11 +16,21 @@ class Post extends Model
         "body",
         "image",
         "published_at",
-        "featured"	
+        "featured"
     ];
 
     public function author(){
         return $this->belongsTo(User::class, "user_id");
+    }
+
+
+    public function image()
+    {
+        if(isset($this->image))
+        {
+            return  $this->image;
+        }
+        return asset("images/empty-image.png");
     }
 
     public function comments()

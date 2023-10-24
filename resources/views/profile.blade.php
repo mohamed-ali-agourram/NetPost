@@ -41,7 +41,7 @@
             <div class="posts">
                 <div class="open_model" @click="$dispatch('form-toggle')">
                     <div class="open_ps">
-                        <img src="{{ asset('images/profile_img.jpg') }}" alt="user">
+                        <img src="{{ auth()->user()->image() }}" alt="user">
                         <input type="text" placeholder="What are you thinking about?" readonly>
                     </div>
                     <div class="cta_icons">

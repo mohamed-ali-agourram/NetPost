@@ -49,7 +49,7 @@ class User extends Authenticatable
         {
             return  $this->image;
         }
-        return "images/default-profile.png";
+        return asset("images/default-profile.png");
     }
 
     public function posts()

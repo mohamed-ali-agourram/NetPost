@@ -9,6 +9,11 @@ class ManagePostCard extends Component
 {
     public Post $post;
 
+    public function deletePost()
+    {
+        $this->post->delete();
+    }
+
     public function render()
     {
         return view('components.posts.manage-post-card');

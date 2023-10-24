@@ -36,7 +36,7 @@
             </p>
         </div>
         <form action="/" class="comment">
-            <img src={{ asset('/images/profile_img.jpg') }} alt="user">
+            <img src={{ auth()->user()->image() }} alt="{{ auth()->user()->name }}">
             <input type="text" placeholder="Comment what you think">
             <button>
                 <i class='bx bxs-send'></i>
