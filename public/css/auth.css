@@ -1,0 +1,183 @@
+.auth_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+    background: rgb(20, 20, 20);
+}
+
+.form {
+    background: var(--second-color);
+    color: white;
+    padding: 1vh;
+    height: 90dvh;
+    width: 80vw;
+    border: solid rgb(87, 86, 86) 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form form {
+    width: 50%;
+    padding: 5vh 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.gray {
+    color: gray;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 5vh;
+    height: 5vh;
+}
+
+form input {
+    height: 7vh;
+    background: rgb(58, 57, 57);
+    padding: 1vh;
+    font-size: 17px;
+    color: gray;
+    border: none;
+}
+
+.form_controller {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_controller div {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.form_controller button {
+    padding: 2.5vh;
+    font-size: 17px;
+    background: rgb(160, 13, 13);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: transform 0.2s;
+
+    &:hover {
+        gap: 7px;
+        transform: scale(1.01);
+    }
+}
+
+
+.image {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10vh;
+    width: 60%;
+    height: 100%;
+}
+
+.image p {
+    text-align: center;
+}
+
+.image img {
+    height: 90%;
+    width: 90%;
+}
+
+.image div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 1283px) {
+    .form form {
+        padding: 4vh;
+    }
+
+    .image {
+        padding: 4vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .form form {
+        padding: 2vh;
+    }
+
+    .image {
+        padding: 2vh;
+    }
+}
+
+@media screen and (max-width: 914px) {
+    .form {
+        display: inline;
+        width: 85vw;
+    }
+
+    .form form {
+        height: 100%;
+        width: 100%;
+        padding: 3vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form_controller {
+        gap: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .form h1 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form {
+        width: 90vw;
+        height: 95vh;
+    }
+
+    .form_controller button {
+        font-size: 15px;
+    }
+
+    .form h1 {
+        font-size: 23px;
+    }
+
+    .form_footer {
+        font-size: 14px;
+    }
+}

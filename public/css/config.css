@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+:root {
+    --main-color: rgb(46, 46, 46);
+    --second-color: #1d1e22;
+    --shadow: rgba(255, 255, 255, 0.075) 0px 3px 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--main-color);
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+}
+
+.error {
+    color: rgb(165, 37, 37);
+    font-size: 17px;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.pagination button {
+    background-color: #525458;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: var(--second-color);
+}
+
+.pagination button:disabled {
+    background-color: #cccccc;
+    /* Gray when disabled */
+    cursor: not-allowed;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.notification::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notification .thin::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(100, 100, 100, 0.4);
+}
+
+/* pagination */
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+    height: 0;
+}
+
+.pagination\:container {
+    width: 100%;
+    justify-content: center;
+    padding: 1.5vh;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.arrow\:text {
+    display: block;
+    font-size: 13px;
+}
+
+.pagination\:number {
+    --size: 32px;
+    --margin: 6px;
+    margin: 0 var(--margin);
+    border-radius: 6px;
+    background: #202020;
+    max-width: auto;
+    min-width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 6px;
+
+    @media (hover: hover) {
+        &:hover {
+            background: lighten(#202020, 3%);
+        }
+    }
+
+    &:active {
+        background: lighten(#202020, 3%);
+    }
+}
+
+.pagination\:active {
+    background: lighten(#202020, 3%);
+    position: relative;
+}
