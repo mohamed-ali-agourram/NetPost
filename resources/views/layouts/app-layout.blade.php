@@ -17,6 +17,7 @@
 
 <body>
     <div class="container">
+        <livewire:confirm-modal />
         <div class="post_model_dropdown" style="display: none;"></div>
         <livewire:notifications />
         <livewire:sidebar />
