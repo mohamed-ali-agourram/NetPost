@@ -1,5 +1,5 @@
 <div class="posts">
-    <div class="open_model" @click="$dispatch('form-toggle')">
+    <div class="open_model" @click="$dispatch('open-form')">
         <div class="open_ps">
             <a href="./profie.html">
                 <img src="{{ auth()->user()->image() }}" alt="user">
