@@ -28,7 +28,7 @@ class Post extends Model
     {
         if(isset($this->image))
         {
-            return  $this->image;
+            return  asset("storage/".$this->image);
         }
         return asset("images/empty-image.png");
     }

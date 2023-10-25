@@ -6,15 +6,20 @@ use App\Models\Post;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class PostForm extends Component
 {
+    use WithFileUploads;
+
     public Post $post;
 
     #[Rule("required|min:2|max:250")]
     public $title;
     #[Rule("min:2|max:500")]
     public $body;
+    #[Rule("nullable|sometimes|image|max:1024")]
+    public $image;
     public $is_open = false;
 
     #[On("open-form")]
@@ -40,6 +45,9 @@ class PostForm extends Component
         $data = $this->validate();
         $data["user_id"] = auth()->id();
         $data["slug"] = \Illuminate\Support\Str::slug($this->title);
+        if ($this->image) {
+            $data['image'] = $this->image->store('images', 'public');
+        }
         Post::create($data);
         $this->is_open = false;
         $this->dispatch("new-post");

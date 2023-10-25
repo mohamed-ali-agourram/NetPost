@@ -14,7 +14,7 @@
     <div class="post_card_body">
         <h3>{{ $post->title }}</h3>
         @if ($post->image)
-            <img src="{{ $post->image }}" alt="post_img" width="100%">
+            <img src="{{ asset('storage/'.$post->image) }}" alt="post_img" width="100%">
         @endif
     </div>
     <div class="post_card_footer">
