@@ -12,7 +12,7 @@
         <div class="open_post_options"></div>
     </div>
     <div class="post_card_body">
-        <h3>{{ $post->title }}</h3>
+        <h3>{{ $post->body }}</h3>
         @if ($post->image)
             <img src="{{ asset('storage/'.$post->image) }}" alt="post_img" width="100%">
         @endif

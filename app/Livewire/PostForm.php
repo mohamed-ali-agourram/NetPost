@@ -14,11 +14,9 @@ class PostForm extends Component
 
     public Post $post;
 
-    #[Rule("required|min:2|max:250")]
-    public $title;
-    #[Rule("min:2|max:500")]
+    #[Rule("required|min:2|max:500")]
     public $body;
-    #[Rule("nullable|sometimes|image|max:1024")]
+    #[Rule("nullable|sometimes|image|max:5024")]
     public $image;
     public $is_open = false;
 
@@ -26,10 +24,8 @@ class PostForm extends Component
     public function toggleForm(string $post = null)
     {
         $this->is_open = true;
-        if(isset($post))
-        {
+        if (isset($post)) {
             $this->post = Post::find($post);
-            $this->title = $this->post->title;
             $this->body = $this->post->body;
         }
     }
@@ -38,13 +34,19 @@ class PostForm extends Component
     public function close()
     {
         $this->is_open = false;
+        $this->reset();
+        $this->resetValidation();
+    }
+
+    public function resetImage()
+    {
+        $this->image = null;
     }
 
     public function create()
     {
         $data = $this->validate();
         $data["user_id"] = auth()->id();
-        $data["slug"] = \Illuminate\Support\Str::slug($this->title);
         if ($this->image) {
             $data['image'] = $this->image->store('images', 'public');
         }
@@ -56,10 +58,11 @@ class PostForm extends Component
 
     public function update()
     {
-        $this->post->update([
-            "title"=> $this->title,
-            "body"=> $this->body
-        ]);
+        $data = $this->validate();
+        if ($this->image) {
+            $data['image'] = $this->image->store('images', 'public');
+        }
+        $this->post->update($data);
         $this->is_open = false;
     }
 

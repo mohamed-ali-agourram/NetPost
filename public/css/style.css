@@ -69,7 +69,8 @@
                 width: 41px;
                 height: 41px;
                 border-radius: 100%;
-                &:hover{
+
+                &:hover {
                     scale: 102%;
                 }
             }
@@ -348,7 +349,7 @@
 }
 
 /* main_content */
-.post_from_model{
+.post_from_model {
     position: fixed;
     z-index: 999;
     top: 0;
@@ -362,40 +363,184 @@
     justify-content: center;
     align-items: center;
     padding: 2vh;
-    & .post_from_model_backdrop{
+
+    & .author {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        width: 95%;
+
+        & p {
+            font-size: 15px;
+        }
+
+        & img {
+            height: 7vh;
+            width: 7vh;
+            border-radius: 100%;
+        }
+
+        & select {
+            background-color: rgb(58, 57, 57);
+            border: none;
+            color: white;
+            padding: 4px;
+            border-radius: 5%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .custom-select {
+            position: relative;
+            width: 80px;
+        }
+
+        .custom-arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
+
+    & .post_from_model_backdrop {
         background: rgba(0, 0, 0, 0.801);
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         z-index: 1;
     }
-    & form{
-        min-height: 95%;
+
+    & form {
+        height: fit-content;
+        gap: 15px;
         width: 55%;
         background: var(--second-color);
         border-radius: 5px;
         z-index: 2;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        padding: 2.5vh;
-        & h1{
-            text-align: center;
+        align-items: center;
+        position: relative;
+
+        .cancel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: rgb(58, 57, 57);
+            font-size: 30px;
         }
-        & div{
+
+        .file-input-container {
+            position: relative;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(58, 57, 57);
+            height: 25vh;
+            border-radius: 10px;
+
+            & .preview {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+            & .remove-preview{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 9;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                background: rgba(0, 0, 0, 0.301);
+                border-radius: 10px;
+                & i {
+                    background: #0000007a;
+                    height: 8vh;
+                    width: 8vh;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .actual-file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .custom-file-input {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border-radius: 100%;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            & i {
+                background: #0000007a;
+                height: 8vh;
+                width: 8vh;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                cursor: pointer;
+            }
+        }
+
+        & h1 {
+            text-align: center;
+            border-bottom: 1px solid rgb(51, 50, 50);
+            padding: 5px;
+            width: 100%;
+        }
+
+        & div {
             display: flex;
             flex-direction: column;
             gap: 5px;
-            & label{
+
+            & label {
                 font-size: 20px;
             }
-            & span{
+
+            & span {
                 color: rgb(150, 150, 150);
             }
         }
-        & input, textarea{
+
+        & input,
+        textarea {
             height: 7vh;
             background: rgb(58, 57, 57);
             padding: 1vh;
@@ -404,35 +549,33 @@
             border: none;
             border-radius: 5px;
         }
-        & textarea{
-            height: 30vh;
-            padding: 1.5vh 1vh;
-        }
-        & .btns{
-            padding: 1vh;
+
+        & .textarea {
+            width: 95%;
             display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            & button{
-                width: 20%;
-                padding: 2vh;
-                border-radius: 5px;
-                border: none;
-                color: white;
-                font-weight: bold;
-                transition: all .3s;
+            flex-direction: column;
+            gap: 4px;
+
+            & textarea {
+                height: 30vh;
+                padding: 1.5vh 1vh;
+                width: 100%;
             }
-            .cancel{
-                background: rgba(255, 0, 0, 0.733);
-                &:hover{
-                    background: rgba(219, 25, 25, 0.733);
-                }
-            }
-            .confirm{
-                background: rgb(78, 78, 177);
-                &:hover{
-                    background: rgb(67, 67, 168);
-                }
+        }
+
+        .confirm {
+            width: 95%;
+            padding: 2vh;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            transition: all .3s;
+            background: rgb(78, 78, 177);
+            margin-bottom: 15px;
+
+            &:hover {
+                background: rgb(67, 67, 168);
             }
         }
     }
