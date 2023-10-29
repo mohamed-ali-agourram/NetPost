@@ -1,4 +1,12 @@
-<div class="post_from_model" style="display: {{ $is_open ? 'flex' : 'none' }}">
+<div x-data="{
+    body: '',
+    image: null,
+    clearFileInput() {
+        document.getElementById('file-input').value = '';
+        this.image = null;
+        this.body = '';
+    }
+}" class="post_from_model" style="display: {{ $is_open ? 'flex' : 'none' }}">
     <div class="post_from_model_backdrop" @click="$dispatch('close-form')"></div>
     <form wire:submit.prevent='{{ isset($post) ? ' update()' : 'create' }}' enctype="multipart/form-data">
         <h1>Create a new post</h1>
@@ -21,7 +29,7 @@
             </div>
         </div>
         <div class="textarea">
-            <textarea wire:model='body' type="text" id="content" name="body"
+            <textarea x-model="body" wire:model='body' type="text" id="content" name="body"
                 placeholder="Share your thoughts with the world, {{ auth()->user()->name }}"></textarea>
             @error('body')
                 <p class="error">{{ $message }}</p>
@@ -34,20 +42,26 @@
                 <p>Add a picture</p>
                 <span>Pictures should be less then 5MB</span>
             </label>
-            <input type="file" id="file-input" wire:model='image' accept="image/png, image/jpg" name="image"
-                class="actual-file-input" />
+            <input type="file" id="file-input" x-on:change="image = $event.target.files[0]" wire:model='image'
+                accept="image/png, image/jpg" name="image" class="actual-file-input" />
+            <span wire:loading wire:target="image" class="spinner-backdrop">
+                <span class="lds-ripple">
+                    <span></span>
+                    <span></span>
+                </span>
+            </span>
             @error('image')
                 <p class="error">{{ $message }}</p>
             @enderror
             @if ($image)
                 <img class="preview" src="{{ $image->temporaryUrl() }}" alt="preview" />
-                <div wire:click='resetImage' onclick="document.getElementById('file-input').value = ''" class="remove-preview">
+                <div wire:click='resetImage' @click="clearFileInput" class="remove-preview">
                     <i class="fa-solid fa-square-minus"></i>
                     <p>Rmove this picture</p>
                 </div>
             @endif
         </div>
-
-        <button class="confirm">Post</button>
+        <button @click="clearFileInput" x-bind:class="(body.length > 0 || image !== null) ? '' : 'loading'" class="confirm" wire:loading.class="loading"
+            wire:loading.attr="disabled">Post</button>
     </form>
 </div>

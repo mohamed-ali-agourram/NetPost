@@ -14,7 +14,7 @@ class PostForm extends Component
 
     public Post $post;
 
-    #[Rule("required|min:2|max:500")]
+    #[Rule("max:2500")]
     public $body;
     #[Rule("nullable|sometimes|image|max:5024")]
     public $image;

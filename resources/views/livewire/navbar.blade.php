@@ -2,12 +2,12 @@
     <div class="toggleNav">
         <i class="fa-solid fa-bars"></i>
     </div>
-    <a href="{{ route('home') }}" style="display: none;">
+    <a wire:navigate href="{{ route('home') }}" style="display: none;">
         <img src="{{ asset('images/logo.png') }}" alt="logo">
         <p>NETPOST</p>
     </a>
     <div class="route">
-        <a href="{{ route('home') }}" class="mobile_a">
+        <a wire:navigate href="{{ route('home') }}" class="mobile_a">
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
         </a>

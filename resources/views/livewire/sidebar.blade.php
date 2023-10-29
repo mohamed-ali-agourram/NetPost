@@ -1,6 +1,6 @@
 <aside class="routes">
     <div class="logo">
-        <a href="/">
+        <a wire:navigate href="{{ route("home") }}">
             <img src="{{ asset('images/logo.png') }}" alt="logo">
             <p>NETPOST</p>
         </a>

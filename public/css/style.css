@@ -581,6 +581,10 @@
                 background: rgb(67, 67, 168);
             }
         }
+        .loading {
+            background-color: gray !important;
+            cursor: unset !important;
+        }
     }
 }
 
