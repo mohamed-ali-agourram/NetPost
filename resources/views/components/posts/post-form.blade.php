@@ -19,8 +19,8 @@
                 <p>{{ auth()->user()->name }}</p>
                 <div class="custom-select">
                     <select wire:model='is_published'>
-                        <option value="1">Public</option>
-                        <option value="0">Private</option>
+                        <option value="1" @selected($is_published === "1")>Public</option>
+                        <option value="0" @selected($is_published === "0")>Private</option>
                     </select>
                     <div class="custom-arrow">
                         <i class="fas fa-caret-down"></i>
@@ -54,14 +54,19 @@
                 <p class="error">{{ $message }}</p>
             @enderror
             @if ($image)
-                <img class="preview" src="{{ $image->temporaryUrl() }}" alt="preview" />
+                @if (method_exists($image, 'temporaryUrl'))
+                    <img class="preview" src="{{ $image->temporaryUrl() }}" alt="preview" />
+                @else
+                    <img class="preview" src="{{ $image }}" alt="preview" />
+                @endif
+
                 <div wire:click='resetImage' @click="clearFileInput" class="remove-preview">
                     <i class="fa-solid fa-square-minus"></i>
                     <p>Rmove this picture</p>
                 </div>
             @endif
         </div>
-        <button @click="clearFileInput" x-bind:class="(body.length > 0 || image !== null) ? '' : 'loading'" class="confirm" wire:loading.class="loading"
-            wire:loading.attr="disabled">Post</button>
+        <button @click="clearFileInput" x-bind:class="(body.length > 0 || image !== null) ? '' : 'loading'"
+            class="confirm" wire:loading.class="loading" wire:loading.attr="disabled">Post</button>
     </form>
 </div>

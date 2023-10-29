@@ -29,6 +29,11 @@ class PostForm extends Component
         if (isset($post)) {
             $this->post = Post::find($post);
             $this->body = $this->post->body;
+            if($this->post->image)
+            {
+                $this->image = $this->post->image();
+            }
+            $this->is_published = $this->post->is_published;
         }
     }
 
@@ -49,7 +54,7 @@ class PostForm extends Component
     {
         $data = $this->validate();
         $data["is_published"] = $this->is_published;
-        if($this->is_published === "1"){
+        if ($this->is_published === "1") {
             $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
         }
         $data["user_id"] = auth()->id();
