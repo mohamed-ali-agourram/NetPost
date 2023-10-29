@@ -438,6 +438,10 @@
             border: none;
             color: rgb(58, 57, 57);
             font-size: 30px;
+
+            &:hover {
+                color: rgb(72, 72, 73);
+            }
         }
 
         .file-input-container {
@@ -581,6 +585,7 @@
                 background: rgb(67, 67, 168);
             }
         }
+
         .loading {
             background-color: gray !important;
             cursor: unset !important;
@@ -631,7 +636,12 @@
                 background: var(--main-color);
                 border: none;
                 padding: 2vh;
-                border-radius: 8px;
+                border-radius: 15px;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgb(72, 72, 73);
+                }
             }
         }
     }
@@ -653,15 +663,14 @@
         }
 
         & button {
-            border: solid 1px white;
+            border: none;
             background: var(--main-color);
             color: white;
             padding: 1.5vh 5vh;
-            border-radius: 5px;
+            border-radius: 15px;
 
             &:hover {
-                background: white;
-                color: var(--main-color);
+                background: rgb(72, 72, 73);
             }
         }
     }
