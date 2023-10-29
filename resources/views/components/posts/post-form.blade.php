@@ -18,9 +18,9 @@
             <div>
                 <p>{{ auth()->user()->name }}</p>
                 <div class="custom-select">
-                    <select>
-                        <option value="false">Private</option>
-                        <option value="true">Public</option>
+                    <select wire:model='is_published'>
+                        <option value="1">Public</option>
+                        <option value="0">Private</option>
                     </select>
                     <div class="custom-arrow">
                         <i class="fas fa-caret-down"></i>

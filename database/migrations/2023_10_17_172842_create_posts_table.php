@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->text('body')->nullable();
             $table->string('image')->nullable();
+            $table->string('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('featured')->default(false);
             $table->timestamps();

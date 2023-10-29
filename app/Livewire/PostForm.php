@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -14,6 +15,7 @@ class PostForm extends Component
 
     public Post $post;
 
+    public $is_published = "1";
     #[Rule("max:2500")]
     public $body;
     #[Rule("nullable|sometimes|image|max:5024")]
@@ -46,6 +48,10 @@ class PostForm extends Component
     public function create()
     {
         $data = $this->validate();
+        $data["is_published"] = $this->is_published;
+        if($this->is_published === "1"){
+            $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
+        }
         $data["user_id"] = auth()->id();
         if ($this->image) {
             $data['image'] = $this->image->store('images', 'public');
