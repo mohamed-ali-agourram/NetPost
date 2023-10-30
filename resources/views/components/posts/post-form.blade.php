@@ -1,4 +1,12 @@
-<div class="post_from_model" style="display: {{ $is_open ? 'flex' : 'none' }}">
+<div x-data="{
+    body: '',
+    image: null,
+    clearFileInput() {
+        document.getElementById('file-input').value = '';
+        this.image = null;
+        this.body = '';
+    }
+}" class="post_from_model" style="display: {{ $is_open ? 'flex' : 'none' }}">
     <div class="post_from_model_backdrop" @click="$dispatch('close-form')"></div>
     <form wire:submit.prevent='{{ isset($post) ? ' update()' : 'create' }}' enctype="multipart/form-data">
         <h1>Create a new post</h1>
@@ -10,9 +18,9 @@
             <div>
                 <p>{{ auth()->user()->name }}</p>
                 <div class="custom-select">
-                    <select>
-                        <option value="false">Private</option>
-                        <option value="true">Public</option>
+                    <select wire:model='is_published'>
+                        <option value="1" @selected($is_published === "1")>Public</option>
+                        <option value="0" @selected($is_published === "0")>Private</option>
                     </select>
                     <div class="custom-arrow">
                         <i class="fas fa-caret-down"></i>
@@ -21,7 +29,7 @@
             </div>
         </div>
         <div class="textarea">
-            <textarea wire:model='body' type="text" id="content" name="body"
+            <textarea x-model="body" wire:model='body' type="text" id="content" name="body"
                 placeholder="Share your thoughts with the world, {{ auth()->user()->name }}"></textarea>
             @error('body')
                 <p class="error">{{ $message }}</p>
@@ -34,8 +42,8 @@
                 <p>Add a picture</p>
                 <span>Pictures should be less then 5MB</span>
             </label>
-            <input type="file" id="file-input" wire:model='image' accept="image/png, image/jpg" name="image"
-                class="actual-file-input" />
+            <input type="file" id="file-input" x-on:change="image = $event.target.files[0]" wire:model='image'
+                accept="image/png, image/jpg" name="image" class="actual-file-input" />
             <span wire:loading wire:target="image" class="spinner-backdrop">
                 <span class="lds-ripple">
                     <span></span>
@@ -49,7 +57,7 @@
                 @if (method_exists($image, 'temporaryUrl'))
                     <img class="preview" src="{{ $image->temporaryUrl() }}" alt="preview" />
                 @else
-                    <img class="preview" src="{{ asset('storage/' . $image) }}" alt="preview" />
+                    <img class="preview" src="{{ asset('storage/' . $this->image) }}" alt="preview" />
                 @endif
 
                 <div wire:click='resetImage' @click="clearFileInput" class="remove-preview">
@@ -58,7 +66,8 @@
                 </div>
             @endif
         </div>
-
-        <button class="confirm">{{ $isEditMode ? 'Update' : 'Post' }}</button>
+        <button @click="clearFileInput"
+            x-bind:class="{{ !$isEditMode }} && (body.length > 0 || image !== null) ? '' : 'loading'" class="confirm"
+            wire:loading.class="loading" wire:loading.attr="disabled">{{ $isEditMode ? 'Update' : 'Post' }}</button>
     </form>
 </div>
