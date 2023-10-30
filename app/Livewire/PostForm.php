@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -15,25 +14,25 @@ class PostForm extends Component
 
     public Post $post;
 
-    public $is_published = "1";
-    #[Rule("max:2500")]
+    #[Rule("max:5000")]
     public $body;
     #[Rule("nullable|sometimes|image|max:5024")]
     public $image;
     public $is_open = false;
+    public $isEditMode = false;
 
     #[On("open-form")]
     public function toggleForm(string $post = null)
     {
         $this->is_open = true;
         if (isset($post)) {
+            $this->isEditMode = true;
             $this->post = Post::find($post);
             $this->body = $this->post->body;
-            if($this->post->image)
-            {
-                $this->image = $this->post->image();
+            $this->image = null;
+            if ($this->post->image) {
+                $this->image = $this->post->image;
             }
-            $this->is_published = $this->post->is_published;
         }
     }
 
@@ -53,10 +52,6 @@ class PostForm extends Component
     public function create()
     {
         $data = $this->validate();
-        $data["is_published"] = $this->is_published;
-        if ($this->is_published === "1") {
-            $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
-        }
         $data["user_id"] = auth()->id();
         if ($this->image) {
             $data['image'] = $this->image->store('images', 'public');
@@ -69,9 +64,13 @@ class PostForm extends Component
 
     public function update()
     {
-        $data = $this->validate();
-        if ($this->image) {
+        $data = $this->validate([
+            'body' => 'max:5000',
+        ]);
+        if ($this->image && method_exists($this->image, 'temporaryUrl')) {
             $data['image'] = $this->image->store('images', 'public');
+        } else {
+            $data['image'] = $this->image;
         }
         $this->post->update($data);
         $this->is_open = false;
