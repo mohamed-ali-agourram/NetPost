@@ -5,16 +5,23 @@
         </a>
         <div>
             <a href="./profie.html">
-                <p>{{ $post->author->name }}</p>
+                <b>{{ $post->author->name }}</b>
             </a>
-            <span><i class="fa-solid fa-clock"></i>12 minutes ago</span>
+            <p class="date_span">
+                <span>{{ $post->date() }}</span>
+                @if ($post->is_published === '1')
+                    <i title="public" class="fa-solid fa-earth-africa"></i>
+                @else
+                    <i title="private" class="fa-solid fa-lock"></i>
+                @endif
+            </p>
         </div>
         <div class="open_post_options"></div>
     </div>
     <div class="post_card_body">
         <h3>{{ $post->body }}</h3>
         @if ($post->image)
-            <img src="{{ asset('storage/'.$post->image) }}" alt="post_img" width="100%">
+            <img src="{{ asset('storage/' . $post->image) }}" alt="post_img" width="100%">
         @endif
     </div>
     <div class="post_card_footer">

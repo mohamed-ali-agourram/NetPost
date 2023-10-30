@@ -695,14 +695,11 @@
                 border-radius: 100%;
             }
 
-            & div {
-                & p {
-                    font-weight: bold;
-                }
-
-                & span {
-                    color: grey;
-                }
+            .date_span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: gray;
             }
         }
 
