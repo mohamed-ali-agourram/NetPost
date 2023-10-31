@@ -16,7 +16,7 @@ class PostsList extends Component
     #[Computed()]
     public function posts()
     {
-        return Post::orderBy("created_at","desc")->paginate(3);
+        return Post::published()->orderBy("published_at","desc")->get();
     }
 
     public function render()

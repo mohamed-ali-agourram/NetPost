@@ -20,6 +20,11 @@ class Post extends Model
         "featured"
     ];
 
+    public function scopePublished($query)
+    {
+        return $query->where("is_published", 1);
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, "user_id");

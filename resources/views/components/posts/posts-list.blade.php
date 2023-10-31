@@ -5,7 +5,7 @@
     @empty
         <div>No Post Found...</div>
     @endforelse
-    <div>
+    {{-- <div>
         {{ $this->posts->links("pagination") }}
-    </div>
+    </div> --}}
 </div>
