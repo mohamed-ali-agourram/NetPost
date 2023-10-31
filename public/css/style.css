@@ -720,11 +720,33 @@
                 justify-content: space-around;
                 padding: 1vh;
 
-                & p {
+                & button {
                     display: flex;
                     gap: 5px;
                     align-items: center;
                     cursor: pointer;
+                    padding: 1vh 2vh;
+                    border-radius: 5px;
+                    transition: all 0.3s ease;
+                    border: none;
+                    background: transparent;
+                    color: white;
+                    height: 6vh;
+                    &:hover {
+                        background: rgba(46, 46, 46, 0.548) !important;
+                    }
+                }
+
+                .liked {
+                    background: rgba(46, 46, 46, 0.548) !important;
+
+                    & i {
+                        color: red !important;
+                    }
+                }
+
+                & .like-btn:hover {
+                    color: red !important;
                 }
 
                 .n_activity {

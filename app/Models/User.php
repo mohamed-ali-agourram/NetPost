@@ -45,8 +45,7 @@ class User extends Authenticatable
 
     public function image()
     {
-        if(isset($this->image))
-        {
+        if (isset($this->image)) {
             return  $this->image;
         }
         return asset("images/default-profile.png");
@@ -65,5 +64,10 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->belongsToMany(Post::class, "likes")->withTimestamps();
+    }
+
+    public function has_liked(Post $post)
+    {
+        return $this->likes()->where("post_id", $post->id)->exists();
     }
 }

@@ -12,11 +12,26 @@ class PostsList extends Component
 {
     use WithPagination;
 
+    public function like(Post $post)
+    {
+        $user = auth()->user();
+
+        $hasLiked = $user->has_liked($post);
+
+        if ($hasLiked) {
+            $user->likes()->detach($post);
+            return;
+        } else {
+            $user->likes()->attach($post);
+            return;
+        }
+    }
+
     #[On("new-post")]
     #[Computed()]
     public function posts()
     {
-        return Post::published()->orderBy("published_at","desc")->get();
+        return Post::published()->orderBy("published_at", "desc")->get();
     }
 
     public function render()

@@ -26,21 +26,28 @@
     </div>
     <div class="post_card_footer">
         <div class="pcf_icons">
-            <p>
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span class="pcf_action">Likes</span>
-                <span class="n_activity">11</span>
-            </p>
-            <p>
+            @php
+                $is_liked = auth()
+                    ->user()
+                    ->has_liked($post);
+            @endphp
+            <button  wire:loading.attr="disabled" style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}">
+                <i style="color: {{ $is_liked ? 'red' : 'white' }}" class="fa-solid fa-thumbs-up like-btn"></i>
+                <span wire:click='like({{ $post->id }})' class="pcf_action">Likes</span>
+                @if ($post->likes()->count() > 0)
+                    <span class="n_activity">{{ $post->likes()->count() }}</span>
+                @endif
+            </button>
+            <button>
                 <i class="fa-solid fa-message"></i>
                 <span class="pcf_action">Comments</span>
                 <span class="n_activity">11</span>
-            </p>
-            <p>
+            </button>
+            <button>
                 <i class="fa-solid fa-share"></i>
                 <span class="pcf_action">Shares</span>
                 <span class="n_activity">11</span>
-            </p>
+            </button>
         </div>
         <form action="/" class="comment">
             <img src={{ auth()->user()->image() }} alt="{{ auth()->user()->name }}">
