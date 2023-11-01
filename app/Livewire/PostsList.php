@@ -12,8 +12,12 @@ class PostsList extends Component
 {
     use WithPagination;
 
-    public function like(Post $post)
+    #[On("like-post")]
+    public function like(?Post $post)
     {
+        if($post === null){
+            return;
+        }
         $user = auth()->user();
 
         $hasLiked = $user->has_liked($post);
