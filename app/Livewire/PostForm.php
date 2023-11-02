@@ -64,9 +64,9 @@ class PostForm extends Component
             $data['image'] = $this->image->store('images', 'public');
         }
         Post::create($data);
-        $this->is_open = false;
         $this->dispatch("new-post");
         $this->reset();
+        $this->is_open = false;
     }
 
     public function update()

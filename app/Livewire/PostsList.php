@@ -6,16 +6,14 @@ use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class PostsList extends Component
 {
-    use WithPagination;
 
     #[On("like-post")]
     public function like(?Post $post)
     {
-        if($post === null){
+        if ($post === null) {
             return;
         }
         $user = auth()->user();

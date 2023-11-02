@@ -24,13 +24,19 @@
             </div>
             <div class="description">
                 <p>{{ $post?->body }}</p>
-                <img src="{{ $post?->image() }}" alt="post-img">
+                @if ($post?->image)
+                    <img src="{{ $post->image() }}" alt="post_img">
+                @endif
             </div>
             <div class="pcf_icons">
                 @php
-                    $is_liked = auth()->user()->has_liked($post);
+                    $is_liked = auth()
+                        ->user()
+                        ->has_liked($post);
                 @endphp
-                <button  wire:loading.attr="disabled" style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}" wire:click="toggleLike">
+                <button wire:loading.attr="disabled"
+                    style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}"
+                    wire:click="toggleLike">
                     <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
                     <span class="pcf_action">Likes</span>
                     @if ($post?->likes()->count() > 0)
@@ -66,7 +72,7 @@
                 </div>
             </div>
             <div class="comment">
-                <img src={{ asset("images/profile_img.jpg") }} alt="">
+                <img src={{ asset('images/profile_img.jpg') }} alt="">
                 <div class="content">
                     <div class="bubble">
                         <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
