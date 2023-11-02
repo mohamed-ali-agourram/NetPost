@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Post;
 use Livewire\Component;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Computed;
 
 class PostModal extends Component
 {
