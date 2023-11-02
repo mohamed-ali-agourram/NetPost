@@ -40,7 +40,7 @@
                     <span class="n_activity">{{ $post?->likes()->count() }}</span>
                 @endif
             </button>
-            <button @click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})'>
+            <button wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-message"></i>
                 <span class="pcf_action">Comments</span>
                 <span class="n_activity">11</span>
@@ -51,7 +51,7 @@
                 <span class="n_activity">11</span>
             </button>
         </div>
-        <form @click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/" class="comment">
+        <form wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/" class="comment">
             <img src={{ auth()->user()->image() }} alt="{{ auth()->user()->name }}">
             <input type="text" placeholder="Comment what you think">
             <button>
