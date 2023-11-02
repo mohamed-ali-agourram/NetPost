@@ -51,7 +51,7 @@
                 <span class="n_activity">11</span>
             </button>
         </div>
-        <form action="/" class="comment">
+        <form @click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/" class="comment">
             <img src={{ auth()->user()->image() }} alt="{{ auth()->user()->name }}">
             <input type="text" placeholder="Comment what you think">
             <button>
