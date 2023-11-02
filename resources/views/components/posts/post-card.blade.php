@@ -21,23 +21,25 @@
     <div class="post_card_body">
         <h3>{{ $post->body }}</h3>
         @if ($post->image)
-            <img src="{{  $post->image() }}" alt="post_img" width="100%">
+            <img src="{{ $post->image() }}" alt="post_img" width="100%">
         @endif
     </div>
     <div class="post_card_footer">
         <div class="pcf_icons">
             @php
-                    $is_liked = auth()
-                        ->user()
-                        ->has_liked($post);
-                @endphp
-                <button wire:loading.attr="disabled" style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}" wire:click="$dispatch('like-post', {post: '{{ $post?->id }}'})">
-                    <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
-                    <span class="pcf_action">Likes</span>
-                    @if ($post?->likes()->count() > 0)
-                        <span class="n_activity">{{ $post?->likes()->count() }}</span>
-                    @endif
-                </button>
+                $is_liked = auth()
+                    ->user()
+                    ->has_liked($post);
+            @endphp
+            <button wire:loading.attr="disabled"
+                style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}"
+                wire:click="$dispatch('like-post', {post: '{{ $post?->id }}'})">
+                <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
+                <span class="pcf_action">Likes</span>
+                @if ($post?->likes()->count() > 0)
+                    <span class="n_activity">{{ $post?->likes()->count() }}</span>
+                @endif
+            </button>
             <button @click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-message"></i>
                 <span class="pcf_action">Comments</span>

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Post;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Computed;
 
 class PostModal extends Component
 {
@@ -22,6 +23,24 @@ class PostModal extends Component
     public function closeModal()
     {
         $this->is_open = false;
+    }
+
+
+    public function toggleLike()
+    {
+        $this->dispatch("new-post");
+
+        $user = auth()->user();
+
+        $hasLiked = $user->has_liked($this->post);
+
+        if($hasLiked){
+            $user->likes()->detach($this->post);
+            return;
+        }else{
+            $user->likes()->attach($this->post);
+            return;
+        }
     }
 
     public function render()

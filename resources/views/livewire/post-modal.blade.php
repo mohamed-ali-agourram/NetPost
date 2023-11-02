@@ -28,11 +28,9 @@
             </div>
             <div class="pcf_icons">
                 @php
-                    $is_liked = auth()
-                        ->user()
-                        ->has_liked($post);
+                    $is_liked = auth()->user()->has_liked($post);
                 @endphp
-                <button  wire:loading.attr="disabled" style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}" wire:click="$dispatch('like-post', {post: '{{ $post?->id }}'})">
+                <button  wire:loading.attr="disabled" style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}" wire:click="toggleLike">
                     <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
                     <span class="pcf_action">Likes</span>
                     @if ($post?->likes()->count() > 0)
