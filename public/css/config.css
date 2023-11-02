@@ -18,6 +18,26 @@ body {
     overflow-x: hidden;
 }
 
+ /* width */
+ ::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(46, 45, 45, 0.301) !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(58, 57, 57) !important;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #535252 !important;
+}
+
 .error {
     color: rgb(165, 37, 37);
     font-size: 17px;
