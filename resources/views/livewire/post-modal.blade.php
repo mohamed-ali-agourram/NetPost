@@ -111,14 +111,9 @@
                 </div>
             </div>
         </div>
-        <form class="form" action="#">
+        <div class="form">
             <img src="{{ $post?->author->image() }}" alt="author">
-            <div>
-                <textarea name="" id="" cols="30" rows="10" placeholder="What you think about it?"></textarea>
-                <button type="submit" title="send" class="send">
-                    <i class='bx bxs-send'></i>
-                </button>
-            </div>
-        </form>
+            <livewire:comment-form :key="$post?->id" :post="$post" />
+        </div>
     </div>
 </div>

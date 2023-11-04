@@ -986,6 +986,7 @@
         position: sticky;
         bottom: 0;
         z-index: 99;
+        background: var(--second-color);
 
         & img {
             height: 6vh;
@@ -993,7 +994,7 @@
             border-radius: 100%;
         }
 
-        & div {
+        & form {
             position: relative;
             width: 100%;
 
