@@ -837,7 +837,8 @@
 }
 .post-card-model {
     padding: 0 3px;
-    height: 95vh;
+    height: fit-content;
+    max-height: 95vh;
     width: 55%;
     z-index: 5;
     overflow-y: scroll;

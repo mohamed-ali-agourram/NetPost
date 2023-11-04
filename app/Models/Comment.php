@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
@@ -17,11 +18,17 @@ class Comment extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, "user_id");
     }
 
     public function post()
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function date()
+    {
+        $date = Carbon::parse($this->created_at);
+        return $date->diffForHumans();
     }
 }

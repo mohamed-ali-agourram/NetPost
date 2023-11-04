@@ -11,6 +11,8 @@ class PostModal extends Component
     public $is_open = false;
     public Post $post;
 
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
     #[On("open-post-modal")]
     public function openModal(Post $post)
     {

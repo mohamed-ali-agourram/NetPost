@@ -20,6 +20,9 @@ class CommentForm extends Component
         $validated["post_id"] = $this->post?->id;
         Comment::create($validated);
         $this->reset("body");
+        $this->dispatch("new-comment");
+        $this->dispatch("new-post");
+        $this->dispatch('refreshComponent');
     }
 
     public function render()

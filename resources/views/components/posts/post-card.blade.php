@@ -43,7 +43,7 @@
             <button wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-message"></i>
                 <span class="pcf_action">Comments</span>
-                <span class="n_activity">11</span>
+                <span class="n_activity">{{ $post?->comments()->count() }}</span>
             </button>
             <button>
                 <i class="fa-solid fa-share"></i>
