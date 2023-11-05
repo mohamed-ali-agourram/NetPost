@@ -45,8 +45,8 @@ class User extends Authenticatable
 
     public function image()
     {
-        if (isset($this->image)) {
-            return  $this->image;
+        if (isset($this->profile_image)) {
+            return  $this->profile_image;
         }
         return asset("images/default-profile.png");
     }
