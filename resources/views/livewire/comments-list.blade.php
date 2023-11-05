@@ -11,6 +11,13 @@
                     <b>{{ $comment->author->name }}<span>&nbsp;&nbsp;{{ $comment->date() }}</span></b>
                     <p>{{ $comment->body }}</p>
                 </div>
+                @if (auth()->user()->id === $comment->author->id)
+                    <div class="actions">
+                        <span
+                            wire:click='$dispatch("toggle-confirm-modal", {action: "delete-comment", data: {{ $comment->id }}})'>delete</span>
+                        <span>update</span>
+                    </div>
+                @endif
             </div>
         </div>
     @empty

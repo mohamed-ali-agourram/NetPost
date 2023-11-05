@@ -351,7 +351,7 @@
 /* main_content */
 .post_from_model {
     position: fixed;
-    z-index: 999;
+    z-index: 998;
     top: 0;
     left: 0;
     width: 100%;
@@ -972,6 +972,21 @@
                     }
                 }
             }
+            & .actions{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                color: gray;
+                font-size: 12px;
+                padding: 0 3px;
+                & span{
+                    cursor: pointer;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
         }
     }
 
@@ -1005,6 +1020,7 @@
                 padding: 5px;
                 font-size: 15px;
                 color: white;
+                resize: none;
             }
 
             & .send {
