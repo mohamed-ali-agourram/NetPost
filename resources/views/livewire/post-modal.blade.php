@@ -46,7 +46,7 @@
                 <button>
                     <i class="fa-solid fa-message"></i>
                     <span class="pcf_action">Comments</span>
-                    <span class="n_activity">11</span>
+                    <span class="n_activity">{{ $post?->comments()->count() }}</span>
                 </button>
                 <button>
                     <i class="fa-solid fa-share"></i>
@@ -55,70 +55,10 @@
                 </button>
             </div>
         </div>
-        <div class="comments">
-            <div class="filter">
-                <p>Newest First</p>
-                <i class="fas fa-angle-down"></i>
-            </div>
-            <div class="comment">
-                <img src={{ asset('images/user4.jpg') }} alt="">
-                <div class="content">
-                    <div class="bubble">
-                        <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
-                        <p>Lorem ipsum do Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti minima dicta
-                            placeat. Impedit odio eligendi quos quae quod, nesciunt beatae. Vitae facilis odit possimus
-                            cupiditate ut. Ipsam soluta exercitationem et? lo</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <img src={{ asset('images/profile_img.jpg') }} alt="">
-                <div class="content">
-                    <div class="bubble">
-                        <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
-                        <p>Lorem ipsu nisi voluptate! Asperiores quidem voluptatum veniam
-                            quibusdam</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <img src={{ asset('images/user3.jpg') }} alt="">
-                <div class="content">
-                    <div class="bubble">
-                        <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
-                        <p>Lorem ipsum dolor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <img src={{ asset('images/user2.jpg') }} alt="">
-                <div class="content">
-                    <div class="bubble">
-                        <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing em</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <img src={{ asset('images/default_user.png') }} alt="">
-                <div class="content">
-                    <div class="bubble">
-                        <b>Lorem Ipsum<span>&nbsp;&nbsp;4h</span></b>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-                            tempore veniam nisi voluptate! Asperiores quidem voluptatum veniam
-                            quibusdam</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <form class="form" action="#">
+        <livewire:comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
+        <div class="post-card-model-form">
             <img src="{{ $post?->author->image() }}" alt="author">
-            <div>
-                <textarea name="" id="" cols="30" rows="10" placeholder="What you think about it?"></textarea>
-                <button type="submit" title="send" class="send">
-                    <i class='bx bxs-send'></i>
-                </button>
-            </div>
-        </form>
+            <livewire:comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
+        </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="confirm_modal" style="display: {{ $is_open ? 'flex' : 'none' }}">
-    <div wire:click='cancel()' class="backdrop"></div>
-    <div class="content">
+    <div wire:click='close()' class="backdrop"></div>
+    <div class="confirm_modal_content">
         <p><i class="fa-solid fa-triangle-exclamation"></i> This action is permanent!!</p>
         <span>Are you sure you want to preform this action ?</span>
         <div class="btns">
