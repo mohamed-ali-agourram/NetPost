@@ -29,7 +29,6 @@ class CommentsList extends Component
             $this->dispatch("new-comment");
             $this->dispatch("new-post");
         }
-
     }
 
     public function render()

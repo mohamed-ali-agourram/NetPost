@@ -56,7 +56,7 @@
             </div>
         </div>
         <livewire:comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
-        <div class="form">
+        <div class="post-card-model-form">
             <img src="{{ $post?->author->image() }}" alt="author">
             <livewire:comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
         </div>

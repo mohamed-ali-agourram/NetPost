@@ -15,7 +15,8 @@
                     <div class="actions">
                         <span
                             wire:click='$dispatch("toggle-confirm-modal", {action: "delete-comment", data: {{ $comment->id }}})'>delete</span>
-                        <span>update</span>
+                        <span wire:click='$dispatch("update-comment", {comment: {{ $comment->id }}})'
+                            onclick="focusTextarea()">update</span>
                     </div>
                 @endif
             </div>
@@ -23,4 +24,10 @@
     @empty
         <h1>Be the first to comment</h1>
     @endforelse
+
+    <script>
+        function focusTextarea() {
+            document.getElementById('commentTextArea').focus();
+        }
+    </script>
 </div>
