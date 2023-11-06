@@ -36,7 +36,8 @@
             <li>
                 <div>
                     <label for="user_name">User Name</label>
-                    <input wire:model='name' type="text" id="user_name" name="user_name" value="{{ $name }}">
+                    <input placeholder="John Doe" wire:model='name' type="text" id="user_name" name="user_name"
+                        value="{{ $name }}">
                     @error('name')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -48,7 +49,7 @@
             <li>
                 <div>
                     <label for="status">Status</label>
-                    <input wire:model='status' type="text" id="status" name="status"
+                    <input placeholder="Availabale" wire:model='status' type="text" id="status" name="status"
                         value="{{ $status }}">
                     @error('status')
                         <span class="error">{{ $message }}</span>
@@ -61,7 +62,7 @@
             <li>
                 <div>
                     <label for="email">Email</label>
-                    <input wire:model='email' type="text" value="{{ $email }}">
+                    <input placeholder="johndoe@gmail.com" wire:model='email' type="text" value="{{ $email }}">
                     @error('email')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -69,21 +70,13 @@
                 <button><i class="fa-solid fa-pen"></i><span>Edit</span></button>
             </li>
         </form>
-
-        <li>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" value="randompass">
-            </div>
-            <button><i class="fa-solid fa-pen"></i><span>Edit</span></button>
-        </li>
     </ul>
     <div class="action_div">
         <p>
             <i style="color: yellow;" class="fa-solid fa-triangle-exclamation"></i>
             <span>This Acion is Permanent</span>
         </p>
-        <button>
+        <button wire:click='$dispatch("toggle-confirm-modal", {action: "delete-account"})'>
             <i class="fa-solid fa-trash"></i>
             <span>Delete Account</span>
         </button>

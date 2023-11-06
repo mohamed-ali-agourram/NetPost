@@ -12,10 +12,12 @@ class ConfirmModal extends Component
     public $data;
 
     #[On("toggle-confirm-modal")]
-    public function open(string $action, $data)
+    public function open(string $action, $data = null)
     {
         $this->action = $action;
-        $this->data = $data;
+        if(!is_null($data)) {
+            $this->data = $data;
+        }
         $this->is_open = true;
     }
 

@@ -3,6 +3,7 @@
 namespace App\Livewire\Settings;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,14 @@ class AccountSettings extends Component
         $user[$field_name] = $validated[$field_name];
         $user->save();
         $this->resetValidation();
+    }
+
+    #[On("delete-account")]
+    public function delete_account()
+    {
+        $user = Auth::user();
+        $user->delete();
+        $this->redirectRoute("auth.login", navigate: true);
     }
 
     public function render()
