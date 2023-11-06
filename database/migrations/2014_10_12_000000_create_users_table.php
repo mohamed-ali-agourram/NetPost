@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('cover_image')->nullable();
             $table->string('profile_image')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->nullable()->default("NetPost User");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
