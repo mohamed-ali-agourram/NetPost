@@ -43,12 +43,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function image()
+    public function profile_image()
     {
         if (isset($this->profile_image)) {
             return  $this->profile_image;
         }
         return asset("images/default-profile.png");
+    }
+
+    public function cover_image()
+    {
+        if (isset($this->cover_image)) {
+            return  $this->cover_image;
+        }
+        return asset("images/cover_pic.png");
     }
 
     public function posts()

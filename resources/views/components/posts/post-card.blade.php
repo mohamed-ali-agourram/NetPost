@@ -1,7 +1,7 @@
 <div class="post_card">
     <div class="post_card_header">
         <a href="./profie.html">
-            <img src={{ $post->author->image() }} alt="post_image">
+            <img src={{ $post->author->profile_image() }} alt="post_image">
         </a>
         <div>
             <a href="./profie.html">
@@ -52,7 +52,7 @@
             </button>
         </div>
         <form wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/" class="comment">
-            <img src={{ auth()->user()->image() }} alt="{{ auth()->user()->name }}">
+            <img src={{ auth()->user()->profile_image() }} alt="{{ auth()->user()->name }}">
             <input type="text" placeholder="Comment what you think">
             <button>
                 <i class='bx bxs-send'></i>

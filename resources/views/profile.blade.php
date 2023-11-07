@@ -9,7 +9,7 @@
             <div class="p_h_body">
                 <div class="phb_a">
                     <div class="profile_pic">
-                        <img src="{{ auth()->user()->image() }}" alt="profile_pic">
+                        <img src="{{ auth()->user()->profile_image() }}" alt="profile_pic">
                         <button class="pp_btn"><i class='bx bx-camera'></i></button>
                     </div>
                     <div class="profile_info">

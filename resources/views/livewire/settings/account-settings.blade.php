@@ -1,8 +1,8 @@
 <div class="settings_content">
     <div class="acount_settings_header">
         <div class="profile_img">
-            <img src="{{ auth()->user()->image() }}" alt="{{ auth()->user()->name }}">
-            <button class="pp_btn"><i class='bx bx-camera'></i></button>
+            <img src="{{ auth()->user()->profile_image() }}" alt="{{ auth()->user()->name }}">
+            <button class="pp_btn" wire:click='$dispatch("open-update-profile-modal")'><i class='bx bx-camera'></i></button>
         </div>
         <div class="profile_info">
             <h1>{{ auth()->user()->name }}</h1>

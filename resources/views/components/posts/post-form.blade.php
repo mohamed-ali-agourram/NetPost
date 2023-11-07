@@ -14,7 +14,7 @@
             <i class="fa-solid fa-circle-xmark"></i>
         </button>
         <div class="author">
-            <img src="{{ auth()->user()->image() }}" alt="user">
+            <img src="{{ auth()->user()->profile_image() }}" alt="user">
             <div>
                 <p>{{ auth()->user()->name }}</p>
                 <div class="custom-select">
