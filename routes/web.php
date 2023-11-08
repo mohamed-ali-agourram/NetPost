@@ -27,7 +27,7 @@ Route::prefix("/auth")->name("auth.")->middleware("guest")->group(function () {
 });
 
 Route::get("/profile", function () {
-    return view("livewire.profile-page");
+    return view("profile");
 })->name("profile")->middleware("auth");
 
 Route::get("/freinds", function () {
