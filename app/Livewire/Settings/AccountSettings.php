@@ -14,6 +14,7 @@ class AccountSettings extends Component
     public $email;
     public $profile_image;
 
+    #[On("update-profile")]
     public function mount()
     {
         $this->name = auth()->user()->name;

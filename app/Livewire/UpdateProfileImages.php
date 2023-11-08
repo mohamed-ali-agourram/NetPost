@@ -50,6 +50,7 @@ class UpdateProfileImages extends Component
                 "cover_image" => $cover_image_path
             ]);
         }
+        $this->dispatch("update-profile");
         $this->dispatch("close-update-profile-modal");
         $this->reset();
     }

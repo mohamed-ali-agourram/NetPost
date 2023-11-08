@@ -1,7 +1,7 @@
 <x-layouts.app-layout>
     <div class="profile_main_content">
         <div class="profile_header">
-            <div class="cover_pic" style="background-image: url({{ auth()->user()->cover_image() }});">
+            <div class="cover_pic" style="background-image: url({{ auth()->user()->profile_image() }});">
                 <button class="p_cta_btn"><i class='bx bx-camera'></i>
                     <p>Change Your Cover Photo</p>
                 </button>

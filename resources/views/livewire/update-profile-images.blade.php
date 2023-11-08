@@ -16,6 +16,12 @@
                 <p>Add a new cover</p>
                 <i class='bx bx-camera'></i>
                 <input wire:model="cover_image" name="cover_image" accept=".jpg, .png" type="file" id="cover-image">
+                <span wire:loading wire:target="cover_image" class="spinner-backdrop">
+                    <span class="lds-ripple">
+                        <span></span>
+                        <span></span>
+                    </span>
+                </span>
             </label>
             @error('cover_image')
                 <p class="error">{{ $message }}</p>
@@ -39,6 +45,12 @@
                     <i class='bx bx-camera'></i>
                     <input wire:model="profile_image" accept=".jpg, .png" name="profile_image" type="file"
                         id="profile-image">
+                    <span wire:loading wire:target="profile_image" style="border-radius: 100%" class="spinner-backdrop">
+                        <span class="lds-ripple">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
                     @error('profile_image')
                         <p class="error">{{ $message }}</p>
                     @enderror
