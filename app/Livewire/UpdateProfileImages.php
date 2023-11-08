@@ -17,13 +17,6 @@ class UpdateProfileImages extends Component
     public $cover_image;
     public $is_open = false;
 
-    public function mount()
-    {
-        $user = auth()->user();
-        $this->cover_image = $user->cover_image;
-        $this->profile_image = $user->profile_image;
-    }
-
     #[On("open-update-profile-modal")]
     public function open_modal()
     {
@@ -39,7 +32,7 @@ class UpdateProfileImages extends Component
     public function update_images()
     {
         $user = auth()->user();
-        if ($this->profile_image) {
+        if ($this->profile_image !== null) {
             $validated = $this->validate([
                 "profile_image" => "nullable|sometimes|image|max:5024"
             ]);
@@ -48,7 +41,7 @@ class UpdateProfileImages extends Component
                 "profile_image" => $profile_image_path
             ]);
         }
-        if ($this->cover_image) {
+        if ($this->cover_image !== null) {
             $validated = $this->validate([
                 "cover_image" => "nullable|sometimes|image|max:5024"
             ]);
