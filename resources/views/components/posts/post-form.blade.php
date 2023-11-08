@@ -14,7 +14,7 @@
             <i class="fa-solid fa-circle-xmark"></i>
         </button>
         <div class="author">
-            <img src="{{ auth()->user()->image() }}" alt="user">
+            <img src="{{ auth()->user()->profile_image() }}" alt="user">
             <div>
                 <p>{{ auth()->user()->name }}</p>
                 <div class="custom-select">
@@ -43,7 +43,7 @@
                 <span>Pictures should be less then 5MB</span>
             </label>
             <input type="file" id="file-input" x-on:change="image = $event.target.files[0]" wire:model='image'
-                accept="image/png, image/jpg" name="image" class="actual-file-input" />
+                accept=".jpg, .png" name="image" class="actual-file-input" />
             <span wire:loading wire:target="image" class="spinner-backdrop">
                 <span class="lds-ripple">
                     <span></span>

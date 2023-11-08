@@ -9,7 +9,7 @@
         </div>
         <div class="body">
             <div class="author">
-                <img src="{{ $post?->author->image() }}" alt="author">
+                <img src="{{ $post?->author->profile_image() }}" alt="author">
                 <div>
                     <b>{{ $post?->author->name }}</b>
                     <p>
@@ -57,7 +57,7 @@
         </div>
         <livewire:comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
         <div class="post-card-model-form">
-            <img src="{{ $post?->author->image() }}" alt="author">
+            <img src="{{ auth()->user()->profile_image() }}" alt="author">
             <livewire:comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
         </div>
     </div>

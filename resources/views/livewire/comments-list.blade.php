@@ -5,7 +5,7 @@
     </div>
     @forelse ($this->comments as $comment)
         <div class="comment">
-            <img src={{ $comment->author->image() }} alt="comment-author-image">
+            <img src={{ $comment->author->profile_image() }} alt="comment-author-image">
             <div class="content">
                 <div class="bubble">
                     <b>{{ $comment->author->name }}<span>&nbsp;&nbsp;{{ $comment->date() }}</span></b>

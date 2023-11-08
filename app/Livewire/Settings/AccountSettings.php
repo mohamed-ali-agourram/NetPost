@@ -12,12 +12,15 @@ class AccountSettings extends Component
     public $name;
     public $status;
     public $email;
+    public $profile_image;
 
+    #[On("update-profile")]
     public function mount()
     {
         $this->name = auth()->user()->name;
         $this->status = auth()->user()->status;
         $this->email = auth()->user()->email;
+        $this->profile_image = auth()->user()->profile_image();
     }
 
     #[Computed()]

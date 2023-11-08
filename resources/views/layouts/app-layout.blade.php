@@ -19,6 +19,7 @@
 <body>
     <div class="container">
         <livewire:confirm-modal />
+        <livewire:update-profile-images />
         <livewire:post-modal />
         <div class="post_model_dropdown" style="display: none;"></div>
         <livewire:notifications />
