@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cover_image',
+        'profile_image',
+        'status'
     ];
 
     /**
@@ -46,7 +49,7 @@ class User extends Authenticatable
     public function profile_image()
     {
         if (isset($this->profile_image)) {
-            return  $this->profile_image;
+            return asset("storage/" . $this->profile_image);
         }
         return asset("images/default-profile.png");
     }
@@ -54,9 +57,9 @@ class User extends Authenticatable
     public function cover_image()
     {
         if (isset($this->cover_image)) {
-            return  $this->cover_image;
+            return asset("storage/" . $this->cover_image);
         }
-        return asset("images/cover_pic.png");
+        return asset("images/cover_pic.jpg");
     }
 
     public function posts()
@@ -76,7 +79,7 @@ class User extends Authenticatable
 
     public function has_liked(?Post $post)
     {
-        if($post !== null){
+        if ($post !== null) {
             return $this->likes()->where("post_id", $post->id)->exists();
         }
     }

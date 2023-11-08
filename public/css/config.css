@@ -211,6 +211,12 @@ a {
         align-items: center;
         border-radius: 10px;
 
+        & input[type="file"]{
+            visibility: hidden;
+            width: 0%;
+            height: 0%;
+        }
+
         .cover_pic {
             width: 100%;
             position: relative;
@@ -479,7 +485,7 @@ html {
             }
         }
         .update_image_backdrop{
-            width: 80%;
+            width: 80% !important;
         }
     }
 }
