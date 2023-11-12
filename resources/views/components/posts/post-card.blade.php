@@ -1,4 +1,10 @@
-<div class="post_card">
+<style>
+    .radius{
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+    }
+</style>
+<div class="post_card {{ $isFirst ? 'radius' : '' }}">
     <div class="post_card_header">
         <a href="./profie.html">
             <img src={{ $post->author->profile_image() }} alt="post_image">
