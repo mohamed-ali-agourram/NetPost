@@ -211,7 +211,7 @@ a {
         align-items: center;
         border-radius: 10px;
 
-        & input[type="file"]{
+        & input[type="file"] {
             visibility: hidden;
             width: 0%;
             height: 0%;
@@ -325,15 +325,22 @@ a {
             gap: 10px;
 
             & button {
-                background: black;
                 border: none;
                 color: white;
                 padding: 1.5vh 3vh;
                 border-radius: 5px;
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0.726);
+                &:hover{
+                    margin-top: -1px;
                 }
+
+            }
+
+            .cancel {
+                background: #1d2b42;
+            }
+
+            .submit {
+                background: #591616;
             }
         }
     }
@@ -484,7 +491,8 @@ html {
                 }
             }
         }
-        .update_image_backdrop{
+
+        .update_image_backdrop {
             width: 80% !important;
         }
     }
