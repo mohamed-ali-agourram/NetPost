@@ -1,6 +1,6 @@
 <div class="profile_main_content">
     <div class="profile_header">
-        <div class="cover_pic" style="background-image: url({{ auth()->user()->cover_image() }});">
+        <div class="cover_pic" style="background-image: url({{ $cover_image }});">
             <button wire:click='$dispatch("open-update-profile-modal")' class="p_cta_btn"><i class='bx bx-camera'></i>
                 <p>Change Your Cover Photo</p>
             </button>
@@ -8,12 +8,14 @@
         <div class="p_h_body">
             <div class="phb_a">
                 <div class="profile_pic">
-                    <img src="{{ auth()->user()->profile_image() }}" alt="profile_pic">
-                    <button wire:click='$dispatch("open-update-profile-modal")' class="pp_btn"><i class='bx bx-camera'></i></button>
+                    <img src="{{ $profile_image }}" alt="profile_pic">
+                    <button wire:click='$dispatch("open-update-profile-modal")' class="pp_btn"><i
+                            class='bx bx-camera'></i></button>
                 </div>
                 <div class="profile_info">
                     <p>{{ auth()->user()->name }}</p>
-                    <p class="status"><span style="color: grey; font-size: 15px;">status:</span> {{ auth()->user()->status }}</p>
+                    <p class="status"><span style="color: grey; font-size: 15px;">status:</span>
+                        {{ auth()->user()->status }}</p>
                     <div class="user_activity">
                         <p>
                             <span>120 freinds</span>
@@ -24,14 +26,15 @@
                             <i class="fa-regular fa-images"></i>
                         </p>
                         <p>
-                            <span>25 likes</span>
+                            <span>{{ $this->likes_count() }}</span>
                             <i class="fa-regular fa-thumbs-up"></i>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="profile_cta">
-                <a wire:navigate href="{{ route('settings.account') }}" class="p_cta_btn"><i class="fa-solid fa-pen"></i> Modify Your profile</a>
+                <a wire:navigate href="{{ route('settings.account') }}" class="p_cta_btn"><i
+                        class="fa-solid fa-pen"></i> Modify Your profile</a>
             </div>
         </div>
     </div>
@@ -53,8 +56,11 @@
                     <button><i class="fa-solid fa-share"></i>Sort By Shares</button>
                 </div>
             </div>
-            @forelse (auth()->user()->posts as $post)
-                <x-posts.post-card :$post />
+            @forelse ($this->posts as $post)
+                @php
+                    $isFirst = $loop->index === 0 ? true : false;
+                @endphp
+                <x-posts.post-card :$isFirst :key="$post->id" :$post />
             @empty
                 <h1>Add a new Post</h1>
             @endforelse

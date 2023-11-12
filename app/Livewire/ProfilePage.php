@@ -8,18 +8,14 @@ use Livewire\Attributes\Computed;
 
 class ProfilePage extends Component
 {
-    public $name;
-    public $status;
-    public $email;
     public $profile_image;
+    public $cover_image;
 
     #[On("update-profile")]
     public function mount()
     {
-        $this->name = auth()->user()->name;
-        $this->status = auth()->user()->status;
-        $this->email = auth()->user()->email;
         $this->profile_image = auth()->user()->profile_image();
+        $this->cover_image = auth()->user()->cover_image();
     }
 
     #[Computed()]
@@ -29,7 +25,17 @@ class ProfilePage extends Component
         foreach (auth()->user()->posts as $post) {
             $count += $post->likes->count();
         }
-        return $count;
+        if ($count > 1) {
+            return $count . " likes";
+        }
+        return $count . " like";
+    }
+
+    #[On("new-post")]
+    #[Computed()]
+    public function posts()
+    {
+        return auth()->user()->posts->sortByDesc('created_at');
     }
 
     public function render()
