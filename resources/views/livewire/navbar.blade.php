@@ -1,5 +1,7 @@
 <header id="navbar">
-    <div class="toggleNav">
+    <div class="toggleNav"
+
+    >
         <i class="fa-solid fa-bars"></i>
     </div>
     <a wire:navigate href="{{ route('home') }}" style="display: none;">
