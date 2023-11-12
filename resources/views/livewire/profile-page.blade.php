@@ -60,7 +60,7 @@
                 @php
                     $isFirst = $loop->index === 0 ? true : false;
                 @endphp
-                <x-posts.post-card :$isFirst :key="$post->id" :$post />
+                <x-posts.post-card :$isFirst :key="$post?->pluck('id')->join(uniqid())" :$post />
             @empty
                 <h1>Add a new Post</h1>
             @endforelse
