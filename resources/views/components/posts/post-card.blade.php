@@ -1,10 +1,16 @@
 <style>
-    .radius{
+    .radius {
         border-top-left-radius: 0px !important;
         border-top-right-radius: 0px !important;
     }
 </style>
-<div class="post_card {{ $isFirst ? 'radius' : '' }}">
+@php
+    $addedClass = '';
+    if (isset($isFirst)) {
+        $addedClass = $isFirst ? 'radius' : '';
+    }
+@endphp
+<div class="post_card {{ $addedClass }}">
     <div class="post_card_header">
         <a href="./profie.html">
             <img src={{ $post->author->profile_image() }} alt="post_image">
