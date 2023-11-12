@@ -22,7 +22,7 @@
                     <i class="fa-regular fa-images"></i>
                 </p>
                 <p>
-                    <span>{{ $this->likes_count }} like{{ $this->likes_count > 1 ? 's' : '' }}</span>
+                    <span>{{ $this->likes_count }}</span>
                     <i class="fa-regular fa-thumbs-up"></i>
                 </p>
             </div>

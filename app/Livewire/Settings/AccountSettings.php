@@ -30,7 +30,11 @@ class AccountSettings extends Component
         foreach (auth()->user()->posts as $post) {
             $count += $post->likes->count();
         }
-        return $count;
+        if($count > 1)
+        {
+            return $count . " likes";
+        }
+        return $count . " like";
     }
 
     public function update_field(string $field_name)

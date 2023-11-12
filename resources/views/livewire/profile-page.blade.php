@@ -1,7 +1,7 @@
 <div class="profile_main_content">
     <div class="profile_header">
         <div class="cover_pic" style="background-image: url({{ auth()->user()->cover_image() }});">
-            <button class="p_cta_btn"><i class='bx bx-camera'></i>
+            <button wire:click='$dispatch("open-update-profile-modal")' class="p_cta_btn"><i class='bx bx-camera'></i>
                 <p>Change Your Cover Photo</p>
             </button>
         </div>
@@ -9,11 +9,11 @@
             <div class="phb_a">
                 <div class="profile_pic">
                     <img src="{{ auth()->user()->profile_image() }}" alt="profile_pic">
-                    <button class="pp_btn"><i class='bx bx-camera'></i></button>
+                    <button wire:click='$dispatch("open-update-profile-modal")' class="pp_btn"><i class='bx bx-camera'></i></button>
                 </div>
                 <div class="profile_info">
                     <p>{{ auth()->user()->name }}</p>
-                    <p class="status"><span style="color: grey; font-size: 15px;">status:</span> Availabale</p>
+                    <p class="status"><span style="color: grey; font-size: 15px;">status:</span> {{ auth()->user()->status }}</p>
                     <div class="user_activity">
                         <p>
                             <span>120 freinds</span>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="profile_cta">
-                <button class="p_cta_btn"><i class="fa-solid fa-pen"></i> Modify Your profile</button>
+                <a wire:navigate href="{{ route('settings.account') }}" class="p_cta_btn"><i class="fa-solid fa-pen"></i> Modify Your profile</a>
             </div>
         </div>
     </div>
