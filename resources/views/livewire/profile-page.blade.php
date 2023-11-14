@@ -50,9 +50,15 @@
                             Your Publications</a></button>
                 </div>
                 <div class="filters" style="display: none;">
-                    <button><i class="fa-solid fa-clock"></i>Sort By Date</button>
-                    <button><i class="fa-solid fa-thumbs-up"></i>Sort By Likes</button>
-                    <button><i class="fa-solid fa-message"></i>Sort By Comments</button>
+                    <style>
+                        .clicked{
+                            background: black !important;
+                            color: white !important
+                        }
+                    </style>
+                    <x-sort-button filter="date" :sort_value="$sort_date" />
+                    <x-sort-button filter="likes" :sort_value="$sort_likes" />
+                    <x-sort-button filter="comments" :sort_value="$sort_comments" />
                     <button><i class="fa-solid fa-share"></i>Sort By Shares</button>
                 </div>
             </div>
