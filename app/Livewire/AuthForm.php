@@ -3,14 +3,15 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Livewire\Component;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Rule;
-use Livewire\Component;
 
 class AuthForm extends Component
 {
     public $is_register = false;
-    #[Rule("required|min:3|max:15")]
+    #[Rule("required|min:3|max:15|unique:users,name")]
     public $name;
     #[Rule("required|email|unique:users,email")]
     public $email;
@@ -36,6 +37,7 @@ class AuthForm extends Component
     public function register()
     {
         $validated = $this->validate();
+        $validated["slug"] = Str::slug($this->name);
         $user = User::create($validated);
         auth()->login($user);
         $this->redirectRoute("home", navigate: true);

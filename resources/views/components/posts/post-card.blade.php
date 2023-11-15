@@ -12,11 +12,11 @@
 @endphp
 <div class="post_card {{ $addedClass }}">
     <div class="post_card_header">
-        <a href="./profie.html">
+        <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
             <img src={{ $post->author->profile_image() }} alt="post_image">
         </a>
         <div>
-            <a href="./profie.html">
+            <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
                 <b>{{ $post->author->name }}</b>
             </a>
             <p class="date_span">

@@ -1,21 +1,28 @@
+@php
+    $is_auth = $user->slug === auth()->user()->slug;
+@endphp
 <div class="profile_main_content">
-    <div class="profile_header">
+    <div class="profile_header" style="margin-bottom: {{ !$is_auth ? '0%' : '2%' }}">
         <div class="cover_pic" style="background-image: url({{ $cover_image }});">
-            <button wire:click='$dispatch("open-update-profile-modal")' class="p_cta_btn"><i class='bx bx-camera'></i>
-                <p>Change Your Cover Photo</p>
-            </button>
+            @if ($is_auth)
+                <button wire:click='$dispatch("open-update-profile-modal")' class="p_cta_btn"><i class='bx bx-camera'></i>
+                    <p>Change Your Cover Photo</p>
+                </button>
+            @endif
         </div>
         <div class="p_h_body">
             <div class="phb_a">
                 <div class="profile_pic">
                     <img src="{{ $profile_image }}" alt="profile_pic">
-                    <button wire:click='$dispatch("open-update-profile-modal")' class="pp_btn"><i
-                            class='bx bx-camera'></i></button>
+                    @if ($is_auth)
+                        <button wire:click='$dispatch("open-update-profile-modal")' class="pp_btn"><i
+                                class='bx bx-camera'></i></button>
+                    @endif
                 </div>
                 <div class="profile_info">
-                    <p>{{ auth()->user()->name }}</p>
+                    <p>{{ $user->name }}</p>
                     <p class="status"><span style="color: grey; font-size: 15px;">status:</span>
-                        {{ auth()->user()->status }}</p>
+                        {{ $user->status }}</p>
                     <div class="user_activity">
                         <p>
                             <span>120 freinds</span>
@@ -32,26 +39,56 @@
                     </div>
                 </div>
             </div>
-            <div class="profile_cta">
-                <a wire:navigate href="{{ route('settings.account') }}" class="p_cta_btn"><i
-                        class="fa-solid fa-pen"></i> Modify Your profile</a>
-            </div>
+            @if ($is_auth)
+                <div class="profile_cta">
+                    <a wire:navigate href="{{ route('settings.account') }}" class="p_cta_btn"><i
+                            class="fa-solid fa-pen"></i> Modify Your profile</a>
+                </div>
+            @else
+                <style>
+                    .add-freind {
+                        background: #0866ff !important;
+                        font-size: 14px !important;
+                        gap: 5px !important;
+                        transition: all 0.2s;
+
+                        &:hover {
+                            scale: 105%
+                        }
+                    }
+                </style>
+                <div class="profile_cta">
+                    @if ($this->pendingRequest)
+                        <button wire:click='add_friend' class="p_cta_btn add-freind"><i class="fa-solid fa-xmark"></i>
+                            Cancel Request</button>
+                    @else
+                        <button wire:click='add_friend' class="p_cta_btn add-freind"><i
+                                class="fa-solid fa-user-plus"></i> Add friend</button>
+                    @endif
+                </div>
+            @endif
+
         </div>
     </div>
 
     <div class="profile_body">
         <div class="posts" x-data>
-            <x-posts.post-form-trigger />
+            @if ($is_auth)
+                <x-posts.post-form-trigger />
+            @endif
             <div class="modify_pubs">
-                <h2>Your Publications</h2>
+                <h2>{{ $is_auth ? 'Your' : $user->name . "'s" }} Publications</h2>
                 <div class="mp_btns">
                     <button id="filter_btn"><i class="fa-solid fa-arrow-up-z-a"></i>Filter</button>
-                    <button><a wire:navigate href="{{ route('settings.posts') }}"><i class="fa-solid fa-gear"></i>Manage
-                            Your Publications</a></button>
+                    @if ($is_auth)
+                        <button><a wire:navigate href="{{ route('settings.posts') }}"><i
+                                    class="fa-solid fa-gear"></i>Manage
+                                Your Publications</a></button>
+                    @endif
                 </div>
                 <div class="filters" style="display: none;">
                     <style>
-                        .clicked{
+                        .clicked {
                             background: black !important;
                             color: white !important
                         }

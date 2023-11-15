@@ -3,13 +3,16 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use Livewire\Component;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
-use Livewire\Attributes\Computed;
+use Livewire\Component;
 
 class ProfilePage extends Component
 {
+    public User $user;
     public $profile_image;
     public $cover_image;
     #[Url()]
@@ -39,15 +42,26 @@ class ProfilePage extends Component
     #[On("update-profile")]
     public function mount()
     {
-        $this->profile_image = auth()->user()->profile_image();
-        $this->cover_image = auth()->user()->cover_image();
+        $this->profile_image = $this->user->profile_image();
+        $this->cover_image = $this->user->cover_image();
+
+    }
+
+    #[On("freind-request")]
+    #[Computed()]
+    public function pendingRequest()
+    {
+        return auth()->user()->pendingFriendRequests()
+            ->where('user1_id', $this->user->id)
+            ->orWhere('user2_id', $this->user->id)
+            ->first();
     }
 
     #[Computed()]
     public function likes_count()
     {
         $count = 0;
-        foreach (auth()->user()->posts as $post) {
+        foreach ($this->user->posts as $post) {
             $count += $post->likes->count();
         }
         if ($count > 1) {
@@ -62,7 +76,7 @@ class ProfilePage extends Component
         if ($post === null) {
             return;
         }
-        $user = auth()->user();
+        $user = $this->user;
 
         $hasLiked = $user->has_liked($post);
 
@@ -79,7 +93,7 @@ class ProfilePage extends Component
     #[Computed()]
     public function posts()
     {
-        $posts = auth()->user()->posts();
+        $posts = $this->user->posts();
 
         if ($this->sort_likes) {
             $posts = $posts
@@ -94,6 +108,30 @@ class ProfilePage extends Component
             ;
         }
         return $posts->orderBy('created_at', $this->sort_date)->get();
+    }
+
+    public function add_friend()
+    {
+        $auth = auth()->user();
+        $existingFriendship = $auth->friends()->where('users.id', $this->user->id)->exists();
+
+        if (!$existingFriendship && $auth->id !== $this->user->id) {
+            if ($this->pendingRequest) {
+                DB::table('friendship')
+                    ->where('user1_id', $auth->id)
+                    ->where('user2_id', $this->user->id)
+                    ->orWhere(function ($query) use ($auth) {
+                        $query->where('user1_id', $this->user->id)
+                            ->where('user2_id', $auth->id);
+                    })->delete();
+                $this->dispatch("freind-request");
+            } else {
+                $auth->friends()->attach($this->user->id, ['status' => 'pending']);
+                $this->dispatch("freind-request");
+            }
+        } else {
+            dd("Already friends or invalid user.");
+        }
     }
 
     public function render()
