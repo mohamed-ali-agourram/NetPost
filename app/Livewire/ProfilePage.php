@@ -52,8 +52,8 @@ class ProfilePage extends Component
     public function pendingRequest()
     {
         return auth()->user()->pendingFriendRequests()
-            ->where('user1_id', $this->user->id)
-            ->orWhere('user2_id', $this->user->id)
+            ->where('sender', $this->user->id)
+            ->orWhere('receiver', $this->user->id)
             ->first();
     }
 
@@ -118,11 +118,11 @@ class ProfilePage extends Component
         if (!$existingFriendship && $auth->id !== $this->user->id) {
             if ($this->pendingRequest) {
                 DB::table('friendship')
-                    ->where('user1_id', $auth->id)
-                    ->where('user2_id', $this->user->id)
+                    ->where('sender', $auth->id)
+                    ->where('receiver', $this->user->id)
                     ->orWhere(function ($query) use ($auth) {
-                        $query->where('user1_id', $this->user->id)
-                            ->where('user2_id', $auth->id);
+                        $query->where('sender', $this->user->id)
+                            ->where('receiver', $auth->id);
                     })->delete();
                 $this->dispatch("freind-request");
             } else {

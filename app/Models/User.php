@@ -80,20 +80,20 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->belongsToMany(User::class, 'friendship', 'user1_id', 'user2_id')
+        return $this->belongsToMany(User::class, 'friendship', 'sender', 'receiver')
             ->wherePivot('friendship.status', 'accepted')
             ->orWhere(function ($query) {
-                $query->where('friendship.user2_id', $this->id)
+                $query->where('friendship.receiver', $this->id)
                     ->where('friendship.status', 'accepted');
                 });
     }
 
     public function pendingFriendRequests()
     {
-        return $this->belongsToMany(User::class, 'friendship', 'user2_id', 'user1_id')
+        return $this->belongsToMany(User::class, 'friendship', 'receiver', 'sender')
             ->wherePivot('status', 'pending')
-            ->where('user1_id', $this->id)
-            ->orWhere('user2_id', $this->id);
+            ->where('sender', $this->id)
+            ->orWhere('receiver', $this->id);
     }
 
     public function has_liked(?Post $post)
