@@ -21,6 +21,7 @@ class ProfilePage extends Component
     public $sort_likes = "";
     #[Url()]
     public $sort_comments = "";
+    public $is_freindship = false;
 
     public function toggleSort($filter)
     {
@@ -44,10 +45,11 @@ class ProfilePage extends Component
     {
         $this->profile_image = $this->user->profile_image();
         $this->cover_image = $this->user->cover_image();
-
+        $this->is_freindship = auth()->user()->pendingFriendRequests()
+            ->where('sender', $this->user->id)
+            ->orWhere('receiver', $this->user->id)->exists();
     }
 
-    #[On("freind-request")]
     #[Computed()]
     public function pendingRequest()
     {
@@ -124,14 +126,47 @@ class ProfilePage extends Component
                         $query->where('sender', $this->user->id)
                             ->where('receiver', $auth->id);
                     })->delete();
-                $this->dispatch("freind-request");
+                $this->mount();
             } else {
                 $auth->friends()->attach($this->user->id, ['status' => 'pending']);
-                $this->dispatch("freind-request");
+                $this->mount();
             }
         } else {
             dd("Already friends or invalid user.");
         }
+    }
+
+    public function handle_request(bool $status)
+    {
+        $authUser = auth()->user();
+        $friendRequest = $this->pendingRequest();
+
+        if ($friendRequest) {
+            if ($status) {
+                DB::table('friendship')
+                    ->where('sender', $friendRequest->pivot->sender)
+                    ->where('receiver', $friendRequest->pivot->receiver)
+                    ->update(['status' => 'accepted']);
+
+                $this->mount();
+            } else {
+                DB::table('friendship')
+                    ->where('sender', $friendRequest->pivot->sender)
+                    ->where('receiver', $friendRequest->pivot->receiver)
+                    ->orWhere(function ($query) use ($authUser, $friendRequest) {
+                        $query->where('sender', $friendRequest->pivot->receiver)
+                            ->where('receiver', $authUser->id);
+                    })
+                    ->delete();
+
+                $this->mount();
+            }
+        }
+    }
+
+    public function freinds()
+    {
+        dd("FREINDS!");
     }
 
     public function render()

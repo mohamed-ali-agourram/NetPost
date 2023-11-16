@@ -85,7 +85,7 @@ class User extends Authenticatable
             ->orWhere(function ($query) {
                 $query->where('friendship.receiver', $this->id)
                     ->where('friendship.status', 'accepted');
-                });
+            });
     }
 
     public function pendingFriendRequests()
@@ -94,6 +94,17 @@ class User extends Authenticatable
             ->wherePivot('status', 'pending')
             ->where('sender', $this->id)
             ->orWhere('receiver', $this->id);
+    }
+
+    public function areFriends(User $otherUser)
+    {
+        return $this->friends()
+            ->wherePivot('status', 'accepted')
+            ->where(function ($query) use ($otherUser) {
+                $query->where('sender', $otherUser->id)
+                    ->orWhere('receiver', $otherUser->id);
+            })
+            ->exists();
     }
 
     public function has_liked(?Post $post)

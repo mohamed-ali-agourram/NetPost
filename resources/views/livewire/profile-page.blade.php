@@ -57,7 +57,7 @@
                         }
                     }
                 </style>
-                <x-freindship-action />
+                <x-freindship-action :$is_freindship :$user />
             @endif
 
         </div>

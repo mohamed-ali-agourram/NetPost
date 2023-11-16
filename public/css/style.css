@@ -1140,7 +1140,14 @@
                 background: #000;
             }
         }
-
+        .accept-reject-btns{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .reject{
+                background: rgb(160, 13, 13) !important ;
+            }
+        }
         .p_h_body {
             display: flex;
             width: 95%;
