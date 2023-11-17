@@ -119,7 +119,7 @@ class ProfilePage extends Component
 
         if (!$existingFriendship && $auth->id !== $this->user->id) {
             if ($this->pendingRequest) {
-                DB::table('friendship')
+                DB::table('friendships')
                     ->where('sender', $auth->id)
                     ->where('receiver', $this->user->id)
                     ->orWhere(function ($query) use ($auth) {
@@ -143,14 +143,14 @@ class ProfilePage extends Component
 
         if ($friendRequest) {
             if ($status) {
-                DB::table('friendship')
+                DB::table('friendships')
                     ->where('sender', $friendRequest->pivot->sender)
                     ->where('receiver', $friendRequest->pivot->receiver)
                     ->update(['status' => 'accepted']);
 
                 $this->mount();
             } else {
-                DB::table('friendship')
+                DB::table('friendships')
                     ->where('sender', $friendRequest->pivot->sender)
                     ->where('receiver', $friendRequest->pivot->receiver)
                     ->orWhere(function ($query) use ($authUser, $friendRequest) {

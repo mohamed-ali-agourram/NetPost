@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name("home")->middleware("auth");
@@ -11,6 +12,8 @@ Route::prefix("/auth")->name("auth.")->middleware("guest")->group(function () {
     Route::get("/login", [AuthController::class, 'login'])->name("login");
     Route::get("/register", [AuthController::class, 'register'])->name("register");
 });
+
+Route::get("/test", [TestController::class, "test"]);
 
 Route::get("/profile/{slug}", [ProfileController::class, "index"])->name("profile")->middleware("auth");
 

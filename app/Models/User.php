@@ -78,33 +78,38 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, "likes")->withTimestamps();
     }
 
-    public function friends()
+    public function friendsTo()
     {
-        return $this->belongsToMany(User::class, 'friendship', 'sender', 'receiver')
-            ->wherePivot('friendship.status', 'accepted')
-            ->orWhere(function ($query) {
-                $query->where('friendship.receiver', $this->id)
-                    ->where('friendship.status', 'accepted');
-            });
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
     }
 
-    public function pendingFriendRequests()
+    public function friendsFrom()
     {
-        return $this->belongsToMany(User::class, 'friendship', 'receiver', 'sender')
-            ->wherePivot('status', 'pending')
-            ->where('sender', $this->id)
-            ->orWhere('receiver', $this->id);
+        return $this->belongsToMany(User::class, 'friendships', 'friend_id', 'user_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
     }
 
-    public function areFriends(User $otherUser)
+    public function pendingFriendsTo()
     {
-        return $this->friends()
-            ->wherePivot('status', 'accepted')
-            ->where(function ($query) use ($otherUser) {
-                $query->where('sender', $otherUser->id)
-                    ->orWhere('receiver', $otherUser->id);
-            })
-            ->exists();
+        return $this->friendsTo()->wherePivot('accepted', false);
+    }
+
+    public function pendingFriendsFrom()
+    {
+        return $this->friendsFrom()->wherePivot('accepted', false);
+    }
+
+    public function acceptedFriendsTo()
+    {
+        return $this->friendsTo()->wherePivot('accepted', true);
+    }
+
+    public function acceptedFriendsFrom()
+    {
+        return $this->friendsFrom()->wherePivot('accepted', true);
     }
 
     public function has_liked(?Post $post)

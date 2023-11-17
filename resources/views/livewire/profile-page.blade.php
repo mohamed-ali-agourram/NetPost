@@ -2,7 +2,7 @@
     $is_auth = $user->slug === auth()->user()->slug;
 @endphp
 <div class="profile_main_content">
-    <div class="profile_header" style="margin-bottom: {{ !$is_auth ? '0%' : '2%' }}">
+    <div class="profile_header">
         <div class="cover_pic" style="background-image: url({{ $cover_image }});">
             @if ($is_auth)
                 <button wire:click='$dispatch("open-update-profile-modal")' class="p_cta_btn"><i class='bx bx-camera'></i>
@@ -100,6 +100,6 @@
                 <h1>Add a new Post</h1>
             @endforelse
         </div>
-        <livewire:freinds-list />
+        <livewire:freinds-list :$user />
     </div>
 </div>
