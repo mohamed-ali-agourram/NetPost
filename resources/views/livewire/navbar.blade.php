@@ -1,7 +1,5 @@
 <header id="navbar">
-    <div class="toggleNav"
-
-    >
+    <div class="toggleNav">
         <i class="fa-solid fa-bars"></i>
     </div>
     <a wire:navigate href="{{ route('home') }}" style="display: none;">
@@ -24,7 +22,7 @@
             <i class="fa-solid fa-bell"></i>
             <div class="n_notif">5</div>
         </div>
-        <a wire:navigate href="{{ route('profile') }}">
+        <a wire:navigate href="{{ route('profile', ['slug' => auth()->user()->slug]) }}">
             <img src="{{ auth()->user()->profile_image() }}" alt="user_profile">
         </a>
     </div>

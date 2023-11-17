@@ -1,3 +1,5 @@
-<x-layouts.guest-layout>
-    <livewire:test />
-</x-layouts.guest-layout>
+<div>
+    @foreach ($data as $item)
+        @dump($item->name)
+    @endforeach
+</div>

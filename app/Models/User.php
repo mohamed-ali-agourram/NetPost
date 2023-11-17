@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'cover_image',
         'profile_image',
-        'status'
+        'status',
+        'slug'
     ];
 
     /**
@@ -75,6 +76,40 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->belongsToMany(Post::class, "likes")->withTimestamps();
+    }
+
+    public function friendsTo()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    public function friendsFrom()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'friend_id', 'user_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    public function pendingFriendsTo()
+    {
+        return $this->friendsTo()->wherePivot('accepted', false);
+    }
+
+    public function pendingFriendsFrom()
+    {
+        return $this->friendsFrom()->wherePivot('accepted', false);
+    }
+
+    public function acceptedFriendsTo()
+    {
+        return $this->friendsTo()->wherePivot('accepted', true);
+    }
+
+    public function acceptedFriendsFrom()
+    {
+        return $this->friendsFrom()->wherePivot('accepted', true);
     }
 
     public function has_liked(?Post $post)
