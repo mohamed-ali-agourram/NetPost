@@ -45,16 +45,7 @@ class ProfilePage extends Component
     {
         $this->profile_image = $this->user->profile_image();
         $this->cover_image = $this->user->cover_image();
-        $this->is_freindship = $this->user->pendingRequests()->contains('id', auth()->user()->id) || $this->user->friends()->contains('id', auth()->user()->id);
-    }
-
-    #[Computed()]
-    public function pendingRequest()
-    {
-        // return auth()->user()->pendingFriendRequests()
-        //     ->where('sender', $this->user->id)
-        //     ->orWhere('receiver', $this->user->id)
-        //     ->first();
+        $this->is_freindship = $this->user->pendingRequests->contains('id', auth()->user()->id) || $this->user->friends->contains('id', auth()->user()->id);
     }
 
     #[Computed()]
@@ -113,7 +104,7 @@ class ProfilePage extends Component
     public function add_friend()
     {
         $auth = auth()->user();
-        $existingFriendship = $auth->friends()->contains("id", $this->user->id);
+        $existingFriendship = $auth->friends->contains("id", $this->user->id);
 
         if (!$existingFriendship && $auth->id !== $this->user->id) {
             if ($this->pendingRequest) {
@@ -126,7 +117,7 @@ class ProfilePage extends Component
                     })->delete();
                 $this->mount();
             } else {
-                $auth->friends()->attach($this->user->id, ['status' => 'pending']);
+                $auth->friends->attach($this->user->id, ['status' => 'pending']);
                 $this->mount();
             }
         } else {

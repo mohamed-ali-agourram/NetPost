@@ -3,14 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -114,12 +115,12 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->acceptedFriendsFrom->merge($this->acceptedFriendsTo);
+        return $this->mergedRelationWithModel(User::class, 'friends_view');
     }
 
     public function pendingRequests()
     {
-        return $this->pendingFriendsFrom->merge($this->pendingFriendsTo);
+        return $this->mergedRelationWithModel(User::class, 'pending_requests_view');
     }
 
     public function has_liked(?Post $post)

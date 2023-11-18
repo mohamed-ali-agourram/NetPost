@@ -4,12 +4,13 @@ use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Staudenmeir\LaravelMergedRelations\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::createMergeView(
-            'friends_view',
-            [(new User())->acceptedFriendsTo(), (new User())->acceptedFriendsFrom()]
+            'pending_requests_view',
+            [(new User())->pendingFriendsFrom(), (new User())->pendingFriendsTo()]
         );
     }
 
@@ -17,4 +18,5 @@ return new class extends Migration {
     {
         //
     }
+
 };

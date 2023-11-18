@@ -4,7 +4,7 @@
 @endphp
 <div class="profile_cta">
     @if ($is_freindship)
-        @if ($auth->friends()->contains('id', $user->id))
+        @if ($auth->friends->contains('id', $user->id))
             <button wire:click='freinds' class="p_cta_btn add-freind"><i class="fa-solid fa-user-group"></i>
                 Friends</button>
         @elseif ($auth->pendingFriendsTo->contains("id", $user->id))
