@@ -3,9 +3,7 @@
         if (!isset($user)) {
             $user = auth()->user();
         }
-        $friends = $user
-            ->friendsTo()
-            ->get();
+        $friends = $user->friends();
         $is_auth = $user === auth()->user();
     @endphp
     <h1 style="text-align: center;">{{ $is_auth ? 'My Freinds' : $user->name . "'s freinds" }}</h1>

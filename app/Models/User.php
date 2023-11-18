@@ -3,14 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -110,6 +111,36 @@ class User extends Authenticatable
     public function acceptedFriendsFrom()
     {
         return $this->friendsFrom()->wherePivot('accepted', true);
+    }
+
+    public function friends()
+    {
+        return $this->mergedRelationWithModel(User::class, 'friends_view');
+    }
+
+    public function friendsRelation()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->wherePivot('accepted', 1)
+            ->orWhere(function ($query) {
+                $query->where('friend_id', $this->id)
+                    ->where('accepted', 1);
+            });
+    }
+
+    public function pendingRequestsRelation()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->wherePivot('accepted', 0)
+            ->orWhere(function ($query) {
+                $query->where('friend_id', $this->id)
+                    ->where('accepted', 1);
+            });
+    }
+
+    public function pendingRequests()
+    {
+        return $this->mergedRelationWithModel(User::class, 'pending_requests_view');
     }
 
     public function has_liked(?Post $post)

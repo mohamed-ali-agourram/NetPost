@@ -8,7 +8,9 @@ class TestController extends Controller
 {
     public function test()
     {
-        $data = auth()->user()->acceptedFriendsTo;
-        return view("test", ["data" => $data]);
+        $auth = auth()->user();
+        // dd($auth->pendingRequests);
+        dd($auth->friends);
+        return view("test", ["data" => []]);
     }
 }
