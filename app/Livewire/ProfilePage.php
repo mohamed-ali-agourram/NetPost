@@ -105,51 +105,42 @@ class ProfilePage extends Component
     {
         $auth = auth()->user();
         $existingFriendship = $auth->friends->contains("id", $this->user->id);
+        $existingFriendshipRequest = $auth->pendingRequests->contains("id", $this->user->id);
 
-        if (!$existingFriendship && $auth->id !== $this->user->id) {
-            if ($this->pendingRequest) {
-                DB::table('friendships')
-                    ->where('sender', $auth->id)
-                    ->where('receiver', $this->user->id)
-                    ->orWhere(function ($query) use ($auth) {
-                        $query->where('sender', $this->user->id)
-                            ->where('receiver', $auth->id);
-                    })->delete();
-                $this->mount();
-            } else {
-                $auth->friends->attach($this->user->id, ['status' => 'pending']);
-                $this->mount();
-            }
+        if (!$existingFriendship && !$existingFriendshipRequest && $auth->id !== $this->user->id) {
+            $auth->friendsRelation()->attach($this->user->id, ['accepted' => 0]);
         } else {
-            dd("Already friends or invalid user.");
+            $auth->pendingRequestsRelation()->detach($this->user->id);
         }
+        $this->mount();
     }
+
 
     public function handle_request(bool $status)
     {
         $authUser = auth()->user();
-        $friendRequest = $this->pendingRequests()->contains("id", $authUser->id);
-
+        $friendRequest = $this->user->pendingRequests->contains("id", $authUser->id);
         if ($friendRequest) {
             if ($status) {
                 DB::table('friendships')
-                    ->where('sender', $friendRequest->pivot->sender)
-                    ->where('receiver', $friendRequest->pivot->receiver)
-                    ->update(['status' => 'accepted']);
-
-                $this->mount();
+                    ->where('user_id', $this->user->id)
+                    ->where('friend_id', $authUser->id)
+                    ->orWhere(function ($query) use ($authUser) {
+                        $query->where('friend_id', $this->user->id)
+                            ->where('user_id', $authUser->id);
+                    })
+                    ->update(['accepted' => 1]);
             } else {
                 DB::table('friendships')
-                    ->where('sender', $friendRequest->pivot->sender)
-                    ->where('receiver', $friendRequest->pivot->receiver)
-                    ->orWhere(function ($query) use ($authUser, $friendRequest) {
-                        $query->where('sender', $friendRequest->pivot->receiver)
-                            ->where('receiver', $authUser->id);
+                    ->where('user_id', $this->user->id)
+                    ->where('friend_id', $authUser->id)
+                    ->orWhere(function ($query) use ($authUser) {
+                        $query->where('friend_id', $this->user->id)
+                            ->where('user_id', $authUser->id);
                     })
                     ->delete();
-
-                $this->mount();
             }
+            $this->mount();
         }
     }
 

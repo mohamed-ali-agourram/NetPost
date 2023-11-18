@@ -118,6 +118,26 @@ class User extends Authenticatable
         return $this->mergedRelationWithModel(User::class, 'friends_view');
     }
 
+    public function friendsRelation()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->wherePivot('accepted', 1)
+            ->orWhere(function ($query) {
+                $query->where('friend_id', $this->id)
+                    ->where('accepted', 1);
+            });
+    }
+
+    public function pendingRequestsRelation()
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->wherePivot('accepted', 0)
+            ->orWhere(function ($query) {
+                $query->where('friend_id', $this->id)
+                    ->where('accepted', 1);
+            });
+    }
+
     public function pendingRequests()
     {
         return $this->mergedRelationWithModel(User::class, 'pending_requests_view');
