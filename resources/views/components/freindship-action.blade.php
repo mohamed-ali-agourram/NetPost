@@ -1,18 +1,13 @@
 @props(['is_freindship', 'user'])
 @php
-    $isSender = false;
-    if ($this->pendingRequest) {
-        $isSender = $this->pendingRequest->pivot->sender === auth()->user()->id;
-    }
-
+    $auth = auth()->user();
 @endphp
 <div class="profile_cta">
-    @dump($is_freindship)
     @if ($is_freindship)
-        @if (auth()->user()->areFriends($user))
+        @if ($auth->friends()->contains('id', $user->id))
             <button wire:click='freinds' class="p_cta_btn add-freind"><i class="fa-solid fa-user-group"></i>
-                Freinds</button>
-        @elseif ($isSender)
+                Friends</button>
+        @elseif ($auth->pendingFriendsTo->contains("id", $user->id))
             <button wire:click='add_friend' class="p_cta_btn add-freind"><i class="fa-solid fa-xmark"></i>
                 Cancel Request</button>
         @else

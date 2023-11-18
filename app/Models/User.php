@@ -112,6 +112,16 @@ class User extends Authenticatable
         return $this->friendsFrom()->wherePivot('accepted', true);
     }
 
+    public function friends()
+    {
+        return $this->acceptedFriendsFrom->merge($this->acceptedFriendsTo);
+    }
+
+    public function pendingRequests()
+    {
+        return $this->pendingFriendsFrom->merge($this->pendingFriendsTo);
+    }
+
     public function has_liked(?Post $post)
     {
         if ($post !== null) {
