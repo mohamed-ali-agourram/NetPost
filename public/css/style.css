@@ -835,6 +835,7 @@
         }
     }
 }
+
 .post-card-model {
     padding: 0 3px;
     height: fit-content;
@@ -976,7 +977,8 @@
                     }
                 }
             }
-            & .actions{
+
+            & .actions {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
@@ -984,9 +986,11 @@
                 color: gray;
                 font-size: 12px;
                 padding: 0 3px;
-                & span{
+
+                & span {
                     cursor: pointer;
-                    &:hover{
+
+                    &:hover {
                         text-decoration: underline;
                     }
                 }
@@ -1039,6 +1043,7 @@
         }
     }
 }
+
 .freinds_list {
     background: white;
     width: 30%;
@@ -1139,14 +1144,17 @@
                 background: #000;
             }
         }
-        .accept-reject-btns{
+
+        .accept-reject-btns {
             display: flex;
             align-items: center;
             gap: 10px;
-            .reject{
-                background: rgb(160, 13, 13) !important ;
+
+            .reject {
+                background: rgb(160, 13, 13) !important;
             }
         }
+
         .p_h_body {
             display: flex;
             width: 95%;
@@ -1584,9 +1592,10 @@
 }
 
 @media screen and (max-width: 980px) {
-    .post-card-model{
+    .post-card-model {
         width: 85%;
     }
+
     .content {
         & header {
             .explore {
@@ -1721,6 +1730,13 @@
 }
 
 /* freinds-page */
+.friends-page {
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+    justify-content: space-between
+}
+
 .freinds_main_content {
     justify-content: center;
     display: flex;

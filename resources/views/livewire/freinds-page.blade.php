@@ -1,6 +1,6 @@
-<div style="display: flex; flex-direction: column">
+<div class="friends-page">
     <div class="freinds_main_content">
-        @foreach ($friends as $friend)
+        @forelse ($friends as $friend)
             <div class="freind_card">
                 <a wire:navigate href="{{ route('profile', ['slug' => $friend->slug]) }}" class="img">
                     <div style="background-image: url({{ $friend->profile_image() }});"></div>
@@ -15,12 +15,16 @@
                     <p style="color: rgb(41, 202, 41);">online</p>
 
                     <div class="freind_action">
-                        <abbr title="unfreind" wire:click='$dispatch("toggle-confirm-modal", {action: "unfriend", data: {{ $friend->id }}})'  class="unfreind"><i class="fa-solid fa-user-xmark"></i></abbr>
+                        <abbr title="unfreind"
+                            wire:click='$dispatch("toggle-confirm-modal", {action: "unfriend", data: {{ $friend->id }}})'
+                            class="unfreind"><i class="fa-solid fa-user-xmark"></i></abbr>
                     </div>
                 </div>
 
             </div>
-        @endforeach
+        @empty
+            <h1 style="color: white">NO FRIENDS YET...</h1>
+        @endforelse
     </div>
     <div class="pagination:container">
         <div class="pagination:number arrow">
