@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -118,6 +119,20 @@ class User extends Authenticatable
         return $this->mergedRelationWithModel(User::class, 'friends_view');
     }
 
+    public function findFriendshipWith(?User $friend)
+    {
+        return DB::table('friendships')
+            ->where(function ($query) use ($friend) {
+                $query->where('user_id', $this->id)
+                    ->where('friend_id', $friend->id);
+            })
+            ->orWhere(function ($query) use ($friend) {
+                $query->where('friend_id', $this->id)
+                    ->where('user_id', $friend->id);
+            })
+            ->first();
+    }
+
     public function friendsRelation()
     {
         return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
@@ -134,7 +149,7 @@ class User extends Authenticatable
             ->wherePivot('accepted', 0)
             ->orWhere(function ($query) {
                 $query->where('friend_id', $this->id)
-                    ->where('accepted', 1);
+                    ->where('accepted', 0);
             });
     }
 
