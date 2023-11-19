@@ -108,7 +108,7 @@ class ProfilePage extends Component
         $existingFriendshipRequest = $auth->pendingRequests->contains("id", $this->user->id);
 
         if (!$existingFriendship && !$existingFriendshipRequest && $auth->id !== $this->user->id) {
-            $auth->friendsRelation()->attach($this->user->id, ['accepted' => 0]);
+            $auth->friendsTo()->attach($this->user->id, ['accepted' => 0]);
         } else {
             $auth->pendingRequestsRelation()->detach($this->user->id);
         }
@@ -120,26 +120,16 @@ class ProfilePage extends Component
     {
         $authUser = auth()->user();
         $friendRequest = $this->user->pendingRequests->contains("id", $authUser->id);
+
         if ($friendRequest) {
+            $friendship = $this->user->findFriendshipWith($authUser);
             if ($status) {
-                DB::table('friendships')
-                    ->where('user_id', $this->user->id)
-                    ->where('friend_id', $authUser->id)
-                    ->orWhere(function ($query) use ($authUser) {
-                        $query->where('friend_id', $this->user->id)
-                            ->where('user_id', $authUser->id);
-                    })
-                    ->update(['accepted' => 1]);
+                if (!$friendship || $friendship->accepted == 0) {
+                    $this->user->friendsTo()->updateExistingPivot($authUser->id, ['accepted' => 1]);
+                }
             } else {
-                DB::table('friendships')
-                    ->where('user_id', $this->user->id)
-                    ->where('friend_id', $authUser->id)
-                    ->orWhere(function ($query) use ($authUser) {
-                        $query->where('friend_id', $this->user->id)
-                            ->where('user_id', $authUser->id);
-                    })
-                    ->delete();
-                    $this->dispatch("update-profile");
+                $this->user->pendingRequestsRelation()->detach($authUser->id);
+                $this->dispatch("update-profile");
             }
             $this->mount();
         }
