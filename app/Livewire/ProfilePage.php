@@ -139,6 +139,7 @@ class ProfilePage extends Component
                             ->where('user_id', $authUser->id);
                     })
                     ->delete();
+                    $this->dispatch("update-profile");
             }
             $this->mount();
         }
