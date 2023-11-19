@@ -3,7 +3,7 @@
         if (!isset($user)) {
             $user = auth()->user();
         }
-        $friends = $user->friends();
+        $friends = $user->friends;
         $is_auth = $user === auth()->user();
     @endphp
     <h1 style="text-align: center;">{{ $is_auth ? 'My Freinds' : $user->name . "'s freinds" }}</h1>
@@ -24,5 +24,7 @@
             </div>
         @endif
     @endforeach
-    <a wire:navigate href="{{ route('freinds') }}" style="color: rgb(74, 74, 219); text-align: center;">See All</a>
+    @if (auth()->user()->id === $user->id)
+        <a wire:navigate href="{{ route('freinds') }}" style="color: rgb(74, 74, 219); text-align: center;">See All</a>
+    @endif
 </aside>
