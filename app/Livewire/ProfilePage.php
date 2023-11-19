@@ -135,9 +135,15 @@ class ProfilePage extends Component
         }
     }
 
-    public function freinds()
+    #[On("unfriend")]
+    public function unfriend(User $user)
     {
-        dd("FREINDS!");
+        $friendship = auth()->user()->findFriendshipWith($user);
+        DB::table('friendships')
+            ->where('user_id', $friendship->user_id)
+            ->where('friend_id', $friendship->friend_id)
+            ->delete();
+        $this->dispatch("update-profile");
     }
 
     public function render()

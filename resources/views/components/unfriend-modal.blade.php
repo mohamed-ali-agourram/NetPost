@@ -13,7 +13,8 @@
         justify-content: center;
         gap: 6px;
         align-items: center;
-        width: 150%;
+        width: 130%;
+        border: none
     }
 
     [x-cloak] {
@@ -21,8 +22,8 @@
     }
 </style>
 <abbr title="unfreind">
-    <p class="unfriend-modal">
+    <button wire:click='$dispatch("toggle-confirm-modal", {action: "unfriend", data: {{ $user->id }}})' class="unfriend-modal">
         <i class="fa-solid fa-user-xmark"></i>
         Unfreind {{ $user->name }}
-    </p>
+    </button>
 </abbr>

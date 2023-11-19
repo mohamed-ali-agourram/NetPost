@@ -8,7 +8,7 @@
             <div style="position: relative; width: 100%" x-data="{ isOpen: false }"  @click.away="isOpen = false">
                 <button @click="isOpen = !isOpen" class="p_cta_btn add-freind"><i class="fa-solid fa-user-group"></i>
                     Friends <i class="fa-solid fa-chevron-down"></i></button>
-                    <div x-show="isOpen" x-cloak>
+                    <div x-show="isOpen" @click="isOpen = false" x-cloak>
                         <x-unfriend-modal :$user />
                     </div>
             </div>
