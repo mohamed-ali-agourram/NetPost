@@ -15,7 +15,7 @@
                     <p style="color: rgb(41, 202, 41);">online</p>
 
                     <div class="freind_action">
-                        <abbr title="unfreind" class="unfreind"><i class="fa-solid fa-user-xmark"></i></abbr>
+                        <abbr title="unfreind" wire:click='$dispatch("toggle-confirm-modal", {action: "unfriend", data: {{ $friend->id }}})'  class="unfreind"><i class="fa-solid fa-user-xmark"></i></abbr>
                     </div>
                 </div>
 
