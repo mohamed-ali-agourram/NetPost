@@ -686,8 +686,13 @@
 
         .post_card_header {
             display: flex;
-            gap: 15px;
+            justify-content: space-between;
             padding: 1.5vh;
+
+            .post_meta {
+                display: flex;
+                gap: 15px;
+            }
 
             & img {
                 width: 40px;
@@ -700,6 +705,44 @@
                 align-items: center;
                 gap: 5px;
                 color: gray;
+            }
+
+            .open_post_options {
+                padding: 0 1.5vh;
+                font-size: 25px;
+                cursor: pointer;
+                position: relative;
+
+                .manage-posts-modal {
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.521);
+                    padding: 1vh;
+                    right: 0;
+                    border-radius: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 300%;
+                    gap: 10px;
+
+                    & button {
+                        background: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 5px;
+                        color: white;
+                        border: none;
+                        padding: 1.5vh 1vh;
+
+                        &:hover {
+                            scale: 105%;
+                        }
+                    }
+                }
+
+                & .fa-ellipsis:hover {
+                    scale: 105%;
+                }
             }
         }
 
@@ -1308,6 +1351,23 @@
     }
 }
 
+.unfriend-modal {
+    position: absolute;
+    right: 0;
+    background: #0000009c;
+    border-radius: 4px;
+    color: white;
+    padding: 2vh 1.5vh;
+    margin-top: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    align-items: center;
+    width: 130%;
+    border: none
+}
+
 /* settings page */
 .settings_main_content {
     margin: 2%;
@@ -1340,7 +1400,7 @@
         margin: 1vh 0;
         width: 95%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         height: 100%;
         border-bottom: 1px solid var(--second-color);

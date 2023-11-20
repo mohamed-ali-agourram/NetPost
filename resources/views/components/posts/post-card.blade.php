@@ -12,23 +12,41 @@
 @endphp
 <div class="post_card {{ $addedClass }}">
     <div class="post_card_header">
-        <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
-            <img src={{ $post->author->profile_image() }} alt="post_image">
-        </a>
-        <div>
+        <div class="post_meta">
             <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
-                <b>{{ $post->author->name }}</b>
+                <img src={{ $post->author->profile_image() }} alt="post_image">
             </a>
-            <p class="date_span">
-                <span>{{ $post->date() }}</span>
-                @if ($post->is_published === '1')
-                    <i title="public" class="fa-solid fa-earth-africa"></i>
-                @else
-                    <i title="private" class="fa-solid fa-lock"></i>
-                @endif
-            </p>
+            <div>
+                <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
+                    <b>{{ $post->author->name }}</b>
+                </a>
+                <p class="date_span">
+                    <span>{{ $post->date() }}</span>
+                    @if ($post->is_published === '1')
+                        <i title="public" class="fa-solid fa-earth-africa"></i>
+                    @else
+                        <i title="private" class="fa-solid fa-lock"></i>
+                    @endif
+                </p>
+            </div>
         </div>
-        <div class="open_post_options"></div>
+        @if ($post->author->id === auth()->user()->id)
+            <div class="open_post_options" x-data="{ isOpen: false }" @click.away="isOpen = false">
+                <abbr title="manage your post">
+                    <i @click="isOpen = !isOpen" class="fa-solid fa-ellipsis"></i>
+                </abbr>
+                <div class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
+                    <button wire:click='$dispatch("open-form", {post: "{{ $post->id }}"})'>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Modify post</span>
+                    </button>
+                    <button wire:click='$dispatch("toggle-confirm-modal", {action: "delete-post", data: "{{ $post->id }}"})'>
+                        <i class="fa-solid fa-trash"></i>
+                        <span>Delete post</span>
+                    </button>
+                </div>
+            </div>
+        @endif
     </div>
     <div class="post_card_body">
         <h3>{{ $post->body }}</h3>

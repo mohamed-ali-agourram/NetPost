@@ -90,6 +90,7 @@ class PostForm extends Component
         }
         $this->post->update($data);
         $this->is_open = false;
+        $this->dispatch("new-post");
     }
 
     public function render()
