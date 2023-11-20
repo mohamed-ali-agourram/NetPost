@@ -57,6 +57,6 @@ class UpdateProfileImages extends Component
 
     public function render()
     {
-        return view('livewire.update-profile-images');
+        return view('livewire.user.update-profile-images');
     }
 }

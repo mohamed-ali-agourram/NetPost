@@ -46,6 +46,6 @@ class PostModal extends Component
 
     public function render()
     {
-        return view('livewire.post-modal');
+        return view('livewire.post.post-modal');
     }
 }

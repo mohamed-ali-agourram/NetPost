@@ -158,6 +158,6 @@ class ProfilePage extends Component
 
     public function render()
     {
-        return view('livewire.profile-page');
+        return view('livewire.user.profile-page');
     }
 }

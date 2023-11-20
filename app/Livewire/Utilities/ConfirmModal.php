@@ -35,6 +35,6 @@ class ConfirmModal extends Component
 
     public function render()
     {
-        return view('livewire.confirm-modal');
+        return view('livewire.utilities.confirm-modal');
     }
 }

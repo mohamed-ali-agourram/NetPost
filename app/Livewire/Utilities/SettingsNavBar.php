@@ -8,6 +8,6 @@ class SettingsNavBar extends Component
 {
     public function render()
     {
-        return view('livewire.settings-navbar');
+        return view('livewire.utilities.settings-navbar');
     }
 }

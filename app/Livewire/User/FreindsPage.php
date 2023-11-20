@@ -30,6 +30,6 @@ class FreindsPage extends Component
 
     public function render()
     {
-        return view('livewire.freinds-page');
+        return view('livewire.user.freinds-page');
     }
 }

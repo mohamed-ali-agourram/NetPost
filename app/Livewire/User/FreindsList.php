@@ -11,6 +11,6 @@ class FreindsList extends Component
 
     public function render()
     {
-        return view('livewire.freinds-list');
+        return view('livewire.user.freinds-list');
     }
 }

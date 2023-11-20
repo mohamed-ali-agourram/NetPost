@@ -47,6 +47,6 @@ class CommentForm extends Component
 
     public function render()
     {
-        return view('livewire.comment-form');
+        return view('livewire.comment.comment-form');
     }
 }

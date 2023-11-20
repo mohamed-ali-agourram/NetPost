@@ -33,6 +33,6 @@ class CommentsList extends Component
 
     public function render()
     {
-        return view('livewire.comments-list');
+        return view('livewire.comment.comments-list');
     }
 }
