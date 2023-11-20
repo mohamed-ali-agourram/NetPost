@@ -72,11 +72,6 @@
                 <h2>{{ $is_auth ? 'Your' : $user->name . "'s" }} Publications</h2>
                 <div class="mp_btns">
                     <button id="filter_btn"><i class="fa-solid fa-arrow-up-z-a"></i>Filter</button>
-                    @if ($is_auth)
-                        <button><a wire:navigate href="{{ route('settings.posts') }}"><i
-                                    class="fa-solid fa-gear"></i>Manage
-                                Your Publications</a></button>
-                    @endif
                 </div>
                 <div class="filters" style="display: none;">
                     <style>

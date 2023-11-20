@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+[x-cloak] {
+    display: none;
+}
+
 body {
     background: var(--main-color);
     font-family: 'Source Sans Pro', sans-serif;
