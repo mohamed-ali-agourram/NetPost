@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\User;
 use Livewire\Component;
@@ -11,6 +11,6 @@ class FreindsList extends Component
 
     public function render()
     {
-        return view('livewire.freinds-list');
+        return view('livewire.user.freinds-list');
     }
 }

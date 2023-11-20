@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Post;
 
 use Carbon\Carbon;
 use App\Models\Post;

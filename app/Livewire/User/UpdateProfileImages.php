@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -57,6 +57,6 @@ class UpdateProfileImages extends Component
 
     public function render()
     {
-        return view('livewire.update-profile-images');
+        return view('livewire.user.update-profile-images');
     }
 }

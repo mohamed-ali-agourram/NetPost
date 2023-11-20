@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\User;
 use Livewire\Component;
@@ -30,6 +30,6 @@ class FreindsPage extends Component
 
     public function render()
     {
-        return view('livewire.freinds-page');
+        return view('livewire.user.freinds-page');
     }
 }

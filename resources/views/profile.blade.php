@@ -1,3 +1,3 @@
 <x-layouts.app-layout>
-    <livewire:profile-page :$user />
+    <livewire:user.profile-page :$user />
 </x-layouts.app-layout>

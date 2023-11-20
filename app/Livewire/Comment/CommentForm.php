@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Comment;
 
 use App\Models\Comment;
 use App\Models\Post;
@@ -47,6 +47,6 @@ class CommentForm extends Component
 
     public function render()
     {
-        return view('livewire.comment-form');
+        return view('livewire.comment.comment-form');
     }
 }

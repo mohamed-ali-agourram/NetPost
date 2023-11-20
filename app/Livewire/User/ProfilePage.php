@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\Post;
 use App\Models\User;
@@ -158,6 +158,6 @@ class ProfilePage extends Component
 
     public function render()
     {
-        return view('livewire.profile-page');
+        return view('livewire.user.profile-page');
     }
 }

@@ -95,6 +95,6 @@
                 <h1>Add a new Post</h1>
             @endforelse
         </div>
-        <livewire:freinds-list :$user />
+        <livewire:user.freinds-list :$user />
     </div>
 </div>
