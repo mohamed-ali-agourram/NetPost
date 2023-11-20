@@ -1,3 +1,3 @@
 <x-layouts.app-layout>
-    <livewire:freinds-page />
+    <livewire:user.freinds-page />
 </x-layouts.app-layout>

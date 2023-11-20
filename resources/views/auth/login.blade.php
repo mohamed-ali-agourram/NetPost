@@ -1,3 +1,3 @@
 <x-layouts.guest-layout>
-    <livewire:auth-form />
+    <livewire:user.auth-form />
 </x-layouts.guest-layout>
