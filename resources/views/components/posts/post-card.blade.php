@@ -36,11 +36,11 @@
                     <i @click="isOpen = !isOpen" class="fa-solid fa-ellipsis"></i>
                 </abbr>
                 <div class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
-                    <button>
+                    <button wire:click='$dispatch("open-form", {post: "{{ $post->id }}"})'>
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Modify post</span>
                     </button>
-                    <button>
+                    <button wire:click='$dispatch("toggle-confirm-modal", {action: "delete-post", data: "{{ $post->id }}"})'>
                         <i class="fa-solid fa-trash"></i>
                         <span>Delete post</span>
                     </button>

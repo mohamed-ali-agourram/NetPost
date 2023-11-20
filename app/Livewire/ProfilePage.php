@@ -48,6 +48,16 @@ class ProfilePage extends Component
         $this->is_freindship = $this->user->pendingRequests->contains('id', auth()->user()->id) || $this->user->friends->contains('id', auth()->user()->id);
     }
 
+    #[On("delete-post")]
+    public function deletePost(string $data)
+    {
+        $post = Post::find($data);
+        if ($post){
+            $post->delete();
+            $this->dispatch("new-post");
+        }
+    }
+
     #[Computed()]
     public function likes_count()
     {
