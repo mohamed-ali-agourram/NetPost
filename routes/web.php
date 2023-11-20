@@ -13,8 +13,6 @@ Route::prefix("/auth")->name("auth.")->middleware("guest")->group(function () {
     Route::get("/register", [AuthController::class, 'register'])->name("register");
 });
 
-Route::get("/test", [TestController::class, "test"]);
-
 Route::get("/profile/{slug}", [ProfileController::class, "index"])->name("profile")->middleware("auth");
 
 Route::get("/freinds", function () {
