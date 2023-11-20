@@ -55,10 +55,10 @@
                 </button>
             </div>
         </div>
-        <livewire:comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
+        <livewire:comment.comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
         <div class="post-card-model-form">
             <img src="{{ auth()->user()->profile_image() }}" alt="author">
-            <livewire:comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
+            <livewire:comment.comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
         </div>
     </div>
 </div>
