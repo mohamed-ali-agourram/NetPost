@@ -20,12 +20,12 @@
     <div class="container">
         <livewire:utilities.confirm-modal />
         <livewire:user.update-profile-images />
-        <livewire:post-modal />
+        <livewire:post.post-modal />
         <div class="post_model_dropdown" style="display: none;"></div>
         <livewire:utilities.notifications />
         <livewire:utilities.sidebar />
         <main class="content">
-            <livewire:post-form />
+            <livewire:post.post-form />
             <livewire:utilities.navbar />
             {{ $slot }}
         </main>
