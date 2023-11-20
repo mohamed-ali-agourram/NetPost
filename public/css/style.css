@@ -1340,7 +1340,7 @@
         margin: 1vh 0;
         width: 95%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         height: 100%;
         border-bottom: 1px solid var(--second-color);

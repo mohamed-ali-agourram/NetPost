@@ -26,10 +26,6 @@ Route::prefix("settings")->name("settings.")->group(function () {
         return view("settings.settings-account");
     })->name("account");
 
-    Route::get('/posts', function () {
-        return view("settings.settings-posts");
-    })->name("posts");
-
     Route::get('/application', function () {
         return view("settings.settings-application");
     })->name("application");
