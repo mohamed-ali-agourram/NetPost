@@ -18,15 +18,15 @@
 
 <body>
     <div class="container">
-        <livewire:confirm-modal />
+        <livewire:utilities.confirm-modal />
         <livewire:update-profile-images />
         <livewire:post-modal />
         <div class="post_model_dropdown" style="display: none;"></div>
-        <livewire:notifications />
-        <livewire:sidebar />
+        <livewire:utilities.notifications />
+        <livewire:utilities.sidebar />
         <main class="content">
             <livewire:post-form />
-            <livewire:navbar />
+            <livewire:utilities.navbar />
             {{ $slot }}
         </main>
     </div>

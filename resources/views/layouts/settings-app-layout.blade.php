@@ -3,7 +3,7 @@
         <div class="gear" style="display: none;">
             <i class="fa-solid fa-gears"></i>
         </div>
-        <livewire:settings-navbar />
+        <livewire:utilities.settings-navbar />
         {{ $slot }}
     </div>
 </x-layouts.app-layout>
