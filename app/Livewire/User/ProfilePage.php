@@ -75,10 +75,8 @@ class ProfilePage extends Component
     public function like(?Post $post)
     {
         if ($post !== null) {
-            $user = $this->user;
-
+            $user = auth()->user();
             $hasLiked = $user->has_liked($post);
-
             if ($hasLiked) {
                 $user->likes()->detach($post);
             } else {
