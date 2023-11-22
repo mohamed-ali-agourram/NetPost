@@ -3,14 +3,22 @@
 namespace App\Livewire\Utilities;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Computed;
 
 class MyAlert extends Component
 {
-    #[Computed()]
-    public function is_open()
+    public $is_open = false;
+
+    #[On("notify")]
+    public function open(bool $status)
     {
-        return true;
+        $this->is_open = $status;
+    }
+
+    public function close()
+    {
+        $this->is_open = false;
     }
 
     public function render()

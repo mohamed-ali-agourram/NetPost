@@ -1744,7 +1744,9 @@
     .post-card-model {
         width: 85%;
     }
-
+    .alert{
+        width: 40%;
+    }
     .content {
         & header {
             .explore {

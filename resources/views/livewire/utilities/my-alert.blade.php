@@ -1,7 +1,7 @@
-<div class="alert">
+<div class="alert" style="display: {{ $is_open ? 'flex' : 'none' }}">
     <div class="alert-header">
         <span>New Notification</span>
-        <button><i class="fa-solid fa-xmark"></i></button>
+        <button wire:click='close'><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="alert-infos">
         <div class="alert-author">
