@@ -16,6 +16,7 @@
 
 <body>
     <div class="container">
+        <livewire:utilities.my-alert />
         <livewire:utilities.confirm-modal />
         <livewire:user.update-profile-images />
         <livewire:post.post-modal />
