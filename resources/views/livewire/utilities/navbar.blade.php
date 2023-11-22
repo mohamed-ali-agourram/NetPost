@@ -23,7 +23,7 @@
             <div class="n_notif">5</div>
         </div>
         <a wire:navigate href="{{ route('profile', ['slug' => auth()->user()->slug]) }}">
-            <img src="{{ auth()->user()->profile_image() }}" alt="user_profile">
+            <img src="{{ $this->authProfileImage }}" alt="user_profile">
         </a>
     </div>
 </header>

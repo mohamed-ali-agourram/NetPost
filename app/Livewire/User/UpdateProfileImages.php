@@ -40,6 +40,7 @@ class UpdateProfileImages extends Component
             $user->update([
                 "profile_image" => $profile_image_path
             ]);
+            $this->dispatch("update-profile-image");
         }
         if ($this->cover_image !== null) {
             $validated = $this->validate([
