@@ -52,7 +52,7 @@ class ProfilePage extends Component
     public function deletePost(string $data)
     {
         $post = Post::find($data);
-        if ($post){
+        if ($post) {
             $post->delete();
             $this->dispatch("new-post");
         }
@@ -74,19 +74,14 @@ class ProfilePage extends Component
     #[On("like-post")]
     public function like(?Post $post)
     {
-        if ($post === null) {
-            return;
-        }
-        $user = $this->user;
-
-        $hasLiked = $user->has_liked($post);
-
-        if ($hasLiked) {
-            $user->likes()->detach($post);
-            return;
-        } else {
-            $user->likes()->attach($post);
-            return;
+        if ($post !== null) {
+            $user = auth()->user();
+            $hasLiked = $user->has_liked($post);
+            if ($hasLiked) {
+                $user->likes()->detach($post);
+            } else {
+                $user->likes()->attach($post);
+            }
         }
     }
 
