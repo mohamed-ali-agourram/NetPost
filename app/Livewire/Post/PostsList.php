@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Post;
 
+use App\Models\Notification;
 use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
@@ -13,19 +14,25 @@ class PostsList extends Component
     #[On("like-post")]
     public function like(?Post $post)
     {
-        if ($post === null) {
-            return;
-        }
-        $user = auth()->user();
+        if ($post !== null) {
+            $user = auth()->user();
 
-        $hasLiked = $user->has_liked($post);
+            $hasLiked = $user->has_liked($post);
 
-        if ($hasLiked) {
-            $user->likes()->detach($post);
-            return;
-        } else {
-            $user->likes()->attach($post);
-            return;
+            if ($hasLiked) {
+                $user->likes()->detach($post);
+            } else {
+                $user->likes()->attach($post);
+                if($post->author->id !== auth()->user()->id)
+                {
+                    Notification::create([
+                        'sender' => auth()->user()->id,
+                        'reciver' => $post->author->id,
+                        'type' => 'POST-REACTION',
+                        'body' => 'liked your post'
+                    ]);
+                }
+            }
         }
     }
 

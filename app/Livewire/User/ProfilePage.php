@@ -4,11 +4,12 @@ namespace App\Livewire\User;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Models\Notification;
+use Livewire\Attributes\Url;
+use Livewire\Attributes\Computed;
+use Illuminate\Support\Facades\DB;
 
 class ProfilePage extends Component
 {
@@ -81,6 +82,14 @@ class ProfilePage extends Component
                 $user->likes()->detach($post);
             } else {
                 $user->likes()->attach($post);
+                if ($post->author->id !== auth()->user()->id) {
+                    Notification::create([
+                        'sender' => auth()->user()->id,
+                        'reciver' => $post->author->id,
+                        'type' => 'POST-REACTION',
+                        'body' => 'liked your post'
+                    ]);
+                }
             }
         }
     }
