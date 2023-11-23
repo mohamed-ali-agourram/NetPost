@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Notification extends Model
 {
@@ -11,13 +12,24 @@ class Notification extends Model
 
     protected $fillable = ["id", "sender", "reciver", "type", "body"];
 
-    public function sender()
+    public function sender_()
     {
         return $this->belongsTo(User::class, "sender");
     }
 
-    public function reciver()
+    public function reciver_()
     {
         return $this->belongsTo(User::class, "reciver");
+    }
+
+    public function date()
+    {
+        $date = "";
+        if ($this->published_at !== null) {
+            $date = Carbon::parse($this->published_at);
+        } else {
+            $date = Carbon::parse($this->created_at);
+        }
+        return $date->diffForHumans();
     }
 }

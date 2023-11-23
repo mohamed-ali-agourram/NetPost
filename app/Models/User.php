@@ -80,7 +80,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, "likes")->withTimestamps();
     }
 
-    public function notification()
+    public function notifications()
     {
         return $this->hasMany(Notification::class, "reciver");
     }
