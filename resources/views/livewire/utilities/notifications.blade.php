@@ -21,7 +21,9 @@
                         </span>
                     </div>
                     <button class="delete_comnt"><i class="fa-solid fa-trash"></i></button>
-                    <div class="blue"></div>
+                    @if ($notification->readed == true)
+                        <div class="blue"></div>
+                    @endif
                 </div>
             @empty
                 <h1>Empty...</h1>

@@ -84,6 +84,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Notification::class, "reciver");
     }
+    public function unreaded_notifications()
+    {
+        return $this->hasMany(Notification::class, "reciver")->where("readed", false);
+    }
 
     public function friendsTo()
     {
