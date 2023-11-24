@@ -34,6 +34,7 @@ class Notifications extends Component
         if ($profileUrl !== $this->path) {
             $this->redirectRoute("profile", ["slug" => $notification->reciver_->slug], navigate: true);
         }
+        $this->dispatch("notify");
     }
 
     public function delete(Notification $notification)

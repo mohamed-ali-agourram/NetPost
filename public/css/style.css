@@ -131,6 +131,21 @@
     z-index: 9;
     transition: top 0.3s;
 
+    .delete_btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        visibility: hidden;
+        border: none;
+        padding: 1vh;
+        border-radius: 5px;
+
+        &:hover {
+            background: #000;
+            color: white;
+        }
+    }
+
     .notif_header {
         display: flex;
         align-items: center;
@@ -184,20 +199,25 @@
         gap: 5px;
 
         .notif {
-            padding: 2vh;
-            display: flex;
-            gap: 10px;
-            position: relative;
-            cursor: pointer;
-            border-radius: 6px;
+           position: relative;
 
-            .notif-img{
+            ._notif {
+                padding: 2vh;
+                display: flex;
+                gap: 10px;
+                cursor: pointer;
+                border-radius: 6px;
+            }
+
+            .notif-img {
                 position: relative;
+
                 & img {
                     width: 50px;
                     height: 50px;
                     border-radius: 100%;
                 }
+
                 & i {
                     position: absolute;
                     bottom: 3px;
@@ -206,22 +226,6 @@
                     padding: 5px;
                     border-radius: 100%;
                     font-size: 16px;
-                }
-            }
-
-
-            .delete_comnt {
-                position: absolute;
-                top: 5px;
-                right: 10px;
-                visibility: hidden;
-                border: none;
-                padding: 1vh;
-                border-radius: 5px;
-
-                &:hover {
-                    background: #000;
-                    color: white;
                 }
             }
 
@@ -238,7 +242,7 @@
                 background: rgb(0 0 0 / 16%);
             }
 
-            &:hover>.delete_comnt {
+            &:hover>.delete_btn {
                 visibility: inherit;
             }
         }
@@ -1672,7 +1676,8 @@
             cursor: pointer;
             border: none;
             border-radius: 100%;
-            &:hover{
+
+            &:hover {
                 scale: 105%;
             }
         }
@@ -1759,9 +1764,11 @@
     .post-card-model {
         width: 85%;
     }
-    .alert{
+
+    .alert {
         width: 40%;
     }
+
     .content {
         & header {
             .explore {
