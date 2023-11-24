@@ -11,7 +11,7 @@
         </div>
         <div class="notif_body">
             @forelse ($this->notifications as $notification)
-                <div class="notif">
+                <div class="notif" wire:click='read({{ $notification->id }})'>
                     <div class="notif-img">
                         <img src="{{ $notification->sender_->profile_image() }}" alt="user_img">
                         <i class="fa-solid fa-newspaper"></i>
