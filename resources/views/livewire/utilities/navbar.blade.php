@@ -20,7 +20,12 @@
     <div class="header__profile">
         <div class="bell">
             <i class="fa-solid fa-bell"></i>
-            <div class="n_notif">{{ auth()->user()->unreaded_notifications->count() }}</div>
+            @php
+                $notifications_count = auth()->user()->unreaded_notifications->count()
+            @endphp
+            @if ($notifications_count > 0)
+                <div class="n_notif">{{ $notifications_count }}</div>
+            @endif
         </div>
         <a wire:navigate href="{{ route('profile', ['slug' => auth()->user()->slug]) }}">
             <img src="{{ $this->authProfileImage }}" alt="user_profile">

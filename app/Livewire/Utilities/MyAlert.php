@@ -10,7 +10,7 @@ class MyAlert extends Component
 {
     public $is_open = false;
 
-    #[On("notify")]
+    #[On("notify-profile")]
     public function open(bool $status)
     {
         $this->is_open = $status;

@@ -10,16 +10,16 @@ $(".bell").click(function () {
 });
 
 $("#close_notif").click(function () {
- $(".notif_model").toggle(250);
+ $(".notif_model").slideToggle(250);
 });
 
 $(".comment_section").click(function () {
  $(this).find(".comment").slideToggle(200);
 });
 
-$(".delete_comnt").click(function () {
- $(this).parent(".notif").remove();
-});
+// $(".delete_comnt").click(function () {
+//  $(this).parent(".notif").remove();
+// });
 
 // nav effects
 $(".toggleNav").click(function () {

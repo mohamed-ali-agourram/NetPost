@@ -52,7 +52,7 @@ class UpdateProfileImages extends Component
             ]);
         }
         $this->dispatch("update-profile");
-        $this->dispatch("notify", status: true);
+        $this->dispatch("notify-profile", status: true);
         $this->dispatch("close-update-profile-modal");
         $this->reset();
     }

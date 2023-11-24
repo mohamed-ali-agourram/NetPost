@@ -12,16 +12,20 @@
         <div class="notif_body">
             @forelse ($this->notifications as $notification)
                 <div class="notif">
-                    <img src="{{ $notification->sender_->profile_image() }}" alt="user_img">
+                    <div class="notif-img">
+                        <img src="{{ $notification->sender_->profile_image() }}" alt="user_img">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
                     <div>
                         <p><b>{{ $notification->sender_->name }}: </b>{{ $notification->body }}</p>
-                        <span style="color: rgb(44, 44, 233);font-size: 13px;">
+                        <span style="color: rgb(84 84 215);font-size: 13px;">
                             <i class="fa-solid fa-clock"></i>
                             {{ $notification->date() }}
                         </span>
                     </div>
-                    <button class="delete_comnt"><i class="fa-solid fa-trash"></i></button>
-                    @if ($notification->readed == true)
+                    <button wire:click='delete({{ $notification->id }})' class="delete_comnt"><i
+                            class="fa-solid fa-trash"></i></button>
+                    @if ($notification->readed == false)
                         <div class="blue"></div>
                     @endif
                 </div>
