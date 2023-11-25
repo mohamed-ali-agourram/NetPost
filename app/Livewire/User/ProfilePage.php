@@ -123,6 +123,12 @@ class ProfilePage extends Component
 
         if (!$existingFriendship && !$existingFriendshipRequest && $auth->id !== $this->user->id) {
             $auth->friendsTo()->attach($this->user->id, ['accepted' => 0]);
+            Notification::create([
+                'sender' => auth()->user()->id,
+                'reciver' => $this->user->id,
+                'type' => 'FRIENDSHIP-REQUEST',
+                'body' => 'send you a friend request'
+            ]);
         } else {
             $auth->pendingRequestsRelation()->detach($this->user->id);
         }
@@ -140,6 +146,12 @@ class ProfilePage extends Component
             if ($status) {
                 if (!$friendship || $friendship->accepted == 0) {
                     $this->user->friendsTo()->updateExistingPivot($authUser->id, ['accepted' => 1]);
+                    Notification::create([
+                        'sender' => auth()->user()->id,
+                        'reciver' => $this->user->id,
+                        'type' => 'FRIENDSHIP-REQUEST',
+                        'body' => 'accepted your friend request'
+                    ]);
                 }
             } else {
                 $this->user->pendingRequestsRelation()->detach($authUser->id);

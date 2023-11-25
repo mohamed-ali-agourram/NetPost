@@ -30,10 +30,27 @@ class Notifications extends Component
             $notification->readed = 1;
             $notification->save();
         }
-        $profileUrl = route("profile", ["slug" => $notification->reciver_->slug]);
-        if ($profileUrl !== $this->path) {
-            $this->redirectRoute("profile", ["slug" => $notification->reciver_->slug], navigate: true);
+        $profile_slug = $notification->reciver_->slug;
+        if ($notification->type === "FRIENDSHIP-REQUEST") {
+            $profile_slug = $notification->sender_->slug;
         }
+
+        $route = route("profile", ["slug" => $profile_slug]);
+        if ($route !== $this->path && $notification->type) {
+            $this->redirectRoute("profile", ["slug" => $profile_slug], navigate: true);
+        }
+        $this->dispatch("notify");
+    }
+
+    public function read_all()
+    {
+        auth()->user()->notifications()->where("readed", 0)->update(["readed" => 1]);
+        $this->dispatch("notify");
+    }
+
+    public function delete_all()
+    {
+        auth()->user()->notifications()->delete();
         $this->dispatch("notify");
     }
 

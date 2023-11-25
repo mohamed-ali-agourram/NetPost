@@ -6,8 +6,8 @@
             <div id="close_notif"><i class="fa-solid fa-ellipsis"></i></div>
         </div>
         <div class="notif_model" style="display: none;">
-            <button><i class="fa-solid fa-trash"></i>Delete all</button>
-            <button><i class="fa-solid fa-circle-check"></i>Mark as read</button>
+            <button wire:click='delete_all'><i class="fa-solid fa-trash"></i>Delete all</button>
+            <button wire:click='read_all'><i class="fa-solid fa-circle-check"></i>Mark as read</button>
         </div>
         <div class="notif_body">
             @forelse ($this->notifications as $notification)
@@ -15,7 +15,13 @@
                     <div class="_notif" wire:click='read({{ $notification->id }})'>
                         <div class="notif-img">
                             <img src="{{ $notification->sender_->profile_image() }}" alt="user_img">
-                            <i class="fa-solid fa-newspaper"></i>
+                            @if (str_contains($notification->body, 'like'))
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            @elseif (str_contains($notification->body, 'comment'))
+                                <i class="fa-solid fa-comment-dots"></i>
+                            @else
+                                <i class="fa-solid fa-user-group"></i>
+                            @endif
                         </div>
                         <div>
                             <p><b>{{ $notification->sender_->name }}: </b>{{ $notification->body }}</p>

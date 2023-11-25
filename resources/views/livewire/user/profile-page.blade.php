@@ -24,12 +24,16 @@
                     <p class="status"><span style="color: grey; font-size: 15px;">status:</span>
                         {{ $user->status }}</p>
                     <div class="user_activity">
+                        @php
+                            $friends_count = $this->user->friendsRelation()->count();
+                            $posts_count = $this->user->posts->count();
+                        @endphp
                         <p>
-                            <span>120 freinds</span>
+                            <span>{{ $friends_count }} freind{{ $friends_count > 1 ? 's' : '' }}</span>
                             <i class="fa-regular fa-user"></i>
                         </p>
                         <p>
-                            <span>2 posts</span>
+                            <span>{{ $posts_count }} post{{ $posts_count > 1 ? 's' : '' }}</span>
                             <i class="fa-regular fa-images"></i>
                         </p>
                         <p>
