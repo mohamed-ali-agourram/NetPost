@@ -42,14 +42,14 @@ window.onscroll = function () {
   if (document.querySelector(".freinds_list")) {
    document.querySelector(".freinds_list").style.top = "13vh";
   }
-  document.querySelector(".notification").style.top = "11vh";
+  document.querySelector(".notification").style.top = "11.5vh";
  } else {
   document.getElementById("navbar").style.top = "-15vh";
   if (document.querySelector(".freinds_list")) {
    document.querySelector(".freinds_list").style.top = "1vh";
   }
 
-  document.querySelector(".notification").style.top = "0vh";
+  document.querySelector(".notification").style.top = "1vh";
  }
  prevScrollpos = currentScrollPos;
 };

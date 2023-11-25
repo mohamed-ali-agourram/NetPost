@@ -151,6 +151,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        padding: 1vh;
 
         & div {
             font-size: 2rem;
@@ -1667,7 +1668,7 @@
 /* alerts */
 .alert {
     width: 25%;
-    height: 20vh;
+    height: 17vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1683,30 +1684,28 @@
     animation: fadeInFromBottomLeft 0.5s ease-out forwards;
     padding: 1vh;
 
-    .alert-header {
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 25px;
+        height: 25px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        background: rgb(31, 30, 30);
+        color: white;
+        cursor: pointer;
+        border: none;
+        border-radius: 100%;
 
-        & button {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgb(31, 30, 30);
-            color: white;
-            cursor: pointer;
-            border: none;
-            border-radius: 100%;
-
-            &:hover {
-                scale: 105%;
-            }
+        &:hover {
+            scale: 105%;
         }
     }
 
     .alert-infos {
+        height: 100%;
         display: flex;
 
         .alert-author {
@@ -1721,13 +1720,17 @@
 
             & i {
                 position: absolute;
-                bottom: 5px;
+                bottom: 10px;
                 left: 5px;
                 background: rgba(128, 26, 26, 0.589)a(255, 0, 0, 0.61);
                 border-radius: 100%;
             }
         }
-
+        .alert-author{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .alert-body {
             display: flex;
             flex-direction: column;

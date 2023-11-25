@@ -15,6 +15,13 @@ class NavBar extends Component
         return auth()->user()->profile_image();
     }
 
+    #[On("notify")]
+    #[Computed()]
+    public function notifications_count()
+    {
+        return auth()->user()->unreaded_notifications->count();
+    }
+
     public function render()
     {
         return view('livewire.utilities.navbar');
