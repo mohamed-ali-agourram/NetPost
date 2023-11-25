@@ -120,9 +120,9 @@
 .notification {
     position: fixed;
     max-height: 70vh;
-    width: 25vw;
+    width: 35vw;
     background: #242526;
-    top: 10vh;
+    top: 11.5vh;
     right: 5vw;
     color: white;
     border-radius: 10px;
@@ -251,6 +251,15 @@
                 visibility: inherit;
             }
         }
+    }
+
+    .empty-notification-list {
+        color: #b0b3b8;
+        padding: 3vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     }
 }
 
@@ -622,6 +631,15 @@
     display: flex;
     gap: 10px;
     padding: 2vh;
+
+    .empty-posts-list {
+        color: #B0B3B8;
+        padding: 3vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
 }
 
 .posts {

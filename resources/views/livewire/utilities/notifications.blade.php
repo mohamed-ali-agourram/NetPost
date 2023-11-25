@@ -38,7 +38,10 @@
                             class="fa-solid fa-trash"></i></button>
                 </div>
             @empty
-                <h1>Empty...</h1>
+                <h3 class="empty-notification-list">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>You don't have any notification for now</span>
+                </h3>
             @endforelse
 
         </div>
