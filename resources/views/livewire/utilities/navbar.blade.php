@@ -18,10 +18,15 @@
         <a href="#"><i class="fa-solid fa-users"></i>Freinds</a>
     </div>
     <div class="header__profile">
-        <div class="bell">
+        <div wire:poll class="bell">
+            @php
+                $notifications_count = auth()
+                    ->user()
+                    ->unreaded_notifications->count();
+            @endphp
             <i class="fa-solid fa-bell"></i>
-            @if ($this->notifications_count > 0)
-                <div class="n_notif">{{ $this->notifications_count }}</div>
+            @if ($notifications_count > 0)
+                <div class="n_notif">{{ $notifications_count }}</div>
             @endif
         </div>
         <a wire:navigate href="{{ route('profile', ['slug' => auth()->user()->slug]) }}">
