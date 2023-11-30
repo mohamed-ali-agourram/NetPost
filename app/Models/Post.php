@@ -17,7 +17,8 @@ class Post extends Model
         "is_published",
         "image",
         "published_at",
-        "featured"
+        "featured",
+        "is_profile_update"
     ];
 
     public function scopePublished($query)

@@ -10,6 +10,20 @@
         $addedClass = $isFirst ? 'radius' : '';
     }
 @endphp
+<style>
+    .new_profile_pic {
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        padding: 1vh;
+
+        & img {
+            height: 60vh;
+            width: 60vh;
+            border-radius: 100%;
+        }
+    }
+</style>
 <div class="post_card {{ $addedClass }}">
     <div class="post_card_header">
         <div class="post_meta">
@@ -19,6 +33,7 @@
             <div>
                 <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
                     <b>{{ $post->author->name }}</b>
+                    <span>{{ $post->is_profile_update ? 'changed his profile picture' : null }}</span>
                 </a>
                 <p class="date_span">
                     <span>{{ $post->date() }}</span>
@@ -40,7 +55,8 @@
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Modify post</span>
                     </button>
-                    <button wire:click='$dispatch("toggle-confirm-modal", {action: "delete-post", data: "{{ $post->id }}"})'>
+                    <button
+                        wire:click='$dispatch("toggle-confirm-modal", {action: "delete-post", data: "{{ $post->id }}"})'>
                         <i class="fa-solid fa-trash"></i>
                         <span>Delete post</span>
                     </button>
@@ -48,7 +64,7 @@
             </div>
         @endif
     </div>
-    <div class="post_card_body">
+    <div class="post_card_body {{ $post->is_profile_update ? 'new_profile_pic' : null }}">
         <h3>{{ $post->body }}</h3>
         @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">

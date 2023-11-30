@@ -66,7 +66,7 @@ class PostForm extends Component
         }
         if($imagePath != null)
         {
-            $data["is_profile_update"] = true;
+            $data["is_profile_update"] = "1";
             $data["image"] = $imagePath;
         }
         Post::create($data);
