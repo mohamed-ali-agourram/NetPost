@@ -18,7 +18,7 @@
         <a href="#"><i class="fa-solid fa-users"></i>Freinds</a>
     </div>
     <div class="header__profile">
-        <div wire:poll class="bell">
+        <div wire:poll.2s class="bell">
             @php
                 $notifications_count = auth()
                     ->user()

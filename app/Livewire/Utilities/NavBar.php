@@ -36,9 +36,13 @@ class NavBar extends Component
             }
         }
         if (!empty($lastUnreadNotification)) {
-            if($lastUnreadNotification->is_shown == false)
-            {
+            if ($lastUnreadNotification->is_shown == false) {
                 $this->dispatch('notify', true, $lastUnreadNotification);
+            }
+            if ($lastUnreadNotification->is_shown_on_liste == false) {
+                $lastUnreadNotification->is_shown_on_liste = true;
+                $lastUnreadNotification->save();
+                $this->dispatch('notify-list');
             }
         }
     }

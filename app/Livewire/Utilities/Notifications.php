@@ -17,7 +17,7 @@ class Notifications extends Component
         $this->path = url()->current();
     }
 
-    #[On("notify")]
+    #[On("notify-list")]
     #[Computed()]
     public function notifications()
     {

@@ -46,7 +46,7 @@ class AccountSettings extends Component
         $user[$field_name] = $validated[$field_name];
         $user->save();
         $this->resetValidation();
-        $this->dispatch("notify-profile", status: true);
+        $this->dispatch("notify-profile", status: true, is_profile: true);
     }
 
     #[On("delete-account")]

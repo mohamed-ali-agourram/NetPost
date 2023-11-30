@@ -1683,6 +1683,10 @@
     transform: translateX(-110%);
     animation: fadeInFromBottomLeft 0.5s ease-out forwards;
     padding: 1vh;
+    cursor: pointer;
+    &:hover{
+        scale: 101%;
+    }
 
     .close {
         position: absolute;
@@ -1691,6 +1695,7 @@
         width: 25px;
         height: 25px;
         display: flex;
+        z-index: 99;
         justify-content: center;
         align-items: center;
         background: rgb(31, 30, 30);
