@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Comment;
 
-use App\Models\Comment;
 use App\Models\Post;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
+use App\Models\Comment;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Models\Notification;
+use Livewire\Attributes\Rule;
 
 class CommentForm extends Component
 {
@@ -21,6 +22,14 @@ class CommentForm extends Component
         $validated["user_id"] = auth()->user()->id;
         $validated["post_id"] = $this->post?->id;
         Comment::create($validated);
+        if ($this->post->author->id !== auth()->user()->id) {
+            Notification::create([
+                'sender' => auth()->user()->id,
+                'reciver' => $this->post->author->id,
+                'type' => 'POST-REACTION',
+                'body' => 'commented your post'
+            ]);
+        }
         $this->reset("body");
         $this->dispatch("new-comment");
         $this->dispatch("new-post");

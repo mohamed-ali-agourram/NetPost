@@ -24,12 +24,16 @@
                     <p class="status"><span style="color: grey; font-size: 15px;">status:</span>
                         {{ $user->status }}</p>
                     <div class="user_activity">
+                        @php
+                            $friends_count = $this->user->friendsRelation()->count();
+                            $posts_count = $this->posts->count();
+                        @endphp
                         <p>
-                            <span>120 freinds</span>
+                            <span>{{ $friends_count }} freind{{ $friends_count > 1 ? 's' : '' }}</span>
                             <i class="fa-regular fa-user"></i>
                         </p>
                         <p>
-                            <span>2 posts</span>
+                            <span>{{ $posts_count }} post{{ $posts_count > 1 ? 's' : '' }}</span>
                             <i class="fa-regular fa-images"></i>
                         </p>
                         <p>
@@ -68,31 +72,36 @@
             @if ($is_auth)
                 <x-posts.post-form-trigger />
             @endif
-            <div class="modify_pubs">
-                <h2>{{ $is_auth ? 'Your' : $user->name . "'s" }} Publications</h2>
-                <div class="mp_btns">
-                    <button id="filter_btn"><i class="fa-solid fa-arrow-up-z-a"></i>Filter</button>
+            @if ($this->posts->count() > 0)
+                <div class="modify_pubs">
+                    <h2>{{ $is_auth ? 'Your' : $user->name . "'s" }} Publications</h2>
+                    <div class="mp_btns">
+                        <button id="filter_btn"><i class="fa-solid fa-arrow-up-z-a"></i>Filter</button>
+                    </div>
+                    <div class="filters" style="display: none;">
+                        <style>
+                            .clicked {
+                                background: black !important;
+                                color: white !important
+                            }
+                        </style>
+                        <x-sort-button filter="date" :sort_value="$sort_date" />
+                        <x-sort-button filter="likes" :sort_value="$sort_likes" />
+                        <x-sort-button filter="comments" :sort_value="$sort_comments" />
+                        <button><i class="fa-solid fa-share"></i>Sort By Shares</button>
+                    </div>
                 </div>
-                <div class="filters" style="display: none;">
-                    <style>
-                        .clicked {
-                            background: black !important;
-                            color: white !important
-                        }
-                    </style>
-                    <x-sort-button filter="date" :sort_value="$sort_date" />
-                    <x-sort-button filter="likes" :sort_value="$sort_likes" />
-                    <x-sort-button filter="comments" :sort_value="$sort_comments" />
-                    <button><i class="fa-solid fa-share"></i>Sort By Shares</button>
-                </div>
-            </div>
+            @endif
             @forelse ($this->posts as $post)
                 @php
                     $isFirst = $loop->index === 0 ? true : false;
                 @endphp
                 <x-posts.post-card :$isFirst :key="$post?->pluck('id')->join(uniqid())" :$post />
             @empty
-                <h1>Add a new Post</h1>
+                <h2 class="empty-posts-list">
+                    <i class="fa-regular fa-newspaper"></i>
+                    <span>{{ $this->user->id === auth()->user()->id ? 'You' : $this->user->name }} didn't post any publication yet</span>
+                </h2>
             @endforelse
         </div>
         <livewire:user.freinds-list :$user />

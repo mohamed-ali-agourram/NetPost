@@ -10,16 +10,16 @@ $(".bell").click(function () {
 });
 
 $("#close_notif").click(function () {
- $(".notif_model").toggle(250);
+ $(".notif_model").slideToggle(250);
 });
 
 $(".comment_section").click(function () {
  $(this).find(".comment").slideToggle(200);
 });
 
-$(".delete_comnt").click(function () {
- $(this).parent(".notif").remove();
-});
+// $(".delete_comnt").click(function () {
+//  $(this).parent(".notif").remove();
+// });
 
 // nav effects
 $(".toggleNav").click(function () {
@@ -42,14 +42,14 @@ window.onscroll = function () {
   if (document.querySelector(".freinds_list")) {
    document.querySelector(".freinds_list").style.top = "13vh";
   }
-  document.querySelector(".notification").style.top = "11vh";
+  document.querySelector(".notification").style.top = "11.5vh";
  } else {
   document.getElementById("navbar").style.top = "-15vh";
   if (document.querySelector(".freinds_list")) {
    document.querySelector(".freinds_list").style.top = "1vh";
   }
 
-  document.querySelector(".notification").style.top = "0vh";
+  document.querySelector(".notification").style.top = "1vh";
  }
  prevScrollpos = currentScrollPos;
 };

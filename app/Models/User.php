@@ -80,6 +80,15 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, "likes")->withTimestamps();
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, "reciver")->orderBy('created_at', 'desc');;
+    }
+    public function unreaded_notifications()
+    {
+        return $this->hasMany(Notification::class, "reciver")->where("readed", false);
+    }
+
     public function friendsTo()
     {
         return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')

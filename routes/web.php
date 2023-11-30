@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name("home")->middleware("auth");
 
+Route::get("test", [TestController::class, "test"]);
+
 Route::prefix("/auth")->name("auth.")->middleware("guest")->group(function () {
     Route::get("/login", [AuthController::class, 'login'])->name("login");
     Route::get("/register", [AuthController::class, 'register'])->name("register");

@@ -4,11 +4,12 @@ namespace App\Livewire\User;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Models\Notification;
+use Livewire\Attributes\Url;
+use Livewire\Attributes\Computed;
+use Illuminate\Support\Facades\DB;
 
 class ProfilePage extends Component
 {
@@ -81,6 +82,14 @@ class ProfilePage extends Component
                 $user->likes()->detach($post);
             } else {
                 $user->likes()->attach($post);
+                if ($post->author->id !== auth()->user()->id) {
+                    Notification::create([
+                        'sender' => auth()->user()->id,
+                        'reciver' => $post->author->id,
+                        'type' => 'POST-REACTION',
+                        'body' => 'liked your post'
+                    ]);
+                }
             }
         }
     }
@@ -114,6 +123,12 @@ class ProfilePage extends Component
 
         if (!$existingFriendship && !$existingFriendshipRequest && $auth->id !== $this->user->id) {
             $auth->friendsTo()->attach($this->user->id, ['accepted' => 0]);
+            Notification::create([
+                'sender' => auth()->user()->id,
+                'reciver' => $this->user->id,
+                'type' => 'FRIENDSHIP-REQUEST',
+                'body' => 'send you a friend request'
+            ]);
         } else {
             $auth->pendingRequestsRelation()->detach($this->user->id);
         }
@@ -131,6 +146,12 @@ class ProfilePage extends Component
             if ($status) {
                 if (!$friendship || $friendship->accepted == 0) {
                     $this->user->friendsTo()->updateExistingPivot($authUser->id, ['accepted' => 1]);
+                    Notification::create([
+                        'sender' => auth()->user()->id,
+                        'reciver' => $this->user->id,
+                        'type' => 'FRIENDSHIP-REQUEST',
+                        'body' => 'accepted your friend request'
+                    ]);
                 }
             } else {
                 $this->user->pendingRequestsRelation()->detach($authUser->id);

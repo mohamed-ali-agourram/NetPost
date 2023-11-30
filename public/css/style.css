@@ -120,23 +120,38 @@
 .notification {
     position: fixed;
     max-height: 70vh;
-    width: 25vw;
-    background: white;
-    top: 10vh;
+    width: 35vw;
+    background: #242526;
+    top: 11.5vh;
     right: 5vw;
-    color: black;
+    color: white;
     border-radius: 10px;
-    box-shadow: rgba(181, 181, 185, 0.25) 0px 6px 12px -2px, rgba(255, 255, 255, 0.3) 0px 3px 7px -3px;
     overflow-y: scroll;
     padding: 1vh;
     z-index: 9;
     transition: top 0.3s;
+
+    .delete_btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        visibility: hidden;
+        border: none;
+        padding: 1vh;
+        border-radius: 5px;
+
+        &:hover {
+            background: #000;
+            color: white;
+        }
+    }
 
     .notif_header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        padding: 1vh;
 
         & div {
             font-size: 2rem;
@@ -157,6 +172,7 @@
 
     .notif_model {
         display: flex;
+        justify-content: space-between;
         gap: 10px;
         margin: 5px;
 
@@ -168,6 +184,8 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            width: 50%;
+            justify-content: center;
 
             &:hover {
                 background: #000;
@@ -182,31 +200,38 @@
         gap: 5px;
 
         .notif {
-            padding: 1vh;
-            display: flex;
-            gap: 10px;
             position: relative;
-            cursor: pointer;
-            border-radius: 6px;
 
-            & img {
-                width: 40px;
-                height: 40px;
-                border-radius: 100%;
+            ._notif {
+                padding: 2vh;
+                display: flex;
+                gap: 10px;
+                cursor: pointer;
+                border-radius: 6px;
             }
 
-            .delete_comnt {
-                position: absolute;
-                top: 5px;
-                right: 5px;
-                visibility: hidden;
-                border: none;
-                padding: 1vh;
-                border-radius: 5px;
+            .notif-img {
+                position: relative;
 
-                &:hover {
-                    background: #000;
-                    color: white;
+                & img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 100%;
+                }
+
+                & i {
+                    position: absolute;
+                    bottom: 3px;
+                    left: -7px;
+                    background: rgb(62 62 185);
+                    padding: 5px;
+                    border-radius: 100%;
+                    font-size: 14px;
+                    height: 25px;
+                    width: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
@@ -215,18 +240,27 @@
                 border-radius: 100%;
                 background: rgb(44, 44, 233);
                 position: absolute;
-                right: 10px;
-                bottom: 10px;
+                right: 15px;
+                bottom: 15px;
             }
 
             &:hover {
-                background: rgba(128, 128, 128, 0.295);
+                background: rgb(0 0 0 / 16%);
             }
 
-            &:hover>.delete_comnt {
+            &:hover>.delete_btn {
                 visibility: inherit;
             }
         }
+    }
+
+    .empty-notification-list {
+        color: #b0b3b8;
+        padding: 3vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     }
 }
 
@@ -598,6 +632,15 @@
     display: flex;
     gap: 10px;
     padding: 2vh;
+
+    .empty-posts-list {
+        color: #B0B3B8;
+        padding: 3vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
 }
 
 .posts {
@@ -1180,7 +1223,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
 
             &:hover {
@@ -1622,6 +1665,103 @@
     }
 }
 
+/* alerts */
+.alert {
+    width: 25%;
+    height: 17vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.856);
+    border-radius: 5px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    opacity: 0;
+    z-index: 10000;
+    transform: translateX(-110%);
+    animation: fadeInFromBottomLeft 0.5s ease-out forwards;
+    padding: 1vh;
+    cursor: pointer;
+    &:hover{
+        scale: 101%;
+    }
+
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        z-index: 99;
+        justify-content: center;
+        align-items: center;
+        background: rgb(31, 30, 30);
+        color: white;
+        cursor: pointer;
+        border: none;
+        border-radius: 100%;
+
+        &:hover {
+            scale: 105%;
+        }
+    }
+
+    .alert-infos {
+        height: 100%;
+        display: flex;
+
+        .alert-author {
+            position: relative;
+            width: 30%;
+
+            & img {
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+            }
+
+            & i {
+                position: absolute;
+                bottom: 10px;
+                left: 5px;
+                background: rgba(128, 26, 26, 0.589)a(255, 0, 0, 0.61);
+                border-radius: 100%;
+            }
+        }
+        .alert-author{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .alert-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            & span {
+                color: rgb(73, 73, 161);
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.phpdebugbar-restore-btn {
+    display: none !important;
+}
+
+@keyframes fadeInFromBottomLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* responsivity */
 @media screen and (max-width: 1050px) {
 
     .freinds_list {
@@ -1654,6 +1794,10 @@
 @media screen and (max-width: 980px) {
     .post-card-model {
         width: 85%;
+    }
+
+    .alert {
+        width: 40%;
     }
 
     .content {
