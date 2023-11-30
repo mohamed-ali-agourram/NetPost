@@ -52,7 +52,8 @@ class PostForm extends Component
         $this->image = null;
     }
 
-    public function create()
+    #[On("update-profile-image")]
+    public function create(string $imagePath = null)
     {
         $data = $this->validate();
         $data["is_published"] = $this->is_published;
@@ -62,6 +63,11 @@ class PostForm extends Component
         $data["user_id"] = auth()->id();
         if ($this->image) {
             $data['image'] = $this->image->store('images', 'public');
+        }
+        if($imagePath != null)
+        {
+            $data["is_profile_update"] = true;
+            $data["image"] = $imagePath;
         }
         Post::create($data);
         $this->dispatch("new-post");
