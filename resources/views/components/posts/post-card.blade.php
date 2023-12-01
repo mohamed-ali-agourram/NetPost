@@ -65,7 +65,7 @@
         @endif
     </div>
     <div class="post_card_body {{ $post->is_profile_update ? 'new_profile_pic' : null }}">
-        <h3>{{ $post->body }}</h3>
+        <p>{{ $post->body }}</p>
         @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
         @endif

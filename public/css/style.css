@@ -794,7 +794,8 @@
             flex-direction: column;
             gap: 15px;
 
-            & h3 {
+            & p {
+                font-size: 18px;
                 padding: 0 1.5vh;
             }
         }
@@ -1684,7 +1685,8 @@
     animation: fadeInFromBottomLeft 0.5s ease-out forwards;
     padding: 1vh;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         scale: 101%;
     }
 
@@ -1731,11 +1733,13 @@
                 border-radius: 100%;
             }
         }
-        .alert-author{
+
+        .alert-author {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .alert-body {
             display: flex;
             flex-direction: column;
@@ -2053,13 +2057,6 @@
                     font-size: 30px;
                     font-weight: bold;
                 }
-            }
-        }
-
-        .post_card_body {
-            & h3 {
-                font-size: 17px;
-                font-weight: normal;
             }
         }
     }
