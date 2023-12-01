@@ -766,6 +766,7 @@
                     flex-direction: column;
                     width: 300%;
                     gap: 10px;
+                    z-index: 8;
 
                     & button {
                         background: none;
