@@ -14,13 +14,27 @@
     .new_profile_pic {
         justify-content: center;
         align-items: center;
-        background: #ffffff;
         padding: 1vh;
+        position: relative;
+
+        .cover_image {
+            height: 60%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: black;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            background-position: center !important;
+        }
 
         & img {
             height: 60vh;
             width: 60vh;
             border-radius: 100%;
+            z-index: 8;
+            border: #1d1e22 5px solid;
         }
     }
 </style>
@@ -65,6 +79,9 @@
         @endif
     </div>
     <div class="post_card_body {{ $post->is_profile_update ? 'new_profile_pic' : null }}">
+        @if ($post->is_profile_update)
+            <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
+        @endif
         <p>{{ $post->body }}</p>
         @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
