@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="controls">
-                <theme>Language</theme>
+                <p>Language</p>
                 <select name="language" id="language">
                     <option value="Français">Français</option>
                     <option value="Français">Anglais</option>
@@ -22,7 +22,7 @@
                 </select>
             </div>
             <div class="controls">
-                <label for="notifications">notifications</label>
+                <label for="notifications">Notifications</label>
                 <div class="checkbox-wrapper-2">
                     <span>ON</span>
                     <input style="cursor: pointer;" type="checkbox" class="sc-gJwTLC ikxBAC">
