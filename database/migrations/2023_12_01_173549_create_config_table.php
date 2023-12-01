@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->enum('theme', ['DARK', 'LIGHT']);
-            $table->enum('language', ['french', 'english', 'arabic']);
+            $table->enum('theme', ['DARK', 'LIGHT'])->default("DARK");
+            $table->enum('language', ['fr', 'en', 'ar'])->default("en");
             $table->boolean('notifications')->default(false);
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('config');
+        Schema::dropIfExists('configs');
     }
 };

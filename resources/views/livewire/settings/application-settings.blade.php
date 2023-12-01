@@ -4,7 +4,7 @@
             <label for="theme">Theme</label>
             <div>
                 <p id="theme">Dark</p>
-                <div class="toggle-switch">
+                <div wire:click='toggle_theme' class="toggle-switch">
                     <label class="switch-label">
                         <input type="checkbox" class="checkbox">
                         <span class="slider"></span>

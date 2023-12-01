@@ -65,6 +65,11 @@ class User extends Authenticatable
         return asset("images/cover_pic.jpg");
     }
 
+    public function configuration()
+    {
+        return $this->hasOne(Config::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
