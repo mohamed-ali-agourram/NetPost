@@ -39,6 +39,7 @@ class AuthForm extends Component
         $validated = $this->validate();
         $validated["slug"] = Str::slug($this->name);
         $user = User::create($validated);
+        $user->configuration()->create();
         auth()->login($user);
         $this->redirectRoute("home", navigate: true);
     }

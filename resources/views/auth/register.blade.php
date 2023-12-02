@@ -1,3 +1,3 @@
 <x-layouts.guest-layout>
-    <livewire:auth-form :is_register="true" />
+    <livewire:user.auth-form :is_register="true" />
 </x-layouts.guest-layout>
