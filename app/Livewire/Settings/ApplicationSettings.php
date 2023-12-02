@@ -3,15 +3,18 @@
 namespace App\Livewire\Settings;
 
 use App\Models\Config;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ApplicationSettings extends Component
 {
-    public $theme;
 
-    public function mount()
+    #[On("toggle-theme")]
+    #[Computed()]
+    public function theme()
     {
-        $this->theme = auth()->user()->configuration->theme;
+        return auth()->user()->configuration->theme;
     }
 
     public function toggle_theme()
@@ -21,7 +24,7 @@ class ApplicationSettings extends Component
         $config = Config::where('user_id', $user->id)->first();
         $config->theme = $theme;
         $config->save();
-        $this->theme = $user->configuration->theme;
+        $this->dispatch("toggle-theme");
     }
 
 

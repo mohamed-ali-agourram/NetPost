@@ -1754,9 +1754,9 @@
     }
 }
 
-.phpdebugbar-restore-btn {
+/* .phpdebugbar-restore-btn {
     display: none !important;
-}
+} */
 
 @keyframes fadeInFromBottomLeft {
     to {

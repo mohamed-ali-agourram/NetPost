@@ -3,10 +3,10 @@
         <div class="controls">
             <label for="theme">Theme</label>
             <div>
-                <p id="theme">Dark</p>
+                <p id="theme" style="text-transform: capitalize;">{{ strtolower($this->theme) }}</p>
                 <div wire:click='toggle_theme' class="toggle-switch">
                     <label class="switch-label">
-                        <input type="checkbox" class="checkbox">
+                        <input @checked($this->theme === "LIGHT") type="checkbox" class="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
