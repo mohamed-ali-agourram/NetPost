@@ -39,3 +39,6 @@ Implement a responsive alert system to keep users informed in real-time. Receive
 7. Start the development server: `php artisan serve`
 
 Visit [http://localhost:8000](http://localhost:8000) in your browser to explore the Social Media Web App.
+
+![Capture d'écran 2023-12-02 181229](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/03096d16-7112-464c-a2c4-03dae5012583)
+
