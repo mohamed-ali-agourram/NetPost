@@ -40,7 +40,7 @@ Implement a responsive alert system to keep users informed in real-time. Receive
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/social-media-app.git`
+1. Clone the repository: `git clone [https://github.com/your-username/social-media-app.git](https://github.com/mohamed-ali-agourram/NetPost.git)`
 2. Navigate to the project folder: `cd social-media-app`
 3. Install dependencies: `composer install && npm install`
 4. Set up the environment: `cp .env.example .env` and configure your database settings
