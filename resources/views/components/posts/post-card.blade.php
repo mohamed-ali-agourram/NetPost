@@ -34,7 +34,7 @@
             width: 60vh;
             border-radius: 100%;
             z-index: 8;
-            border: #1d1e22 5px solid;
+            border: var(--main-color) 3px solid;
         }
     }
 </style>
@@ -95,7 +95,7 @@
                     ->has_liked($post);
             @endphp
             <button wire:loading.attr="disabled"
-                style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}"
+                style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}"
                 wire:click="$dispatch('like-post', {post: '{{ $post?->id }}'})">
                 <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
                 <span class="pcf_action">Likes</span>

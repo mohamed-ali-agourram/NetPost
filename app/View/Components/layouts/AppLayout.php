@@ -21,6 +21,8 @@ class AppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.app-layout');
+        $config_theme = auth()->user()->configuration->theme;
+        $theme = session('theme', $config_theme);
+        return view('layouts.app-layout', ["theme" => $theme]);
     }
 }

@@ -39,13 +39,13 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            background: #4b4b4b;
+            background: var(--third-color);
             padding: 6px;
             border-radius: 10px;
             margin-left: -25%;
 
             & p {
-                background: #000 !important;
+                background: var(--like-bg) !important;
             }
 
             & a,
@@ -56,10 +56,10 @@
                 gap: 8px;
                 padding: 2vh;
                 border-radius: 10px;
-                background: #00000050;
+                background: var(--second-color);
 
                 &:hover {
-                    background: #000;
+                    background: var(--main-color);
                 }
             }
         }
@@ -76,7 +76,8 @@
             }
 
             .bell {
-                background: rgb(75, 75, 75);
+                background: var(--main-color);
+                color: var(--text-color);
                 padding: 2vh;
                 border-radius: 100%;
                 display: flex;
@@ -86,7 +87,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    background: #000;
+                    background: var(--like-hover-bg);
                 }
 
                 .n_notif {
@@ -121,10 +122,10 @@
     position: fixed;
     max-height: 70vh;
     width: 35vw;
-    background: #242526;
+    background: var(--main-color);
     top: 11.5vh;
     right: 5vw;
-    color: white;
+    color: var(--text-color);
     border-radius: 10px;
     overflow-y: scroll;
     padding: 1vh;
@@ -224,6 +225,7 @@
                     bottom: 3px;
                     left: -7px;
                     background: rgb(62 62 185);
+                    color: white;
                     padding: 5px;
                     border-radius: 100%;
                     font-size: 14px;
@@ -255,7 +257,7 @@
     }
 
     .empty-notification-list {
-        color: #b0b3b8;
+        color: var(--span-color);
         padding: 3vh 0;
         display: flex;
         align-items: center;
@@ -281,7 +283,7 @@
     background: var(--second-color);
     box-shadow: var(--shadow);
     padding: 1.5vh;
-    color: white;
+    color: var(--text-color) !important;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -391,7 +393,7 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    color: white;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -403,6 +405,7 @@
         flex-direction: row;
         align-items: center;
         gap: 15px;
+        color: var(--text-color);
         width: 95%;
 
         & p {
@@ -416,9 +419,9 @@
         }
 
         & select {
-            background-color: rgb(58, 57, 57);
+            background-color: var(--second-color);
             border: none;
-            color: white;
+            color: var(--text-color);
             padding: 4px;
             border-radius: 5%;
             -webkit-appearance: none;
@@ -456,7 +459,7 @@
         height: fit-content;
         gap: 15px;
         width: 55%;
-        background: var(--second-color);
+        background: var(--main-color);
         border-radius: 5px;
         z-index: 2;
         display: flex;
@@ -508,9 +511,10 @@
                 gap: 5px;
                 background: rgba(0, 0, 0, 0.301);
                 border-radius: 10px;
+                color: var(--text-color);
 
                 & i {
-                    background: #0000007a;
+                    background: var(--second-color);
                     height: 8vh;
                     width: 8vh;
                     border-radius: 100%;
@@ -583,12 +587,13 @@
         & input,
         textarea {
             height: 7vh;
-            background: rgb(58, 57, 57);
+            background: var(--main-color);
             padding: 1vh;
             font-size: 17px;
-            color: gray;
+            color: var(--text-color);
             border: none;
             border-radius: 5px;
+            box-shadow: var(--shadow);
         }
 
         & .textarea {
@@ -599,6 +604,8 @@
 
             & textarea {
                 height: 30vh;
+                background: var(--second-color);
+                box-shadow: var(--shadow);
                 padding: 1.5vh 1vh;
                 width: 100%;
             }
@@ -683,7 +690,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    background: rgb(72, 72, 73);
+                    background: var(--like-hover-bg);
                 }
             }
         }
@@ -696,31 +703,31 @@
 
         & i {
             font-size: 25px;
-            color: white;
+            color: var(--text-color);
             padding: 1vh;
             border-radius: 100%;
 
             &:hover {
-                background: #0000009c;
+                background: var(--like-bg);
             }
         }
 
         & button {
             border: none;
             background: var(--main-color);
-            color: white;
+            color: var(--second-text-color);
             padding: 1.5vh 5vh;
             border-radius: 15px;
 
             &:hover {
-                background: rgb(72, 72, 73);
+                background: var(--like-hover-bg);
             }
         }
     }
 
     .post_card {
         background: var(--second-color);
-        color: white;
+        color: var(--text-color);
         border-radius: 10px;
         box-shadow: var(--shadow);
         display: flex;
@@ -822,12 +829,12 @@
                     height: 6vh;
 
                     &:hover {
-                        background: rgba(46, 46, 46, 0.548) !important;
+                        background: var(--like-bg);
                     }
                 }
 
                 .liked {
-                    background: rgba(46, 46, 46, 0.548) !important;
+                    background: var(--like-bg);
 
                     & i {
                         color: red !important;
@@ -942,19 +949,20 @@
         align-items: center;
         position: relative;
         padding: 2vh 1vh;
-        border-bottom: 1px solid rgba(63, 61, 61, 0.651);
+        border-bottom: 1px solid var(--main-color);
         position: sticky;
         top: 0;
         background: var(--second-color);
+        color: var(--text-color);
         z-index: 99;
 
         & button {
             position: absolute;
             top: 20%;
-            right: 5%;
+            right: 1%;
             background: none;
             border: none;
-            color: rgb(58, 57, 57);
+            color: var(--like-bg);
             font-size: 30px;
 
             &:hover {
@@ -976,7 +984,7 @@
             & p {
                 padding: 0 2vh;
                 padding-bottom: 2vh;
-                color: white;
+                color: var(--text-color);
             }
 
             & img {
@@ -989,7 +997,7 @@
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            border-bottom: 1px solid rgba(63, 61, 61, 0.651);
+            border-bottom: 1px solid var(--main-color);
             padding: 6px;
 
             & button {
@@ -1009,7 +1017,7 @@
                 background: transparent;
 
                 &:hover {
-                    background: rgba(46, 46, 46, 0.55) !important;
+                    background: var(--like-bg) !important;
                 }
             }
         }
@@ -1052,6 +1060,7 @@
             & .bubble {
                 font-size: 14px;
                 background: var(--main-color);
+                color: var(--text-color);
                 padding: 1vh;
                 border-radius: 10px;
                 width: fit-content;
@@ -1094,7 +1103,7 @@
         width: 100%;
         padding: 2vh;
         border-radius: 0;
-        border-top: 1px solid rgba(63, 61, 61, 0.651);
+        border-top: 1px solid var(--main-color);
         position: sticky;
         bottom: 0;
         z-index: 99;
@@ -1133,7 +1142,6 @@
 }
 
 .freinds_list {
-    background: white;
     width: 30%;
     display: flex;
     height: fit-content;
@@ -1142,7 +1150,7 @@
     padding: 2vh 2vh;
     border-radius: 10px;
     background: var(--second-color);
-    color: white;
+    color: var(--text-color);
     box-shadow: var(--shadow);
     position: sticky;
     top: 13vh;
@@ -1291,7 +1299,7 @@
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
-                    color: white;
+                    color: var(--text-color);
 
                     & p {
                         font-size: 25px;
@@ -1380,7 +1388,7 @@
             border: none;
             padding: 10px;
             height: 100%;
-            color: white;
+            color: var(--text-color);
             border-radius: 5px;
             display: flex;
             justify-content: center;
@@ -1390,7 +1398,7 @@
             cursor: pointer;
 
             &:hover {
-                background: #000;
+                background: var(--like-hover-bg);
             }
         }
     }
@@ -1417,12 +1425,13 @@
 .settings_main_content {
     margin: 2%;
     background: var(--second-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 15px;
-    background: #35363a;
+    background: var(--third-color);
     position: relative;
 
     .gear {
@@ -1526,7 +1535,6 @@
                 justify-content: space-around;
                 padding: 2vh;
                 gap: 5px;
-                color: white;
 
                 .user_activity {
                     display: flex;
@@ -1572,7 +1580,6 @@
             padding: 2vh 3vh;
             width: 100%;
             border-radius: 15px;
-            color: white;
 
             & li {
                 display: flex;
@@ -1594,7 +1601,7 @@
                 & input {
                     background: transparent;
                     border: none;
-                    color: white;
+                    color: var(--text-color);
                     font-size: 16px;
                     padding: 1vh;
                     width: 100%;
@@ -1630,7 +1637,7 @@
             background: var(--second-color);
             padding: 5vh;
             border-radius: 15px;
-            color: white;
+            color: var(--text-color);
             align-self: flex-start;
 
             & button {
@@ -1836,6 +1843,7 @@
                 cursor: pointer;
                 padding: 0 2vh;
                 display: block;
+                color: var(--text-color);
             }
 
             .route {
@@ -2398,7 +2406,7 @@
 }
 
 .settings_content_application {
-    color: white;
+    color: var(--text-color);
     font-size: 19px;
     font-weight: bold;
     display: flex;

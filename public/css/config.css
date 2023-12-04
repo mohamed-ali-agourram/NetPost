@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
-:root {
+/* :root {
     --main-color: rgb(46, 46, 46);
     --second-color: #1d1e22;
     --shadow: rgba(255, 255, 255, 0.075) 0px 3px 8px;
-}
+} */
 
 * {
     margin: 0;
@@ -14,6 +14,32 @@
 
 [x-cloak] {
     display: none;
+}
+
+.LIGHT {
+    --main-color: rgb(240 242 245);
+    --second-color: rgb(255 255 255);
+    --third-color: #d1d1d1;
+    --shadow: rgba(129, 122, 122, 0.527) 0px 3px 8px;
+    --like-bg: rgb(46 46 46 / 21%);
+    --like-hover-bg: rgb(202, 200, 200);
+    --text-color: black;
+    --second-text-color: #4f4f4f;
+    --nav-li-color: #333131;
+    --span-color: #7c7e81;
+}
+
+.DARK {
+    --main-color: rgb(46, 46, 46);
+    --second-color: #1d1e22;
+    --third-color: #35363a;
+    --shadow: rgba(255, 255, 255, 0.075) 0px 3px 8px;
+    --like-bg: rgb(46 46 46 / 55%);
+    --like-hover-bg: black;
+    --text-color: white;
+    --second-text-color: gray;
+    --nav-li-color: white;
+    --span-color: #b0b3b8;
 }
 
 body {
@@ -56,7 +82,7 @@ ul {
 }
 
 a {
-    color: white;
+    color: var(--nav-li-color);
     text-decoration: none;
 }
 
@@ -154,10 +180,10 @@ a {
     }
 
     .confirm_modal_content {
-        background: #28292c;
+        background: var(--second-color);
         height: 25%;
         width: 30%;
-        color: white;
+        color: var(--text-color);
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -333,7 +359,8 @@ a {
                 color: white;
                 padding: 1.5vh 3vh;
                 border-radius: 5px;
-                &:hover{
+
+                &:hover {
                     margin-top: -1px;
                 }
 

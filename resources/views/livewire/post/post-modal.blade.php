@@ -35,7 +35,7 @@
                         ->has_liked($post);
                 @endphp
                 <button wire:loading.attr="disabled"
-                    style="background: {{ $is_liked ? 'rgba(46, 46, 46, 0.548)' : 'transparent' }}"
+                    style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}"
                     wire:click="toggleLike">
                     <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
                     <span class="pcf_action">Likes</span>
