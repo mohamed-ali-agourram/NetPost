@@ -27,6 +27,12 @@
     --second-text-color: #4f4f4f;
     --nav-li-color: #333131;
     --span-color: #7c7e81;
+    --switch-label: #d8dbe0;
+    --switch-border-label: #28292c;
+    --post-form-bg: var(--main-color);
+    --post_from_model_textarea_bg: var(--second-color);
+    --border-bg: #00000030;
+    --cancel-bg: #7c7e81;
 }
 
 .DARK {
@@ -40,6 +46,12 @@
     --second-text-color: gray;
     --nav-li-color: white;
     --span-color: #b0b3b8;
+    --switch-label: #28292c;
+    --switch-border-label: #d8dbe0;
+    --post-form-bg: var(--second-color);
+    --post_from_model_textarea_bg: var(--main-color);
+    --border-bg: #b0b3b842;
+    --cancel-bg: #3a3939;
 }
 
 body {

@@ -16,7 +16,7 @@
         <div class="author">
             <img src="{{ auth()->user()->profile_image() }}" alt="user">
             <div>
-                <p>{{ auth()->user()->name }}</p>
+                <b>{{ auth()->user()->name }}</b>
                 <div class="custom-select">
                     <select wire:model='is_published'>
                         <option value="1" @selected($is_published === "1")>Public</option>
