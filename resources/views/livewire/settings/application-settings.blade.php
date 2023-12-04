@@ -3,7 +3,7 @@
         <div class="controls">
             <label for="theme">Theme</label>
             <div>
-                <p id="theme" style="text-transform: capitalize;">{{ strtolower($this->theme) }}</p>
+                <p id="theme" style="text-transform: capitalize;">{{ strtolower($theme_) }}</p>
                 <div wire:click='toggle_theme' class="toggle-switch">
                     <label class="switch-label">
                         <input @checked($this->theme === "LIGHT") type="checkbox" class="checkbox">
@@ -11,14 +11,6 @@
                     </label>
                 </div>
             </div>
-        </div>
-        <div class="controls">
-            <p>Language</p>
-            <select name="language" id="language">
-                <option value="Français">Français</option>
-                <option value="Français">Anglais</option>
-                <option value="Français">Arabe</option>
-            </select>
         </div>
         <div class="controls">
             <label for="notifications">Notifications</label>
