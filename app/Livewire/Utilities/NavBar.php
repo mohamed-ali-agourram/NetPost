@@ -36,7 +36,7 @@ class NavBar extends Component
             }
         }
         if (!empty($lastUnreadNotification)) {
-            if ($lastUnreadNotification->is_shown == false) {
+            if ($lastUnreadNotification->is_shown == false && auth()->user()->configuration->notifications === 1) {
                 $this->dispatch('notify', true, $lastUnreadNotification);
             }
             if ($lastUnreadNotification->is_shown_on_liste == false) {

@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Session;
 class ApplicationSettings extends Component
 {
     public $theme_;
+    public $notifications;
 
     public function mount()
     {
         $this->theme_ = $this->theme;
+        $this->notifications = auth()->user()->configuration->notifications;
     }
 
     #[On("toggle-theme")]
@@ -36,6 +38,14 @@ class ApplicationSettings extends Component
         $this->redirectRoute("settings.application", navigate: true);
     }
 
+    public function toggle_notification()
+    {
+        $this->notifications = $this->notifications === 1 ? 0 : 1;
+        $user = auth()->user();
+        $config = Config::where('user_id', $user->id)->first();
+        $config->notifications = $this->notifications;
+        $config->save();
+    }
 
     public function render()
     {

@@ -15,8 +15,8 @@
         <div class="controls">
             <label for="notifications">Notifications</label>
             <div class="checkbox-wrapper-2">
-                <span>ON</span>
-                <input style="cursor: pointer;" type="checkbox" class="sc-gJwTLC ikxBAC">
+                <span>{{ $notifications === 1 ? 'ON' : 'OFF' }}</span>
+                <input wire:click='toggle_notification' @checked($notifications === 1) style="cursor: pointer;" type="checkbox" class="sc-gJwTLC ikxBAC">
             </div>
         </div>
         <div class="btns controls">
