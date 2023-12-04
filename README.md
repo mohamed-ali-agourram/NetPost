@@ -30,7 +30,7 @@ Facilitate connections with a robust friendship system. Users can send and recei
 Implement a responsive alert system to keep users informed in real-time. Receive instant notifications for likes, comments, friend requests, and other relevant activities, ensuring users stay connected and engaged.
 ![Alert-System](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/84f2d7fb-c54e-4cf5-8754-6ea3997b6ba0)
 
-## Technologies Used
+## Technologies Used 
 
 -   **Laravel:** A robust PHP framework that provides a solid foundation for the backend, handling authentication, database interactions, and more.
 -   **Livewire:** Enhances the user experience with real-time interactions, reducing the need for full page reloads and creating a more dynamic environment.
