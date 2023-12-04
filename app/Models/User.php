@@ -91,7 +91,7 @@ class User extends Authenticatable
     }
     public function unreaded_notifications()
     {
-        return $this->hasMany(Notification::class, "reciver")->where("readed", false);
+        return $this->hasMany(Notification::class, "reciver")->where("read", false);
     }
 
     public function friendsTo()
