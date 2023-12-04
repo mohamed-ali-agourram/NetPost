@@ -419,7 +419,7 @@
         }
 
         & select {
-            background-color: var(--second-color);
+            background: var(--post_from_model_textarea_bg);
             border: none;
             color: var(--text-color);
             padding: 4px;
@@ -459,7 +459,7 @@
         height: fit-content;
         gap: 15px;
         width: 55%;
-        background: var(--main-color);
+        background: var(--post-form-bg);
         border-radius: 5px;
         z-index: 2;
         display: flex;
@@ -473,7 +473,7 @@
             right: 10px;
             background: none;
             border: none;
-            color: rgb(58, 57, 57);
+            color: var(--cancel-bg);
             font-size: 30px;
 
             &:hover {
@@ -511,10 +511,10 @@
                 gap: 5px;
                 background: rgba(0, 0, 0, 0.301);
                 border-radius: 10px;
-                color: var(--text-color);
+                color: white;
 
                 & i {
-                    background: var(--second-color);
+                    background: #1d1e22;
                     height: 8vh;
                     width: 8vh;
                     border-radius: 100%;
@@ -565,9 +565,10 @@
 
         & h1 {
             text-align: center;
-            border-bottom: 1px solid rgb(51, 50, 50);
+            border-bottom: 1px solid var(--border-bg);
             padding: 5px;
             width: 100%;
+            color: var(--span-color);
         }
 
         & div {
@@ -587,13 +588,12 @@
         & input,
         textarea {
             height: 7vh;
-            background: var(--main-color);
+            background: var(--post_from_model_textarea_bg);
             padding: 1vh;
             font-size: 17px;
             color: var(--text-color);
             border: none;
             border-radius: 5px;
-            box-shadow: var(--shadow);
         }
 
         & .textarea {
@@ -604,8 +604,7 @@
 
             & textarea {
                 height: 30vh;
-                background: var(--second-color);
-                box-shadow: var(--shadow);
+                background: var(--post_from_model_textarea_bg);
                 padding: 1.5vh 1vh;
                 width: 100%;
             }
@@ -829,7 +828,7 @@
                     height: 6vh;
 
                     &:hover {
-                        background: var(--like-bg);
+                        background: var(--like-bg) !important;
                     }
                 }
 
@@ -2492,10 +2491,10 @@
         position: absolute;
         width: 100%;
         height: 50px;
-        background-color: var(--dark);
+        background-color: var(--switch-label);
         border-radius: 25px;
         cursor: pointer;
-        border: 3px solid var(--dark);
+        border: 3px solid var(--switch-label);
     }
 
     .checkbox {
