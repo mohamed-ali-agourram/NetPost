@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('featured')->default(false);
+            $table->boolean("is_profile_update")->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

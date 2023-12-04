@@ -19,12 +19,15 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->sentence,
-            'slug' => $this->faker->unique()->slug,
-            'body' => $this->faker->paragraph,
+            'body' => $this->faker->text,
             'image' => $this->faker->imageUrl(),
-            'published_at' => $this->faker->dateTime,
-            'featured' => $this->faker->boolean,
+            'is_published' => $this->faker->randomElement(['0', '1']),
+            'published_at' => $this->faker->dateTime(),
+            'featured' => $this->faker->boolean(),
+            'created_at' => $this->faker->dateTime(),
+            'updated_at' => $this->faker->dateTime(),
+            'deleted_at' => null,
+            'is_profile_update' => $this->faker->boolean(),
         ];
     }
 }

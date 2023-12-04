@@ -17,7 +17,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('reciver');
             $table->enum('type', ['POST-REACTION', 'FRIENDSHIP-REQUEST']);
             $table->string("body")->nullable(false);
-            $table->boolean("readed")->default(0);
+            $table->boolean("read")->default(0);
+            $table->boolean('is_shown_on_liste')->default(false);
+            $table->boolean('is_shown')->default(false);
             $table->timestamps();
 
             $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');

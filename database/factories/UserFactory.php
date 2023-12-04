@@ -18,12 +18,17 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'image' => fake()->imageUrl(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name,
+            'slug' => Str::slug($this->faker->unique()->name),
+            'cover_image' => $this->faker->imageUrl(),
+            'profile_image' => $this->faker->imageUrl(),
+            'status' => 'NetPost User',
+            'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('demo'),
             'remember_token' => Str::random(10),
+            'created_at' => $this->faker->dateTime(),
+            'updated_at' => $this->faker->dateTime(),
         ];
     }
 
@@ -32,7 +37,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
