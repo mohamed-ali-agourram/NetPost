@@ -806,8 +806,14 @@
                 padding: 0 1.5vh;
             }
 
-            .shared_post{
-
+            .shared_post {
+                box-shadow: none;
+                width: 97%;
+                padding: 2vh 1vh;
+                border: solid 0.5px #80808070;
+                transform: translateX(-50%);
+                margin-left: 50%;
+                margin-top: -2%;
             }
         }
 
