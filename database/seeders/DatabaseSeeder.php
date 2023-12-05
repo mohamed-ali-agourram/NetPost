@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
             $user = User::create([
                 'name' => $faker->name,
                 'slug' => $faker->slug,
-                'cover_image' => $faker->imageUrl(),
-                'profile_image' => $faker->imageUrl(),
+                // 'cover_image' => $faker->imageUrl(),
+                // 'profile_image' => $faker->imageUrl(),
                 'status' => $faker->sentence,
                 'email' => $faker->unique()->safeEmail,
                 'email_verified_at' => now(),
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
                 Post::create([
                     'user_id' => $user->id,
                     'body' => $faker->paragraph,
-                    'image' => $faker->imageUrl(),
+                    // 'image' => $faker->imageUrl(),
                     'is_published' => $faker->boolean,
                     'published_at' => $faker->dateTimeThisMonth,
                     'featured' => $faker->boolean,
