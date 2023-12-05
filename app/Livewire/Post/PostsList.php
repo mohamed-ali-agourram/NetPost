@@ -37,11 +37,11 @@ class PostsList extends Component
     }
 
     #[On("share-post")]
-    public function share(?Post $post)
+    public function share(?Post $post, ?Post $sharedpost)
     {
         if ($post !== null) {
             $user = auth()->user();
-            $shared_post_id = $post->id;
+            $shared_post_id = $sharedpost->id;
             $data = [
                 "user_id" => $user->id,
                 "is_published" => 1,

@@ -87,7 +87,7 @@
             <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
         @endif
         <p>{{ $post->body }}</p>
-        @if ($post->image && $post->shared_post === null)
+        @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
         @endif
         @if ($post->sharedPost)
@@ -119,7 +119,8 @@
                     <span class="pcf_action">Comment{{ $comments_count > 1 ? 's' : '' }}</span>
                     <span class="n_activity">{{ $comments_count }}</span>
                 </button>
-                <button wire:click='$dispatch("share-post", {post: "{{ $post->id }}"})'>
+                <button
+                    wire:click='$dispatch("share-post", {post: {{ $post->id }}, sharedpost: "{{ $post->shared_post ? $post->shared_post : $post->id }}"})'>
                     <i class="fa-solid fa-share"></i>
                     <span class="pcf_action">Share{{ $shares_count > 1 ? 's' : '' }}</span>
                     <span class="n_activity">{{ $shares_count }}</span>
