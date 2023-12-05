@@ -18,7 +18,9 @@ class Post extends Model
         "image",
         "published_at",
         "featured",
-        "is_profile_update"
+        "is_profile_update",
+        "shared_post",
+        "shared"
     ];
 
     public function scopePublished($query)
@@ -35,7 +37,7 @@ class Post extends Model
     public function image()
     {
         if (isset($this->image)) {
-            return  asset("storage/" . $this->image);
+            return asset("storage/" . $this->image);
         }
         return asset("images/empty-image.png");
     }
