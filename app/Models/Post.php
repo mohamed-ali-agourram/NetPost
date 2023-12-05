@@ -12,7 +12,6 @@ class Post extends Model
 
     protected $fillable = [
         "user_id",
-        "title",
         "body",
         "is_published",
         "image",
@@ -31,6 +30,11 @@ class Post extends Model
     public function author()
     {
         return $this->belongsTo(User::class, "user_id");
+    }
+
+    public function sharedPost()
+    {
+        return $this->belongsTo(Post::class, 'shared_post', 'id');
     }
 
 

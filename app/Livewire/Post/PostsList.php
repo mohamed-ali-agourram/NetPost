@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Post;
 
-use App\Models\Notification;
+use Carbon\Carbon;
 use App\Models\Post;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Models\Notification;
+use Livewire\Attributes\Computed;
 
 class PostsList extends Component
 {
@@ -23,8 +24,7 @@ class PostsList extends Component
                 $user->likes()->detach($post);
             } else {
                 $user->likes()->attach($post);
-                if($post->author->id !== auth()->user()->id)
-                {
+                if ($post->author->id !== auth()->user()->id) {
                     Notification::create([
                         'sender' => auth()->user()->id,
                         'reciver' => $post->author->id,
@@ -42,7 +42,16 @@ class PostsList extends Component
         if ($post !== null) {
             $user = auth()->user();
             $shared_post_id = $post->id;
-            dd($shared_post_id);
+            $data = [
+                "user_id" => $user->id,
+                "is_published" => 1,
+                "published_at" => Carbon::now()->format('Y-m-d H:i:s'),
+                "shared_post" => $shared_post_id,
+            ];
+            Post::create($data);
+            $post->shared= $post->shared + 1;
+            $post->save();
+            $this->dispatch("new-post");
         }
     }
 

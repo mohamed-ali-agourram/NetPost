@@ -83,8 +83,13 @@
             <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
         @endif
         <p>{{ $post->body }}</p>
-        @if ($post->image)
+        @if ($post->image && $post->shared_post === null)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
+        @endif
+        @if ($post->shared_post)
+            <div class="shared_post">
+                @dump($post->sharedPost->body)
+            </div>
         @endif
     </div>
     <div class="post_card_footer">
@@ -93,25 +98,27 @@
                 $is_liked = auth()
                     ->user()
                     ->has_liked($post);
+                $likes_count = $post?->likes()->count();
+                $comments_count = $post?->comments()->count();
+                $shares_count = $post->shared;
             @endphp
-            <button wire:loading.attr="disabled"
-                style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}"
+            <button wire:loading.attr="disabled" style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}"
                 wire:click="$dispatch('like-post', {post: '{{ $post?->id }}'})">
                 <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
-                <span class="pcf_action">Likes</span>
-                @if ($post?->likes()->count() > 0)
-                    <span class="n_activity">{{ $post?->likes()->count() }}</span>
+                <span class="pcf_action">Like{{ $likes_count > 1 ? 's' : '' }}</span>
+                @if ($likes_count > 0)
+                    <span class="n_activity">{{ $likes_count }}</span>
                 @endif
             </button>
             <button wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-message"></i>
-                <span class="pcf_action">Comments</span>
-                <span class="n_activity">{{ $post?->comments()->count() }}</span>
+                <span class="pcf_action">Comment{{ $comments_count > 1 ? 's' : '' }}</span>
+                <span class="n_activity">{{ $comments_count }}</span>
             </button>
             <button wire:click='$dispatch("share-post", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-share"></i>
-                <span class="pcf_action">Shares</span>
-                <span class="n_activity">11</span>
+                <span class="pcf_action">Share{{ $shares_count > 1 ? 's' : '' }}</span>
+                <span class="n_activity">{{ $shares_count }}</span>
             </button>
         </div>
         <form wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/" class="comment">

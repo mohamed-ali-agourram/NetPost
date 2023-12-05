@@ -94,14 +94,14 @@ class ProfilePage extends Component
         }
     }
 
-    // #[On("share-post")]
-    // public function share(?Post $post)
-    // {
-    //     if ($post !== null) {
-    //         $user = auth()->user();
-    //         dd($post->body);
-    //     }
-    // }
+    #[On("share-post")]
+    public function share(?Post $post)
+    {
+        if ($post !== null) {
+            $user = auth()->user();
+            dd($post->body);
+        }
+    }
 
     #[On("new-post")]
     #[Computed()]
