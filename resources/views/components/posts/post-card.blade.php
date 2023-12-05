@@ -63,7 +63,7 @@
                 </p>
             </div>
         </div>
-        @if ($post->author->id === auth()->user()->id)
+        @if ($post->author->id === auth()->user()->id && !$is_shared)
             <div class="open_post_options" x-data="{ isOpen: false }" @click.away="isOpen = false">
                 <abbr title="manage your post">
                     <i @click="isOpen = !isOpen" class="fa-solid fa-ellipsis"></i>

@@ -814,6 +814,18 @@
                 transform: translateX(-50%);
                 margin-left: 50%;
                 margin-top: -2%;
+                padding-top: 4px;
+                gap: 0;
+                & b{
+                    font-size: 15px;
+                }
+                & .date_span{
+                    padding: 0;
+                    font-size: 13.5px;
+                }
+                & .post_card_body p{
+                    font-size: 15px;
+                }
             }
         }
 
