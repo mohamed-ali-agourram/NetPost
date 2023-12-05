@@ -108,7 +108,7 @@
                 <span class="pcf_action">Comments</span>
                 <span class="n_activity">{{ $post?->comments()->count() }}</span>
             </button>
-            <button>
+            <button wire:click='$dispatch("share-post", {post: "{{ $post->id }}"})'>
                 <i class="fa-solid fa-share"></i>
                 <span class="pcf_action">Shares</span>
                 <span class="n_activity">11</span>

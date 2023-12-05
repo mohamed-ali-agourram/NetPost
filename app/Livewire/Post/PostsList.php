@@ -36,6 +36,16 @@ class PostsList extends Component
         }
     }
 
+    #[On("share-post")]
+    public function share(?Post $post)
+    {
+        if ($post !== null) {
+            $user = auth()->user();
+            $shared_post_id = $post->id;
+            dd($shared_post_id);
+        }
+    }
+
     #[On("new-post")]
     #[Computed()]
     public function posts()
