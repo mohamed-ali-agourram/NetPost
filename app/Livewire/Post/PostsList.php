@@ -49,8 +49,18 @@ class PostsList extends Component
                 "shared_post" => $shared_post_id,
             ];
             Post::create($data);
-            $post->shared= $post->shared + 1;
+            $post->shared = $post->shared + 1;
             $post->save();
+            $this->dispatch("new-post");
+        }
+    }
+
+    #[On("delete-post")]
+    public function deletePost(string $data)
+    {
+        $post = Post::find($data);
+        if ($post) {
+            $post->delete();
             $this->dispatch("new-post");
         }
     }
