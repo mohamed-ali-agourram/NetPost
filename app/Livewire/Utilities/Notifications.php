@@ -6,7 +6,6 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\Notification;
 use Livewire\Attributes\Computed;
-use Illuminate\Support\Facades\URL;
 
 class Notifications extends Component
 {
@@ -26,8 +25,8 @@ class Notifications extends Component
 
     public function read(Notification $notification)
     {
-        if ($notification->readed == 0) {
-            $notification->readed = 1;
+        if ($notification->read == 0) {
+            $notification->read = 1;
             $notification->save();
         }
         $profile_slug = $notification->reciver_->slug;
@@ -44,7 +43,7 @@ class Notifications extends Component
 
     public function read_all()
     {
-        auth()->user()->notifications()->where("readed", 0)->update(["readed" => 1]);
+        auth()->user()->notifications()->where("read", 0)->update(["read" => 1]);
         $this->dispatch("notify");
     }
 

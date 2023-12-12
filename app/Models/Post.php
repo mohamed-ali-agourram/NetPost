@@ -12,13 +12,14 @@ class Post extends Model
 
     protected $fillable = [
         "user_id",
-        "title",
         "body",
         "is_published",
         "image",
         "published_at",
         "featured",
-        "is_profile_update"
+        "is_profile_update",
+        "shared_post",
+        "shared"
     ];
 
     public function scopePublished($query)
@@ -31,11 +32,16 @@ class Post extends Model
         return $this->belongsTo(User::class, "user_id");
     }
 
+    public function sharedPost()
+    {
+        return $this->belongsTo(Post::class, 'shared_post', 'id');
+    }
+
 
     public function image()
     {
         if (isset($this->image)) {
-            return  asset("storage/" . $this->image);
+            return asset("storage/" . $this->image);
         }
         return asset("images/empty-image.png");
     }
