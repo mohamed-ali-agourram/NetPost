@@ -110,6 +110,14 @@ class ProfilePage extends Component
             Post::create($data);
             $post->shared = $post->shared + 1;
             $post->save();
+            if ($post->author->id !== auth()->user()->id) {
+                Notification::create([
+                    'sender' => auth()->user()->id,
+                    'reciver' => $post->author->id,
+                    'type' => 'POST-REACTION',
+                    'body' => 'shared your post'
+                ]);
+            }
             $this->dispatch("new-post");
         }
     }

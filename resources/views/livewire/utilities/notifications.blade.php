@@ -19,6 +19,8 @@
                                 <i class="fa-solid fa-thumbs-up"></i>
                             @elseif (str_contains($notification->body, 'comment'))
                                 <i class="fa-solid fa-comment-dots"></i>
+                            @elseif (str_contains($notification->body, 'share'))
+                                <i class="fa-solid fa-megaphone"></i>
                             @else
                                 <i class="fa-solid fa-user-group"></i>
                             @endif
