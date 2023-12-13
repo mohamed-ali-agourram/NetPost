@@ -100,9 +100,20 @@
             @empty
                 <h2 class="empty-posts-list">
                     <i class="fa-regular fa-newspaper"></i>
-                    <span>{{ $this->user->id === auth()->user()->id ? 'You' : $this->user->name }} didn't post any publication yet</span>
+                    <span>{{ $this->user->id === auth()->user()->id ? 'You' : $this->user->name }} didn't post any
+                        publication yet</span>
                 </h2>
             @endforelse
+            @unless ($is_bottom && !$loadingMore)
+                <x-skeleton />
+            @endunless
+            <div x-intersect="$wire.load_more()"></div>
+            @if ($is_bottom)
+                <div class="bottom">
+                    <h2>You reached the bottom</h2>
+                    <i class="fa-solid fa-anchor"></i>
+                </div>
+            @endif
         </div>
         <livewire:user.freinds-list :$user />
     </div>

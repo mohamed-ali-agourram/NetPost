@@ -8,9 +8,15 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\Notification;
 use Livewire\Attributes\Computed;
+use Livewire\WithPagination;
 
 class PostsList extends Component
 {
+    use WithPagination;
+
+    public $posts_per_page = 5;
+    public $loadingMore = true;
+    public $is_bottom = false;
 
     #[On("like-post")]
     public function like(?Post $post)
@@ -73,11 +79,19 @@ class PostsList extends Component
         }
     }
 
+    public function load_more()
+    {
+        $this->loadingMore = true;
+        $this->posts_per_page += 5;
+        $this->loadingMore = false;
+    }
+
     #[On("new-post")]
     #[Computed()]
     public function posts()
     {
-        return Post::published()->orderBy("published_at", "desc")->get();
+        $this->is_bottom = $this->posts_per_page >= Post::published()->count();
+        return Post::published()->orderBy("published_at", "desc")->paginate($this->posts_per_page);
     }
 
     public function render()
