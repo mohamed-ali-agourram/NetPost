@@ -9,11 +9,17 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\Notification;
 use Livewire\Attributes\Url;
+use Livewire\WithPagination;
 use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\DB;
 
 class ProfilePage extends Component
 {
+    use WithPagination;
+
+    public $posts_per_page = 5;
+    public $loadingMore = true;
+    public $is_bottom = false;
     public User $user;
     public $profile_image;
     public $cover_image;
@@ -122,6 +128,13 @@ class ProfilePage extends Component
         }
     }
 
+    public function load_more()
+    {
+        $this->loadingMore = true;
+        $this->posts_per_page += 5;
+        $this->loadingMore = false;
+    }
+
     #[On("new-post")]
     #[Computed()]
     public function posts()
@@ -140,7 +153,8 @@ class ProfilePage extends Component
                 ->orderBy('comments_count', $this->sort_comments)
             ;
         }
-        return $posts->orderBy('created_at', $this->sort_date)->get();
+        $this->is_bottom = $this->posts_per_page >= Post::published()->count();
+        return $posts->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
     }
 
     public function add_friend()

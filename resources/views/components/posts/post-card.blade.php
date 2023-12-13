@@ -1,4 +1,4 @@
-@props(['post', 'is_shared' => false])
+@props(['isFirst' => false, 'post', 'is_shared' => false])
 <style>
     .radius {
         border-top-left-radius: 0px !important;
@@ -7,9 +7,7 @@
 </style>
 @php
     $addedClass = '';
-    if (isset($isFirst)) {
-        $addedClass = $isFirst ? 'radius' : '';
-    }
+    $addedClass = $isFirst ? 'radius' : '';
     if ($is_shared) {
         $addedClass = $addedClass . ' shared_post';
     }
