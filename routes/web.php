@@ -3,10 +3,13 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name("home")->middleware("auth");
+
+Route::get('/search', [SearchController::class, "index"])->name("search")->middleware("auth");
 
 Route::get("test", [TestController::class, "test"]);
 
