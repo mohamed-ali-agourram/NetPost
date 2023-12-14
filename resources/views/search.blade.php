@@ -12,6 +12,14 @@
             width: 60%;
         }
 
+        .posts {
+            align-items: center
+        }
+
+        .post_card {
+            width: 85%;
+        }
+
         @media screen and (max-width: 880px) {
             .nav_routes {
                 display: flex !important;
@@ -40,44 +48,47 @@
                 </div>
             </div>
         </div>
-        <h2 class="h2">Results for "hello world"</h2>
-        <div class="skeleton post_card">
-            <div class="post_card_header">
-                <div class="img"></div>
-                <div class="skeleton_card_header">
-                    <span></span>
-                    <span></span>
+        <h2 class="h2" style="margin-top: 10px">Results for "hello world"</h2>
+        <div class="posts skeleton_wrapper">
+            <div class="skeleton post_card">
+                <div class="post_card_header">
+                    <div class="img"></div>
+                    <div class="skeleton_card_header">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="post_card_body">
+
+                </div>
+                <div class="post_card_footer">
+                    <div class="pcf_icons">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
             </div>
-            <div class="post_card_body">
+            <div class="skeleton post_card">
+                <div class="post_card_header">
+                    <div class="img"></div>
+                    <div class="skeleton_card_header">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="post_card_body">
 
-            </div>
-            <div class="post_card_footer">
-                <div class="pcf_icons">
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                </div>
+                <div class="post_card_footer">
+                    <div class="pcf_icons">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="skeleton post_card">
-            <div class="post_card_header">
-                <div class="img"></div>
-                <div class="skeleton_card_header">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="post_card_body">
 
-            </div>
-            <div class="post_card_footer">
-                <div class="pcf_icons">
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-layouts.app-layout>

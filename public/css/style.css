@@ -1926,8 +1926,10 @@
 }
 
 @media screen and (max-width: 980px) {
-    .skeleton {
-        width: 80% !important;
+    .skeleton_wrapper {
+        .skeleton {
+            width: 80% !important;
+        }
     }
 
     .post-card-model {
@@ -1964,8 +1966,10 @@
         display: none !important;
     }
 
-    .skeleton {
-        width: 85% !important;
+    .skeleton_wrapper {
+        .skeleton {
+            width: 85% !important;
+        }
     }
 
     .post_from_model form {
@@ -2157,8 +2161,10 @@
 }
 
 @media screen and (max-width: 604px) {
-    .skeleton {
-        width: 90% !important;
+    .skeleton_wrapper {
+        .skeleton {
+            width: 90% !important;
+        }
     }
 
     .post_from_model form {
