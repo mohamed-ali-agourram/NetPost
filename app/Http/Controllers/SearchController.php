@@ -9,6 +9,7 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $search = $request->query("search");
-        return view("search", ["search" => $search]);
+        $filter = $request->query("filter");
+        return view("search", ["search" => $search, "filter" => $filter]);
     }
 }

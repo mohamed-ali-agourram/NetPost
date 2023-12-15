@@ -9,6 +9,8 @@ class SearchBox extends Component
 {
     #[Url( as: 'search')]
     public $search;
+    #[Url( as: 'filter')]
+    public $filter = "all";
 
     public function handleSubmit()
     {
@@ -16,7 +18,7 @@ class SearchBox extends Component
             'search' => 'required|string|max:255',
         ]);
 
-        $this->redirectRoute("search", ['search' => $this->search], navigate: true);
+        $this->redirectRoute("search", ['search' => $this->search, "filter" => $this->filter], navigate: true);
     }
 
     public function render()

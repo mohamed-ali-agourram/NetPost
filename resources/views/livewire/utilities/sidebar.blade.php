@@ -17,24 +17,13 @@
         <div class="search_routes">
             <div class="line"></div>
             <h3 class="underline">Filters</h3>
-            <a href="/">
-                <li class="active">
-                    <i class="fa-solid fa-list"></i>
-                    <span>All</span>
-                </li>
-            </a>
-            <a href="./profie.html">
-                <li>
-                    <i class="fa-solid fa-layer-group"></i>
-                    <span>Posts</span>
-                </li>
-            </a>
-            <a href="./freinds.html">
-                <li>
-                    <i class="fa-solid fa-users"></i>
-                    <span>Users</span>
-                </li>
-            </a>
+            @php
+                $sections = app()->view->getSections();
+                $filter = isset($sections['filter']) ? $sections['filter'] : null;
+            @endphp
+            <livewire:search.search-filter-link :$filter filter_name="all" />
+            <livewire:search.search-filter-link :$filter filter_name="posts" />
+            <livewire:search.search-filter-link :$filter filter_name="users" />
         </div>
     </ul>
     <div wire:click='logout' class="logout">

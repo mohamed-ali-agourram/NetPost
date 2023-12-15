@@ -9,6 +9,27 @@ use Livewire\Component;
 class SearchPage extends Component
 {
     public $search;
+
+    public $filter;
+
+    public function likes_count(User $user)
+    {
+        $count = 0;
+        foreach ($user->posts as $post) {
+            $count += $post->likes->count();
+        }
+        if ($count > 1) {
+            return $count . ' likes';
+        }
+        return $count . ' like';
+    }
+
+    public function toggle_filter(string $filter)
+    {
+        $this->filter = $filter;
+        dd($this->filter);
+    }
+
     public function render()
     {
         $users = User::where('name', 'like', '%' . $this->search . '%')->get();

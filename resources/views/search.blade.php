@@ -1,4 +1,5 @@
 <x-layouts.app-layout>
+    @section('filter', $filter)
     <style>
         .nav_routes {
             display: none !important;
