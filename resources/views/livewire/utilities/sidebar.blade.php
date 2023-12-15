@@ -7,7 +7,7 @@
         <i class="fa-solid fa-x"></i>
     </div>
     <ul class="nav">
-        <form action="#.php">
+        <form action="{{ route('search') }}">
             <label for="search"></label>
             <input type="text" name="search" placeholder="search" id="search">
         </form>
