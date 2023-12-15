@@ -21,6 +21,16 @@
         </div>
     </div>
     <h2 class="h2" style="margin-top: 10px">Results for "{{ $search }}"</h2>
+    @if ($users->isNotEmpty() || $posts->isNotEmpty())
+        @if ($users->isNotEmpty())
+            @dump($users)
+        @endif
+        @if ($posts->isNotEmpty())
+            @dump($posts)
+        @endif
+    @else
+        <h1>Nothing Found....</h1>
+    @endif
     <div class="posts skeleton_wrapper">
         <div class="skeleton post_card">
             <div class="post_card_header">

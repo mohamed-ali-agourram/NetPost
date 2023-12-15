@@ -7,10 +7,7 @@
         <i class="fa-solid fa-x"></i>
     </div>
     <ul class="nav">
-        <form action="{{ route('search') }}">
-            <label for="search"></label>
-            <input type="text" name="search" placeholder="search" id="search">
-        </form>
+        <livewire:search.search-box />
         <div class="nav_routes">
             <x-link route="home" icon="fa-house" />
             <x-link route="profile" icon="fa-user" />

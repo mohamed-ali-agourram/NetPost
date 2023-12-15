@@ -26,5 +26,5 @@
             }
         }
     </style>
-    <livewire:search.search-page />
+    <livewire:search.search-page :$search />
 </x-layouts.app-layout>
