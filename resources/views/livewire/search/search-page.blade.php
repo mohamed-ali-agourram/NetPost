@@ -22,7 +22,7 @@
     </div>
     <h2 class="h2" style="margin-top: 10px">Results for "{{ $search }}"</h2>
     @if ($users->isNotEmpty() || $posts->isNotEmpty())
-        @if ($users->isNotEmpty())
+        @if ($users->isNotEmpty() && ($this->filter === 'all' || $this->filter === 'users'))
             <div class="user-card">
                 <div class="user-card_header">
                     <img src="{{ $users[0]->profile_image() }}" alt="profile">
@@ -75,7 +75,7 @@
                 </div>
             @endif
         @endif
-        @if ($posts->isNotEmpty())
+        @if ($posts->isNotEmpty() && ($this->filter === 'all' || $this->filter === 'posts'))
             @foreach ($posts as $post)
                 <style>
                     .post_card {

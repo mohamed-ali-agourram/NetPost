@@ -1,5 +1,6 @@
 <x-layouts.app-layout>
     @section('filter', $filter)
+    @section('search', $search)
     <style>
         .nav_routes {
             display: none !important;

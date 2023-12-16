@@ -4,13 +4,18 @@ namespace App\Livewire\Search;
 
 use App\Models\Post;
 use App\Models\User;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class SearchPage extends Component
 {
     public $search;
 
-    public $filter;
+    #[Computed()]
+    public function filter()
+    {
+        return request()->query('filter');
+    }
 
     public function likes_count(User $user)
     {
@@ -22,12 +27,6 @@ class SearchPage extends Component
             return $count . ' likes';
         }
         return $count . ' like';
-    }
-
-    public function toggle_filter(string $filter)
-    {
-        $this->filter = $filter;
-        dd($this->filter);
     }
 
     public function render()

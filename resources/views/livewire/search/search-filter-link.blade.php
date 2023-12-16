@@ -1,4 +1,4 @@
-<div wire:click='toggle_filter("{{ $filter_name }}")'>
+<div wire:click='toggle_filter("{{ $filter_name }}", "{{ $search }}")'>
     <li class="{{ $filter === $filter_name ? 'active' : '' }}">
         @switch($filter_name)
             @case('users')

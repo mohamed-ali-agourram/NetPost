@@ -20,10 +20,11 @@
             @php
                 $sections = app()->view->getSections();
                 $filter = isset($sections['filter']) ? $sections['filter'] : null;
+                $search = isset($sections['search']) ? $sections['search'] : null;
             @endphp
-            <livewire:search.search-filter-link :$filter filter_name="all" />
-            <livewire:search.search-filter-link :$filter filter_name="posts" />
-            <livewire:search.search-filter-link :$filter filter_name="users" />
+            <livewire:search.search-filter-link :$search :$filter filter_name="all" />
+            <livewire:search.search-filter-link :$search :$filter filter_name="posts" />
+            <livewire:search.search-filter-link :$search :$filter filter_name="users" />
         </div>
     </ul>
     <div wire:click='logout' class="logout">
