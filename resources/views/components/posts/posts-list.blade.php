@@ -6,7 +6,7 @@
         <div>No Post Found...</div>
     @endforelse
     @unless ($is_bottom && !$loadingMore)
-        <x-skeleton />
+        <x-utilities.skeleton />
     @endunless
     <div x-intersect="$wire.load_more()"></div>
     @if ($is_bottom)

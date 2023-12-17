@@ -4,17 +4,22 @@ namespace App\Livewire\Search;
 
 use App\Models\Post;
 use App\Models\User;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SearchPage extends Component
 {
+    use WithPagination;
+    public $n_posts = 1;
+    public $loadingMorePosts = true;
+    public $n_users = 4;
+    public $loadingMoreUsers = true;
     public $search;
+    public $filter;
 
-    #[Computed()]
-    public function filter()
+    public function mount()
     {
-        return request()->query('filter');
+        $this->filter = request()->query('filter');
     }
 
     public function likes_count(User $user)
@@ -29,10 +34,24 @@ class SearchPage extends Component
         return $count . ' like';
     }
 
+    public function load_more_posts()
+    {
+        $this->loadingMorePosts = true;
+        $this->n_posts += 3;
+        $this->loadingMorePosts = false;
+    }
+
+    public function load_more_users()
+    {
+        $this->loadingMoreUsers = true;
+        $this->n_users += 3;
+        $this->loadingMoreUsers = false;
+    }
+
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->search . '%')->get();
-        $posts = Post::where('body', 'like', '%' . $this->search . '%')->get();
+        $users = User::where('name', 'like', '%' . $this->search . '%')->paginate($this->n_users);
+        $posts = Post::where('body', 'like', '%' . $this->search . '%')->paginate($this->n_posts);
         return view('livewire.search.search-page', ["users" => $users, "posts" => $posts]);
     }
 }
