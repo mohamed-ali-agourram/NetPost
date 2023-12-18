@@ -12,13 +12,20 @@
             <span>Home</span>
         </a>
     </div>
+    <style>
+        .is_active {
+            background-color: rgba(0, 0, 0, 0.589) !important;
+        }
+    </style>
     <div class="explore">
         <p>Explore the NET</p>
-        <a href="#"><i class="fa-solid fa-globe"></i>Community</a>
-        <a href="#"><i class="fa-solid fa-users"></i>Freinds</a>
+        <a @class(['is_active' => $route === 'home']) wire:navigate href="{{ route('home') }}"><i
+                class="fa-solid fa-globe"></i>Community</a>
+        <a @class(['is_active' => $route === 'freinds-posts']) wire:navigate href="{{ route('freinds-posts') }}"><i
+                class="fa-solid fa-users"></i>Freinds</a>
     </div>
     <div class="header__profile">
-        <div wire:poll.3s class="bell">
+        <div wire:poll.5s class="bell">
             @php
                 $notifications_count = auth()
                     ->user()

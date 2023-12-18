@@ -10,9 +10,11 @@ use Livewire\Component;
 
 class NavBar extends Component
 {
+    public $route;
     public function mount()
     {
         $this->checkForNewNotification();
+        $this->route = request()->route()->getName();
     }
 
     public function boot()
