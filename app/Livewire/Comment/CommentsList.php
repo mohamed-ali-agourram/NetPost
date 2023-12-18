@@ -12,9 +12,17 @@ class CommentsList extends Component
 {
     public ?Post $post;
 
+    public $filter = "newest";
+
+    public function toggle_filter()
+    {
+        $this->filter = $this->filter === "newest" ? "oldest" : "newest";
+    }
+
     #[On("new-comment")]
     #[Computed()]
-    public function comments(){
+    public function comments()
+    {
         return $this->post ? $this->post->comments->sortByDesc('created_at')->values()->all() : [];
     }
 
@@ -22,8 +30,7 @@ class CommentsList extends Component
     public function delete(Comment $comment)
     {
         $userId = auth()->user()->id;
-        if($userId === $comment->author->id)
-        {
+        if ($userId === $comment->author->id) {
             $comment->delete();
             $this->dispatch('refreshComponent');
             $this->dispatch("new-comment");
