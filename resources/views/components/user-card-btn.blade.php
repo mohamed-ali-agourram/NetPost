@@ -1,4 +1,4 @@
-@props(['user'])
+@props(['user', 'is_friendpage' => false, 'friend' => null])
 @php
     $auth = auth()->user();
 @endphp
@@ -13,7 +13,15 @@
             ->exists();
     @endphp
     @if ($is_freindship)
-        <button> <a wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">Friends</a></button>
+        @if ($is_friendpage)
+            <button>
+                <abbr style="text-decoration: none;" title="unfreind"
+                    wire:click='$dispatch("toggle-confirm-modal", {action: "unfriend", data: {{ $friend->id }}})'
+                    class="unfreind"><i class="fa-solid fa-user-xmark"></i> <span>unfriend</span> </abbr>
+            </button>
+        @else
+            <button> <a wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">Friends</a></button>
+        @endif
     @else
         <button> <a wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">Show
                 Profile</a></button>

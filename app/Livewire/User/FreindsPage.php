@@ -3,18 +3,28 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 
 class FreindsPage extends Component
 {
-    public $friends;
+    public $loadingMoreFriends = true;
+    public $n_friends = 4;
+
+    public function load_more_friends()
+    {
+        $this->loadingMoreFriends = true;
+        $this->n_friends += 3;
+        $this->loadingMoreFriends = false;
+    }
 
     #[On("refresh-page")]
-    public function mount()
+    #[Computed()]
+    public function friends()
     {
-        $this->friends = auth()->user()->friends;
+        return auth()->user()->friends()->paginate($this->n_friends);
     }
 
     #[On("unfriend")]
