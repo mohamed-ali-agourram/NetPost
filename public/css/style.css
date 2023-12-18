@@ -1905,6 +1905,24 @@
     }
 }
 
+.search_box {
+    position: relative;
+
+    & button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: white;
+
+        &:hover {
+            scale: 105%;
+        }
+    }
+}
+
 .user-card {
     color: white;
     background-color: var(--second-color);
