@@ -129,10 +129,10 @@
                         <x-user-card-btn :$user />
                     </div>
                 @endforeach
+                <div style="margin-bottom: -10px" x-intersect="$wire.load_more_users()"></div>
                 @unless (!$loadingMoreUsers)
                     <x-utilities.users-skeleton />
                 @endunless
-                <div style="visibility: hidden" x-intersect="$wire.load_more_users()"></div>
             @endif
         @endif
         @if ($posts->isNotEmpty() && ($filter === 'all' || $filter === 'posts'))
@@ -158,10 +158,10 @@
                     <x-posts.post-card :key="$post?->pluck('id')->join(uniqid())" :$post />
                 @endif
             @endforeach
+            <div style="margin-bottom: -10px" x-intersect="$wire.load_more_posts()"></div>
             @unless (!$loadingMorePosts)
                 <x-utilities.skeleton />
             @endunless
-            <div x-intersect="$wire.load_more_posts()"></div>
         @endif
     @else
         <h1 style="color: white">Nothing Found....</h1>

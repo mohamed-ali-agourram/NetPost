@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class SearchPage extends Component
 {
     use WithPagination;
-    public $n_posts = 1;
+    public $n_posts = 4;
     public $loadingMorePosts = true;
     public $n_users = 4;
     public $loadingMoreUsers = true;

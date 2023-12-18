@@ -4,7 +4,7 @@
             gap: 10px;
 
             & .skeleton {
-                width: 65% !important;
+                width: 65%;
                 height: 12.5vh !important;
             }
         }
