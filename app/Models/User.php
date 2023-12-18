@@ -95,6 +95,12 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class, "reciver")->where("read", false);
     }
 
+    public function friendsPosts()
+    {
+        $friendsIds = $this->acceptedFriendsTo->pluck('id')->merge($this->acceptedFriendsFrom->pluck('id'));
+        return Post::published()->whereIn('user_id', $friendsIds)->orderBy("published_at", "desc")->get();
+    }
+
     public function friendsTo()
     {
         return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')

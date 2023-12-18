@@ -1,13 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TestController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProfileController;
 
-Route::get('/', HomeController::class)->name("home")->middleware("auth");
+Route::get('/', [PostsController::class, "home"])->name("home")->middleware("auth");
+
+Route::get('/freinds-posts', [PostsController::class, "friends_page"])->name("freinds-posts")->middleware("auth");
 
 Route::get('/search', [SearchController::class, "index"])->name("search")->middleware("auth");
 

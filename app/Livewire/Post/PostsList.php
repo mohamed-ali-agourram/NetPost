@@ -14,6 +14,7 @@ class PostsList extends Component
 {
     use WithPagination;
 
+    public $is_friend_page;
     public $posts_per_page = 5;
     public $loadingMore = true;
     public $is_bottom = false;
@@ -90,9 +91,17 @@ class PostsList extends Component
     #[Computed()]
     public function posts()
     {
-        $this->is_bottom = $this->posts_per_page >= Post::published()->count();
-        return Post::published()->orderBy("published_at", "desc")->paginate($this->posts_per_page);
+        if ($this->is_friend_page) {
+            $friendsPostsQuery = auth()->user()->friendsPosts();
+            $this->is_bottom = $this->posts_per_page >= $friendsPostsQuery->count();
+            return $friendsPostsQuery;
+        } else {
+            $publishedPostsQuery = Post::published()->orderBy("published_at", "desc");
+            $this->is_bottom = $this->posts_per_page >= $publishedPostsQuery->count();
+            return $publishedPostsQuery->paginate($this->posts_per_page);
+        }
     }
+
 
     public function render()
     {
