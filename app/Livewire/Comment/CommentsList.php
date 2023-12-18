@@ -12,18 +12,32 @@ class CommentsList extends Component
 {
     public ?Post $post;
 
+    public $filter = "desc";
+
+    public function toggle_filter()
+    {
+        $this->filter = $this->filter === "desc" ? "asc" : "desc";
+    }
+
     #[On("new-comment")]
     #[Computed()]
-    public function comments(){
-        return $this->post ? $this->post->comments->sortByDesc('created_at')->values()->all() : [];
+    public function comments()
+    {
+        if (!$this->post) {
+            return [];
+        }
+
+        return $this->filter === 'desc'
+            ? $this->post->comments->sortByDesc('created_at')->values()->all()
+            : $this->post->comments->sortBy('created_at')->values()->all();
     }
+
 
     #[On("delete-comment")]
     public function delete(Comment $comment)
     {
         $userId = auth()->user()->id;
-        if($userId === $comment->author->id)
-        {
+        if ($userId === $comment->author->id) {
             $comment->delete();
             $this->dispatch('refreshComponent');
             $this->dispatch("new-comment");

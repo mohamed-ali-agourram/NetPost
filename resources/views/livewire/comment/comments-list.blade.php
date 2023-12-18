@@ -1,8 +1,15 @@
 <div class="comments">
-    <div class="filter">
-        <p>Newest First</p>
-        <i class="fas fa-angle-down"></i>
-    </div>
+    @if (count($this->comments) > 0)
+        <div wire:click='toggle_filter' class="filter">
+            @if ($filter === 'desc')
+                <p>Newest First</p>
+                <i class="fas fa-angle-down"></i>
+            @else
+                <p>Oldest First</p>
+                <i class="fa-solid fa-angle-up"></i>
+            @endif
+        </div>
+    @endif
     @forelse ($this->comments as $comment)
         <div class="comment">
             <img src={{ $comment->author->profile_image() }} alt="comment-author-image">
