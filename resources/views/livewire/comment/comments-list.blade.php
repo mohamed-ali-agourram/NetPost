@@ -22,7 +22,7 @@
             </div>
         </div>
     @empty
-        <h1>Be the first to comment</h1>
+        <h3 style="color: gray">Be the first to comment</h3>
     @endforelse
 
     <script>

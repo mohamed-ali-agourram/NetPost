@@ -104,10 +104,10 @@
                         publication yet</span>
                 </h2>
             @endforelse
-            @unless ($is_bottom && !$loadingMore)
-                <x-skeleton />
-            @endunless
             <div x-intersect="$wire.load_more()"></div>
+            @unless ($is_bottom && !$loadingMore)
+                <x-utilities.skeleton />
+            @endunless
             @if ($is_bottom)
                 <div class="bottom">
                     <h2>You reached the bottom</h2>
