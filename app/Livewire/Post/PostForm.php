@@ -64,8 +64,7 @@ class PostForm extends Component
         if ($this->image) {
             $data['image'] = $this->image->store('images', 'public');
         }
-        if($imagePath != null)
-        {
+        if ($imagePath != null) {
             $data["is_profile_update"] = "1";
             $data["image"] = $imagePath;
         }
@@ -89,7 +88,7 @@ class PostForm extends Component
             $data["is_published"] = $this->is_published;
             $data["published_at"] = null;
         }
-        if ($this->image && method_exists($this->image, 'temporaryUrl')) {
+        if ($this->image && $this->shared_post === null && method_exists($this->image, 'temporaryUrl')) {
             $data['image'] = $this->image->store('images', 'public');
         } else {
             $data['image'] = $this->image;
