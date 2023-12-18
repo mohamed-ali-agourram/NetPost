@@ -1,7 +1,7 @@
 <div class="comments">
     @if (count($this->comments) > 0)
         <div wire:click='toggle_filter' class="filter">
-            @if ($filter === 'newest')
+            @if ($filter === 'desc')
                 <p>Newest First</p>
                 <i class="fas fa-angle-down"></i>
             @else

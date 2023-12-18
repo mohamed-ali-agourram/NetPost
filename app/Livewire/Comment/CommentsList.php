@@ -12,19 +12,26 @@ class CommentsList extends Component
 {
     public ?Post $post;
 
-    public $filter = "newest";
+    public $filter = "desc";
 
     public function toggle_filter()
     {
-        $this->filter = $this->filter === "newest" ? "oldest" : "newest";
+        $this->filter = $this->filter === "desc" ? "asc" : "desc";
     }
 
     #[On("new-comment")]
     #[Computed()]
     public function comments()
     {
-        return $this->post ? $this->post->comments->sortByDesc('created_at')->values()->all() : [];
+        if (!$this->post) {
+            return [];
+        }
+
+        return $this->filter === 'desc'
+            ? $this->post->comments->sortByDesc('created_at')->values()->all()
+            : $this->post->comments->sortBy('created_at')->values()->all();
     }
+
 
     #[On("delete-comment")]
     public function delete(Comment $comment)
