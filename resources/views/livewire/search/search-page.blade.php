@@ -1,33 +1,51 @@
 <div class="search_content">
     <div class="search_navbar">
-        <div class="search_input">
-            <i class="fa-solid fa-arrow-left"></i>
-            <input type="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        <form wire:submit.prevent='handleSubmit' class="search_input">
+            <a wire:navigate href="{{ route('home') }}">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <input wire:model='search' type="search"
+                value="{{ $errors->has('search') ? $errors->first('search') : $search }}"
+                @error('search') style="color: red;" @enderror>
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+        <style>
+            .black-bg {
+                background: rgba(0, 0, 0, 0.644) !important;
+            }
+        </style>
         <div class="search_filters">
-            <div style="background: rgba(0, 0, 0, 0.644);">
+            <div wire:click='toggle_filter("all")' class={{ $filter === 'all' ? 'black-bg' : '' }}>
                 <i class="fa-solid fa-list"></i>
                 <span>All</span>
             </div>
-            <div>
+            <div wire:click='toggle_filter("posts")' class={{ $filter === 'posts' ? 'black-bg' : '' }}>
                 <i class="fa-solid fa-layer-group"></i>
                 <span>Post</span>
             </div>
-            <div>
+            <div wire:click='toggle_filter("users")' class={{ $filter === 'users' ? 'black-bg' : '' }}>
                 <i class="fa-solid fa-users"></i>
                 <span>Users</span>
             </div>
         </div>
     </div>
     @if ($users->isNotEmpty() || $posts->isNotEmpty())
+        @php
+            $auth = auth()->user();
+        @endphp
         @if ($users->isNotEmpty())
             @if ($filter === 'all')
                 <div class="user-card">
                     <div class="user-card_header">
-                        <img src="{{ $users[0]->profile_image() }}" alt="profile">
+                        <a wire:navigate href="{{ route('profile', ['slug' => $users[0]->slug]) }}">
+                            <img src="{{ $users[0]->profile_image() }}" alt="profile">
+                        </a>
                         <div>
-                            <h3>{{ $users[0]->name }}</h3>
+                            <h3><a wire:navigate
+                                    href="{{ route('profile', ['slug' => $users[0]->slug]) }}">{{ $users[0]->name }}</a>
+                            </h3>
                             <p class="status"><span>status: </span>{{ $users[0]->status }}</p>
                         </div>
                     </div>
@@ -52,7 +70,8 @@
                             </p>
                         </div>
                     </div>
-                    <button>Add Friend</button>
+                    <x-user-card-btn :user="$users[0]" />
+
                 </div>
                 @if ($users->count() > 1)
                     <div class="users-list">
@@ -67,11 +86,12 @@
                                             <p class="status"><span>status: </span>{{ $user->status }}</p>
                                         </div>
                                     </div>
-                                    <button>Add Friend</button>
+                                    <x-user-card-btn :$user />
+
                                 </div>
                             @endif
                         @endforeach
-                        <button class="link"><a href="#">See all</a></button>
+                        <button wire:click='toggle_filter("users")' class="link">See all</button>
                     </div>
                 @endif
             @elseif($filter === 'users')
@@ -106,7 +126,7 @@
                                 <p class="status"><span>status: </span>{{ $user->status }}</p>
                             </div>
                         </div>
-                        <button>Add Friend</button>
+                        <x-user-card-btn :$user />
                     </div>
                 @endforeach
                 @unless (!$loadingMoreUsers)
@@ -126,6 +146,12 @@
                 <style>
                     .post_card {
                         width: 65% !important;
+                    }
+
+                    @media screen and (max-width: 880px) {
+                        .post_card {
+                            width: 85% !important;
+                        }
                     }
                 </style>
                 @if ($post->is_published)

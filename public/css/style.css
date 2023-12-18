@@ -1810,7 +1810,7 @@
 
 /*search page*/
 .search_navbar {
-    width: 100%;
+    width: 85%;
     display: none;
     flex-direction: column;
 
@@ -1821,14 +1821,21 @@
         color: white;
         padding: 1vh 2vh;
 
-        & i {
-            cursor: pointer;
-            font-size: 25px;
+        & button {
+            background: none;
+            border: none;
+            color: white;
 
-            &:hover {
-                color: rgb(168, 166, 166);
+            & i {
+                cursor: pointer;
+                font-size: 25px;
+
+                &:hover {
+                    color: rgb(168, 166, 166);
+                }
             }
         }
+
 
         & input {
             width: 90%;
@@ -1912,6 +1919,11 @@
         width: 100px;
         height: 100px;
         border-radius: 100%;
+        transition: all .3s ease;
+
+        &:hover {
+            scale: 105%;
+        }
     }
 
     .user-card_header {
@@ -1923,6 +1935,10 @@
             display: flex;
             flex-direction: column;
             padding: 1vh;
+
+            & h3:hover {
+                text-decoration: underline;
+            }
         }
     }
 
@@ -1988,6 +2004,10 @@
         & img {
             width: 60px;
             height: 60px;
+
+            &:hover {
+                scale: 105%;
+            }
         }
 
         & button {
@@ -2077,6 +2097,14 @@
 }
 
 @media screen and (max-width: 880px) {
+    .user-card {
+        width: 85% !important;
+    }
+
+    .users-list {
+        width: 85% !important;
+    }
+
     #search {
         display: none;
     }

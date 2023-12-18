@@ -87,7 +87,8 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->hasMany(Notification::class, "reciver")->orderBy('created_at', 'desc');;
+        return $this->hasMany(Notification::class, "reciver")->orderBy('created_at', 'desc');
+        ;
     }
     public function unreaded_notifications()
     {
@@ -155,6 +156,14 @@ class User extends Authenticatable
                 $query->where('friend_id', $this->id)
                     ->where('accepted', 1);
             });
+    }
+
+    public function isFriendWith(User $otherUser)
+    {
+        return $this->friends()
+            ->where('id', $otherUser->id)
+            ->where('accepted', true)
+            ->exists();
     }
 
     public function pendingRequestsRelation()

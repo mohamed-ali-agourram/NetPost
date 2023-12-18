@@ -22,6 +22,21 @@ class SearchPage extends Component
         $this->filter = request()->query('filter');
     }
 
+    public function toggle_filter(string $filter)
+    {
+        $this->filter = $filter;
+        $this->redirectRoute("search", ['search' => $this->search, "filter" => $this->filter], navigate: true);
+    }
+
+    public function handleSubmit()
+    {
+        $this->validate([
+            'search' => 'required|string|max:255',
+        ]);
+
+        $this->redirectRoute("search", ['search' => $this->search, "filter" => $this->filter], navigate: true);
+    }
+
     public function likes_count(User $user)
     {
         $count = 0;
@@ -50,8 +65,13 @@ class SearchPage extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->search . '%')->paginate($this->n_users);
-        $posts = Post::where('body', 'like', '%' . $this->search . '%')->paginate($this->n_posts);
+        $users = collect();
+        $posts = collect();
+
+        if (!empty($this->search)) {
+            $users = User::where('name', 'like', '%' . $this->search . '%')->paginate($this->n_users);
+            $posts = Post::where('body', 'like', '%' . $this->search . '%')->paginate($this->n_posts);
+        }
         return view('livewire.search.search-page', ["users" => $users, "posts" => $posts]);
     }
 }
