@@ -25,9 +25,11 @@
         @forelse ($this->friends as $friend)
             <div class="user-card">
                 <div class="user-card_header">
-                    <img src="{{ $friend->profile_image() }}" alt="profile">
+                    <a wire:navigate href="{{ route('profile', ['slug' => $friend->slug]) }}"><img
+                            src="{{ $friend->profile_image() }}" alt="profile"></a>
                     <div>
-                        <h4>{{ $friend->name }}</h4>
+                        <h4><a wire:navigate
+                                href="{{ route('profile', ['slug' => $friend->slug]) }}">{{ $friend->name }}</a></h4>
                         <p class="status"><span>status: </span>{{ $friend->status }}</p>
                     </div>
                 </div>
