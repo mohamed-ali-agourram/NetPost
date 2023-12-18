@@ -2274,6 +2274,8 @@
 
 .freinds_main_content {
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
