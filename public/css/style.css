@@ -45,7 +45,7 @@
             margin-left: -25%;
 
             & p {
-                background: var(--like-bg) !important;
+                background: #000000b5 !important;
             }
 
             & a,
@@ -56,10 +56,10 @@
                 gap: 8px;
                 padding: 2vh;
                 border-radius: 10px;
-                background: var(--second-color);
+                background: var(--explore-links-bg);
 
                 &:hover {
-                    background: var(--main-color);
+                    background: var(--explore-hover-links-bg);
                 }
             }
         }

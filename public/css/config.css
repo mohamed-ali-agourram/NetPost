@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
-/* :root {
-    --main-color: rgb(46, 46, 46);
-    --second-color: #1d1e22;
-    --shadow: rgba(255, 255, 255, 0.075) 0px 3px 8px;
-} */
-
 * {
     margin: 0;
     padding: 0;
@@ -45,6 +39,8 @@ input[type="search"]::-webkit-search-cancel-button {
     --post_from_model_textarea_bg: var(--second-color);
     --border-bg: #00000030;
     --cancel-bg: #7c7e81;
+    --explore-links-bg: #4d4d4d;
+    --explore-hover-links-bg: black;
 }
 
 .DARK {
@@ -64,6 +60,8 @@ input[type="search"]::-webkit-search-cancel-button {
     --post_from_model_textarea_bg: var(--main-color);
     --border-bg: #b0b3b842;
     --cancel-bg: #3a3939;
+    --explore-links-bg: #4d4d4d;
+    --explore-hover-links-bg: rgba(0, 0, 0, 0.589);
 }
 
 body {
