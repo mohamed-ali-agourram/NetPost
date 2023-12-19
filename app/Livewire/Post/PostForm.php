@@ -88,7 +88,7 @@ class PostForm extends Component
             $data["is_published"] = $this->is_published;
             $data["published_at"] = null;
         }
-        if ($this->image && $this->shared_post === null && method_exists($this->image, 'temporaryUrl')) {
+        if ($this->image && isset($this->shared_post) === false && method_exists($this->image, 'temporaryUrl')) {
             $data['image'] = $this->image->store('images', 'public');
         } else {
             $data['image'] = $this->image;

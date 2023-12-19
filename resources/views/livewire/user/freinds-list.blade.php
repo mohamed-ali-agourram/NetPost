@@ -7,7 +7,7 @@
         $is_auth = $user === auth()->user();
     @endphp
     <h1 style="text-align: center;">{{ $is_auth ? 'My Freinds' : $user->name . "'s freinds" }}</h1>
-    @foreach ($friends as $friend)
+    @forelse ($friends as $friend)
         @if ($friend->slug !== $user->slug)
             <div class="freind">
                 <a wire:navigate href={{ route('profile', ['slug' => $friend->slug]) }}>
@@ -17,14 +17,13 @@
                     <a wire:navigate href={{ route('profile', ['slug' => $friend->slug]) }}>
                         <p>{{ $friend->name }}</p>
                     </a>
-                    <div><span class="green"></span>
-                        <p style="font-weight: normal; color: gray;">online</p></span>
-                    </div>
                 </div>
             </div>
         @endif
-    @endforeach
-    @if (auth()->user()->id === $user->id)
+    @empty
+        <p style="color: gray; text-align: center">No friends yet... <i class="fa-solid fa-face-sad-sweat"></i></p>
+    @endforelse
+    @if (auth()->user()->id === $user->id && $friends->count() > 0)
         <a wire:navigate href="{{ route('freinds') }}" style="color: rgb(74, 74, 219); text-align: center;">See All</a>
     @endif
 </aside>
