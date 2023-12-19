@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = [
         "user_id",
         "body",
-        "is_published",
+        "visibility",
         "image",
         "published_at",
         "featured",
@@ -22,9 +22,26 @@ class Post extends Model
         "shared"
     ];
 
-    public function scopePublished($query)
+    // General scope for visibility
+    public function scopeVisibility($query, $visibility)
     {
-        return $query->where("is_published", 1);
+        return $query->where('visibility', $visibility);
+    }
+
+    // Specific scopes for each visibility type
+    public function scopePublic($query)
+    {
+        return $this->scopeVisibility($query, 'public');
+    }
+
+    public function scopePrivate($query)
+    {
+        return $this->scopeVisibility($query, 'private');
+    }
+
+    public function scopeFriends($query)
+    {
+        return $this->scopeVisibility($query, 'friends');
     }
 
     public function author()

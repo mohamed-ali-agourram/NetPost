@@ -15,7 +15,7 @@ class PostForm extends Component
 
     public Post $post;
 
-    public $is_published = "1";
+    public $visibility = "private";
     #[Rule("max:5000")]
     public $body;
     #[Rule("nullable|sometimes|image|max:5024")]
@@ -31,7 +31,7 @@ class PostForm extends Component
             $this->isEditMode = true;
             $this->post = Post::find($post);
             $this->body = $this->post->body;
-            $this->is_published = $this->post->is_published;
+            $this->visibility = $this->post->visibility;
             $this->image = null;
             if ($this->post->image) {
                 $this->image = $this->post->image;
@@ -56,8 +56,8 @@ class PostForm extends Component
     public function create(string $imagePath = null)
     {
         $data = $this->validate();
-        $data["is_published"] = $this->is_published;
-        if ($this->is_published === "1") {
+        $data["visibility"] = $this->visibility;
+        if ($this->visibility === "public" || $this->visibility === "friends") {
             $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
         }
         $data["user_id"] = auth()->id();
@@ -79,13 +79,13 @@ class PostForm extends Component
         $data = $this->validate([
             'body' => 'max:5000',
         ]);
-        if ($this->is_published === "1") {
-            $data["is_published"] = $this->is_published;
+        if ($this->visibility === "public" || $this->visibility === "friends") {
+            $data["visibility"] = $this->visibility;
             if ($this->post->published_at === null) {
                 $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
             }
-        } elseif ($this->is_published === "0") {
-            $data["is_published"] = $this->is_published;
+        } elseif ($this->visibility === "private") {
+            $data["visibility"] = $this->visibility;
             $data["published_at"] = null;
         }
         if ($this->image && isset($this->shared_post) === false && method_exists($this->image, 'temporaryUrl')) {
