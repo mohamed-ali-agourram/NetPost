@@ -94,6 +94,7 @@ class PostsList extends Component
         if ($this->is_friend_page) {
             $friendsPostsQuery = auth()->user()->friendsPosts();
             $this->is_bottom = $this->posts_per_page >= $friendsPostsQuery->count();
+            ;
             return $friendsPostsQuery;
         } else {
             $publishedPostsQuery = Post::public()->orderBy("published_at", "desc");
