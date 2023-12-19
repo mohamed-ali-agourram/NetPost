@@ -51,7 +51,7 @@ class PostsList extends Component
             $shared_post_id = $sharedpost->id;
             $data = [
                 "user_id" => $user->id,
-                "is_published" => 1,
+                "visibility" => "friends",
                 "published_at" => Carbon::now()->format('Y-m-d H:i:s'),
                 "shared_post" => $shared_post_id,
             ];
@@ -96,7 +96,7 @@ class PostsList extends Component
             $this->is_bottom = $this->posts_per_page >= $friendsPostsQuery->count();
             return $friendsPostsQuery;
         } else {
-            $publishedPostsQuery = Post::published()->orderBy("published_at", "desc");
+            $publishedPostsQuery = Post::public()->orderBy("published_at", "desc");
             $this->is_bottom = $this->posts_per_page >= $publishedPostsQuery->count();
             return $publishedPostsQuery->paginate($this->posts_per_page);
         }

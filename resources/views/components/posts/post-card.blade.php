@@ -53,8 +53,10 @@
                 </a>
                 <p class="date_span">
                     <span>{{ $post->date() }}</span>
-                    @if ($post->is_published === '1')
+                    @if ($post->visibility === 'public')
                         <i title="public" class="fa-solid fa-earth-africa"></i>
+                    @elseif($post->visibility === 'friends')
+                        <i class="fa-solid fa-user-group"></i>
                     @else
                         <i title="private" class="fa-solid fa-lock"></i>
                     @endif

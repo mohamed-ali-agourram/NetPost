@@ -14,8 +14,10 @@
                     <b>{{ $post?->author->name }}</b>
                     <p>
                         <span>{{ $post?->date() }}</span>
-                        @if ($post?->is_published === '1')
+                        @if ($post?->visibility === 'public')
                             <i title="public" class="fa-solid fa-earth-africa"></i>
+                        @elseif($post?->visibility === 'friends')
+                            <i class="fa-solid fa-user-group"></i>
                         @else
                             <i title="private" class="fa-solid fa-lock"></i>
                         @endif
@@ -35,8 +37,7 @@
                         ->has_liked($post);
                 @endphp
                 <button wire:loading.attr="disabled"
-                    style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}"
-                    wire:click="toggleLike">
+                    style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}" wire:click="toggleLike">
                     <i style="color: {{ $is_liked ? 'red' : 'gray' }}" class="fa-solid fa-thumbs-up"></i>
                     <span class="pcf_action">Likes</span>
                     @if ($post?->likes()->count() > 0)
@@ -56,9 +57,9 @@
             </div>
         </div>
         <livewire:comment.comments-list :key="$post?->pluck('id')->join(uniqid())" :post="$post">
-        <div class="post-card-model-form">
-            <img src="{{ auth()->user()->profile_image() }}" alt="author">
-            <livewire:comment.comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
-        </div>
+            <div class="post-card-model-form">
+                <img src="{{ auth()->user()->profile_image() }}" alt="author">
+                <livewire:comment.comment-form :key="$post?->pluck('id')->join(uniqid())" :post="$post" />
+            </div>
     </div>
 </div>

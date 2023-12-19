@@ -8,7 +8,7 @@
     }
 }" class="post_from_model" style="display: {{ $is_open ? 'flex' : 'none' }}">
     <div class="post_from_model_backdrop" @click="$dispatch('close-form')"></div>
-    <form wire:submit.prevent='{{ isset($post) ? ' update()' : 'create' }}' enctype="multipart/form-data">
+    <form wire:submit.prevent='{{ isset($post) ? ' update' : 'create' }}' enctype="multipart/form-data">
         <h1>Create a new post</h1>
         <button type="button" class="cancel" @click="$dispatch('close-form')">
             <i class="fa-solid fa-circle-xmark"></i>
@@ -18,9 +18,10 @@
             <div>
                 <b>{{ auth()->user()->name }}</b>
                 <div class="custom-select">
-                    <select wire:model='is_published'>
-                        <option value="1" @selected($is_published === '1')>Public</option>
-                        <option value="0" @selected($is_published === '0')>Private</option>
+                    <select wire:model='visibility'>
+                        <option value="private">Private</option>
+                        <option value="public">Public</option>
+                        <option value="friends">Friends</option>
                     </select>
                     <div class="custom-arrow">
                         <i class="fas fa-caret-down"></i>

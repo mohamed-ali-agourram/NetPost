@@ -109,7 +109,7 @@ class ProfilePage extends Component
             $shared_post_id = $sharedpost->id;
             $data = [
                 "user_id" => $user->id,
-                "is_published" => 1,
+                "visibility" => "friends",
                 "published_at" => Carbon::now()->format('Y-m-d H:i:s'),
                 "shared_post" => $shared_post_id,
             ];
@@ -157,8 +157,19 @@ class ProfilePage extends Component
             $this->is_bottom = $this->posts_per_page >= $this->user->posts->count();
             return $posts->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
         } else {
-            $this->is_bottom = $this->posts_per_page >= $this->user->posts->where("is_published", 1)->count();
-            return $posts->where("is_published", 1)->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
+            $this->is_bottom = $this->posts_per_page >= Post::where('user_id', $this->user->id)
+                ->where(function ($query) {
+                    $query->where('visibility', 'public')
+                        ->orWhere('visibility', 'friends');
+                })->count();
+
+            return $posts->where('user_id', $this->user->id)
+                ->where(function ($query) {
+                    $query->where('visibility', 'public')
+                        ->orWhere('visibility', 'friends');
+                })
+                ->orderBy('created_at', $this->sort_date)
+                ->paginate($this->posts_per_page);
         }
     }
 
