@@ -153,8 +153,13 @@ class ProfilePage extends Component
                 ->orderBy('comments_count', $this->sort_comments)
             ;
         }
-        $this->is_bottom = $this->posts_per_page >= Post::published()->count();
-        return $posts->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
+        if ($this->user->id === auth()->user()->id) {
+            $this->is_bottom = $this->posts_per_page >= $this->user->posts->count();
+            return $posts->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
+        } else {
+            $this->is_bottom = $this->posts_per_page >= $this->user->posts->where("is_published", 1)->count();
+            return $posts->where("is_published", 1)->orderBy('created_at', $this->sort_date)->paginate($this->posts_per_page);
+        }
     }
 
     public function add_friend()

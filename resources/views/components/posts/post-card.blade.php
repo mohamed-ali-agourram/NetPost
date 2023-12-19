@@ -66,7 +66,7 @@
                 <abbr title="manage your post">
                     <i @click="isOpen = !isOpen" class="fa-solid fa-ellipsis"></i>
                 </abbr>
-                <div class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
+                <div style="display: none" class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
                     <button wire:click='$dispatch("open-form", {post: "{{ $post->id }}"})'>
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Modify post</span>
@@ -84,7 +84,9 @@
         @if ($post->is_profile_update)
             <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
         @endif
-        <p>{{ $post->body }}</p>
+        @if ($post->body)
+            <p>{{ $post->body }}</p>
+        @endif
         @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
         @endif
