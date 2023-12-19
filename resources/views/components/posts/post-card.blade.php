@@ -66,7 +66,7 @@
                 <abbr title="manage your post">
                     <i @click="isOpen = !isOpen" class="fa-solid fa-ellipsis"></i>
                 </abbr>
-                <div class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
+                <div style="display: none" class="manage-posts-modal" x-show="isOpen" @click="isOpen = false" x-cloak>
                     <button wire:click='$dispatch("open-form", {post: "{{ $post->id }}"})'>
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Modify post</span>
