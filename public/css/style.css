@@ -698,7 +698,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    background: var(--like-hover-bg);
+                    background: var(--open_ps-hover-bg);
                 }
             }
         }
@@ -716,7 +716,7 @@
             border-radius: 100%;
 
             &:hover {
-                background: var(--like-bg);
+                background: var(--open_ps-hover-bg);
             }
         }
 
@@ -728,7 +728,7 @@
             border-radius: 15px;
 
             &:hover {
-                background: var(--like-hover-bg);
+                background: var(--open_ps-hover-bg);
             }
         }
     }
