@@ -41,6 +41,7 @@ input[type="search"]::-webkit-search-cancel-button {
     --cancel-bg: #7c7e81;
     --explore-links-bg: #4d4d4d;
     --explore-hover-links-bg: black;
+    --open_ps-hover-bg: #45454538;
 }
 
 .DARK {
@@ -62,12 +63,21 @@ input[type="search"]::-webkit-search-cancel-button {
     --cancel-bg: #3a3939;
     --explore-links-bg: #4d4d4d;
     --explore-hover-links-bg: rgba(0, 0, 0, 0.589);
+    --open_ps-hover-bg: #45454538;
 }
 
 body {
     background: var(--main-color);
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
+}
+
+#nprogress .peg {
+    box-shadow: none !important;
+}
+
+#nprogress .spinner {
+    display: none !important;
 }
 
 /* width */

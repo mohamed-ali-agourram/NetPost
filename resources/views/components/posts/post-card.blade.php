@@ -80,11 +80,14 @@
             </div>
         @endif
     </div>
+    @if ($post->is_profile_update && $post->body)
+        <p style="font-size: 18px; padding: 1.5vh;">{{ $post->body }}</p>
+    @endif
     <div class="post_card_body {{ $post->is_profile_update ? 'new_profile_pic' : null }}">
         @if ($post->is_profile_update)
             <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
         @endif
-        @if ($post->body)
+        @if ($post->body && !$post->is_profile_update)
             <p>{{ $post->body }}</p>
         @endif
         @if ($post->image)
