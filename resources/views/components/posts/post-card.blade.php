@@ -84,7 +84,9 @@
         @if ($post->is_profile_update)
             <div class="cover_image" style="background: url({{ $post->author->cover_image() }})"></div>
         @endif
-        <p>{{ $post->body }}</p>
+        @if ($post->body)
+            <p>{{ $post->body }}</p>
+        @endif
         @if ($post->image)
             <img src="{{ $post->image() }}" alt="post_img" width="100%">
         @endif
