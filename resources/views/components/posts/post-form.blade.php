@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="textarea">
-            <textarea x-model="body" wire:model='body' type="text" id="content" name="body"
+            <textarea @style(['height: 60vh' => isset($post) && isset($post->shared_post)]) x-model="body" wire:model='body' type="text" id="content" name="body"
                 placeholder="Share your thoughts with the world, {{ auth()->user()->name }}"></textarea>
             @error('body')
                 <p class="error">{{ $message }}</p>

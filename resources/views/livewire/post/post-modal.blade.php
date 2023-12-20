@@ -35,6 +35,8 @@
                     $is_liked = auth()
                         ->user()
                         ->has_liked($post);
+                    $comments_count = $post?->comments()->count();
+                    $shares_count = $post?->shared;
                 @endphp
                 <button wire:loading.attr="disabled"
                     style="background: {{ $is_liked ? 'var(--like-bg)' : 'transparent' }}" wire:click="toggleLike">
@@ -46,13 +48,14 @@
                 </button>
                 <button>
                     <i class="fa-solid fa-message"></i>
-                    <span class="pcf_action">Comments</span>
-                    <span class="n_activity">{{ $post?->comments()->count() }}</span>
+                    <span class="pcf_action">Comment{{ $comments_count > 1 ? 's' : '' }}</span>
+                    <span class="n_activity">{{ $comments_count }}</span>
                 </button>
-                <button>
+                <button
+                    wire:click='$dispatch("share-post", {post: {{ $post?->id }}, sharedpost: "{{ $post?->shared_post ? $post?->shared_post : $post?->id }}"})'>
                     <i class="fa-solid fa-share"></i>
-                    <span class="pcf_action">Shares</span>
-                    <span class="n_activity">11</span>
+                    <span class="pcf_action">Share{{ $shares_count > 1 ? 's' : '' }}</span>
+                    <span class="n_activity">{{ $shares_count }}</span>
                 </button>
             </div>
         </div>

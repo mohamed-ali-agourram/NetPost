@@ -895,9 +895,15 @@
                 background: var(--main-color);
                 padding: 1.5vh;
                 color: white;
-                border: solid 1px gray;
+                border: none;
                 border-radius: 25px;
                 width: 100%;
+                background: var(--main-color);
+                cursor: pointer;
+
+                &:hover {
+                    background: var(--open_ps-hover-bg);
+                }
             }
 
             & button {
@@ -911,10 +917,6 @@
                 background: transparent;
                 border: none;
                 color: white;
-
-                &:hover {
-                    background: rgba(8, 8, 8, 0.678);
-                }
             }
         }
 
@@ -2330,6 +2332,10 @@
 }
 
 @media screen and (max-width: 604px) {
+    .bottom {
+        font-size: 15px;
+    }
+
     .skeleton_wrapper {
         .skeleton {
             width: 90% !important;
@@ -2361,7 +2367,13 @@
     .container {
         .notification {
             max-height: 85vh;
-            width: 90vw;
+            width: 98vw;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .empty-notification-list {
+            font-size: 15px;
         }
     }
 
@@ -2491,7 +2503,28 @@
 }
 
 @media screen and (max-width: 425px) {
+    .pcf_icons>p {
+        width: 75px !important;
+    }
+
+    .skeleton_card_header>span {
+        width: 100px !important;
+    }
+
+    .notif_header {
+        font-size: 13px;
+    }
+
+    .close_notif {
+        font-size: 1.8rem;
+    }
+
+    .post-card-model {
+        width: 100% !important;
+    }
+
     .post_from_model {
+
         & form {
 
             & h1,
@@ -2945,6 +2978,12 @@
 
         & h2 {
             font-size: 18px;
+        }
+    }
+
+    .post-card-model {
+        .pcf_action {
+            display: none;
         }
     }
 
