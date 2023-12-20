@@ -8,7 +8,7 @@
     @endphp
     <h1 style="text-align: center;">{{ $is_auth ? 'My Freinds' : $user->name . "'s freinds" }}</h1>
     @forelse ($friends as $friend)
-        @if ($friend->slug !== $user->slug)
+        @if ($friend->slug !== $user->slug && $loop->index <= 7)
             <div class="freind">
                 <a wire:navigate href={{ route('profile', ['slug' => $friend->slug]) }}>
                     <img src={{ $friend->profile_image() }} alt="freind">

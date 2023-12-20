@@ -134,7 +134,7 @@
             <form wire:click='$dispatch("open-post-modal", {post: "{{ $post->id }}"})' action="/"
                 class="comment">
                 <img src={{ auth()->user()->profile_image() }} alt="{{ auth()->user()->name }}">
-                <input type="text" placeholder="Comment what you think">
+                <input readonly type="text" placeholder="Comment what you think">
                 <button>
                     <i class='bx bxs-send'></i>
                 </button>
