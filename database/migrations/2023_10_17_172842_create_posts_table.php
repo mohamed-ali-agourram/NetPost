@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->enum('visibility', ['private', 'public', 'friends']);
             $table->timestamp('published_at')->nullable();
             $table->boolean("is_profile_update")->default(false);
+            $table->boolean("is_cover_update")->default(false);
             $table->integer("shared")->default(0);
             $table->unsignedBigInteger("shared_post")->nullable();
             $table->foreign('shared_post')->references('id')->on('posts')->onDelete('cascade');
