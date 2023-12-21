@@ -56,7 +56,7 @@ class MyAlert extends Component
         $profile_slug = auth()->user()->slug;
         if ($notification != null) {
             $this->close($notification);
-            $notification->is_shown_on_liste = true;
+            $notification->is_shown_on_list = true;
             $notification->read = true;
             $notification->save();
             if ($notification->type === "FRIENDSHIP-REQUEST") {

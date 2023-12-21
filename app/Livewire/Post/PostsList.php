@@ -15,7 +15,7 @@ class PostsList extends Component
     use WithPagination;
 
     public $is_friend_page;
-    public $posts_per_page = 5;
+    public $posts_per_page = 3;
     public $loadingMore = true;
     public $is_bottom = false;
 

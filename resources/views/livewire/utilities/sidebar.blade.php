@@ -28,12 +28,10 @@
         </div>
     </ul>
     <div wire:click='logout' class="logout">
-        <a href="#">
-            <div>
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-            </div>
-        </a>
+        <div>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </div>
     </div>
 
 </aside>
