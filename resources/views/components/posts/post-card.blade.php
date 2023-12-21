@@ -20,7 +20,7 @@
         position: relative;
 
         .cover_image {
-            height: 60%;
+            height: 70%;
             width: 100%;
             position: absolute;
             top: 0;

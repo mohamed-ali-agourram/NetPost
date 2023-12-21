@@ -26,13 +26,14 @@
                             @endif
                         </div>
                         <div>
-                            <p><b>{{ $notification->sender_->name }}: </b>{{ $notification->body }}</p>
+                            <p @style(['font-weight: bold' => $notification->read == false])><b>{{ $notification->sender_->name }}: </b>{{ $notification->body }}
+                            </p>
                             <span style="color: rgb(84 84 215);font-size: 13px;">
                                 <i class="fa-solid fa-clock"></i>
                                 {{ $notification->date() }}
                             </span>
                         </div>
-                        @if ($notification->readed == false)
+                        @if ($notification->read == false)
                             <div class="blue"></div>
                         @endif
                     </div>

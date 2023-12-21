@@ -44,9 +44,11 @@ class MyAlert extends Component
             $this->is_open = false;
             if ($notificationId != null && !$this->is_profile) {
                 $notification = Notification::where("id", $notificationId)->first();
-                $notification->update([
-                    "is_shown" => true
-                ]);
+                if (isset($notification)) {
+                    $notification->update([
+                        "is_shown" => true
+                    ]);
+                }
             }
         }
     }

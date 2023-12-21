@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('sender')->nullable();
             $table->unsignedBigInteger('receiver')->nullable();
             $table->enum('type', ['POST-REACTION', 'FRIENDSHIP-REQUEST']);
-            $table->string("body")->nullable(false);
+            $table->string("body")->nullable();
             $table->boolean("read")->default(0);
             $table->boolean('is_shown_on_list')->default(false);
             $table->boolean('is_shown')->default(false);

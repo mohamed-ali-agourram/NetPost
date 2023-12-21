@@ -56,6 +56,9 @@ class PostForm extends Component
     public function create(string $imagePath = null)
     {
         $data = $this->validate();
+        if ($imagePath != null) {
+            $this->visibility = "friends";
+        }
         $data["visibility"] = $this->visibility;
         if ($this->visibility === "public" || $this->visibility === "friends") {
             $data["published_at"] = Carbon::now()->format('Y-m-d H:i:s');
