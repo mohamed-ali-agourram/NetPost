@@ -19,16 +19,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'slug' => Str::slug($this->faker->unique()->name),
-            'cover_image' => $this->faker->imageUrl(),
-            'profile_image' => $this->faker->imageUrl(),
-            'status' => 'NetPost User',
+            'slug' => $this->faker->slug,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => bcrypt('demo'),
-            'remember_token' => Str::random(10),
-            'created_at' => $this->faker->dateTime(),
-            'updated_at' => $this->faker->dateTime(),
+            'password' => bcrypt('0000'),
         ];
     }
 

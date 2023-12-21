@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Friendship>
  */
-class PostFactory extends Factory
+class FriendshipFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,8 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'body' => $this->faker->text,
-            'visibility' => $this->faker->randomElement(['private', 'public', 'friends']),
-            'published_at' => $this->faker->dateTime
+            'friend_id' => User::factory(),
+            'accepted' => $this->faker->randomElement([0, 1]),
         ];
     }
 }

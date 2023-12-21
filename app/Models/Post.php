@@ -16,7 +16,6 @@ class Post extends Model
         "visibility",
         "image",
         "published_at",
-        "featured",
         "is_profile_update",
         "shared_post",
         "shared"

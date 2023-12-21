@@ -34,7 +34,7 @@ class PostsList extends Component
                 if ($post->author->id !== auth()->user()->id) {
                     Notification::create([
                         'sender' => auth()->user()->id,
-                        'reciver' => $post->author->id,
+                        'receiver' => $post->author->id,
                         'type' => 'POST-REACTION',
                         'body' => 'liked your post'
                     ]);
@@ -61,7 +61,7 @@ class PostsList extends Component
             if ($post->author->id !== auth()->user()->id) {
                 Notification::create([
                     'sender' => auth()->user()->id,
-                    'reciver' => $post->author->id,
+                    'receiver' => $post->author->id,
                     'type' => 'POST-REACTION',
                     'body' => 'shared your post'
                 ]);
