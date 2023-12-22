@@ -2514,6 +2514,22 @@
 }
 
 @media screen and (max-width: 425px) {
+    .skeleton_wrapper {
+        .skeleton {
+            width: 97% !important;
+
+            & .skeleton_btn {
+                width: 35px;
+            }
+        }
+    }
+
+    .unfreind {
+        & span {
+            display: none;
+        }
+    }
+
     .btns {
         justify-content: space-between;
 
