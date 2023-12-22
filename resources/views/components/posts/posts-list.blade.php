@@ -1,10 +1,5 @@
 <div class="posts">
     <x-posts.post-form-trigger />
-    <div style="margin-bottom: -15px" x-intersect="$wire.load_more()"></div>
-    @unless ($is_bottom && !$loadingMore)
-        <x-utilities.skeleton />
-    @endunless
-    <div style="margin-bottom: -15px" x-intersect="$wire.load_more()"></div>
     @forelse ($this->posts as $post)
         @unless (!$is_bottom && $loadingMore)
             <x-posts.post-card :key="'post-' . $post->id" :$post />
@@ -13,6 +8,9 @@
         <h2 style="color: gray; text-align: center; padding: 2vh;">No Post Found...</h2>
     @endforelse
     <div style="margin-bottom: -15px" x-intersect="$wire.load_more()"></div>
+    @unless ($is_bottom && !$loadingMore)
+        <x-utilities.skeleton />
+    @endunless
     <style>
         .skeleton_wrapper {
             .skeleton {

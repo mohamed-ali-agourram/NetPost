@@ -10,16 +10,16 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["id", "sender", "reciver", "type", "body", "read", "is_shown_on_liste", "is_shown"];
+    protected $fillable = ["id", "sender", "receiver", "type", "body", "read", "is_shown_on_list", "is_shown"];
 
     public function sender_()
     {
         return $this->belongsTo(User::class, "sender");
     }
 
-    public function reciver_()
+    public function receiver_()
     {
-        return $this->belongsTo(User::class, "reciver");
+        return $this->belongsTo(User::class, "receiver");
     }
 
     public function date()

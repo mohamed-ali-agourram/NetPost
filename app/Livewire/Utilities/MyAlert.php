@@ -34,19 +34,20 @@ class MyAlert extends Component
                 $this->sender["image"] = $notification->sender_->profile_image();
             }
             $this->created_at = Carbon::parse($notification->created_at)->diffForHumans();
-            $this->dispatch('refreshTimer');
         }
     }
 
     public function close($notificationId = null)
     {
+        $this->is_open = false;
         if ($notificationId !== null) {
-            $this->is_open = false;
             if ($notificationId != null && !$this->is_profile) {
                 $notification = Notification::where("id", $notificationId)->first();
-                $notification->update([
-                    "is_shown" => true
-                ]);
+                if (isset($notification)) {
+                    $notification->update([
+                        "is_shown" => true
+                    ]);
+                }
             }
         }
     }
@@ -56,8 +57,8 @@ class MyAlert extends Component
         $profile_slug = auth()->user()->slug;
         if ($notification != null) {
             $this->close($notification);
-            $notification->is_shown_on_liste = true;
-            $notification->readed = true;
+            $notification->is_shown_on_list = true;
+            $notification->read = true;
             $notification->save();
             if ($notification->type === "FRIENDSHIP-REQUEST") {
                 $profile_slug = $notification->sender_->slug;

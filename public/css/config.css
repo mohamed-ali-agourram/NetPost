@@ -48,7 +48,7 @@ input[type="search"]::-webkit-search-cancel-button {
     --main-color: rgb(46, 46, 46);
     --second-color: #1d1e22;
     --third-color: #35363a;
-    --shadow: rgba(255, 255, 255, 0.075) 0px 3px 8px;
+    --shadow: rgba(22, 22, 22, 0.15) 1.95px 1.95px 2.6px;
     --like-bg: rgb(46 46 46 / 55%);
     --like-hover-bg: black;
     --text-color: white;

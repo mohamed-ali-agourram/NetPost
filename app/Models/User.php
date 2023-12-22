@@ -87,12 +87,12 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->hasMany(Notification::class, "reciver")->orderBy('created_at', 'desc');
+        return $this->hasMany(Notification::class, "receiver")->orderBy('created_at', 'desc');
         ;
     }
     public function unreaded_notifications()
     {
-        return $this->hasMany(Notification::class, "reciver")->where("read", false);
+        return $this->hasMany(Notification::class, "receiver")->where("read", false);
     }
 
     public function friendsPosts()

@@ -29,7 +29,7 @@ class Notifications extends Component
             $notification->read = 1;
             $notification->save();
         }
-        $profile_slug = $notification->reciver_->slug;
+        $profile_slug = $notification->receiver_->slug;
         if ($notification->type === "FRIENDSHIP-REQUEST") {
             $profile_slug = $notification->sender_->slug;
         }

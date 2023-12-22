@@ -92,7 +92,7 @@ class ProfilePage extends Component
                 if ($post->author->id !== auth()->user()->id) {
                     Notification::create([
                         'sender' => auth()->user()->id,
-                        'reciver' => $post->author->id,
+                        'receiver' => $post->author->id,
                         'type' => 'POST-REACTION',
                         'body' => 'liked your post'
                     ]);
@@ -119,7 +119,7 @@ class ProfilePage extends Component
             if ($post->author->id !== auth()->user()->id) {
                 Notification::create([
                     'sender' => auth()->user()->id,
-                    'reciver' => $post->author->id,
+                    'receiver' => $post->author->id,
                     'type' => 'POST-REACTION',
                     'body' => 'shared your post'
                 ]);
@@ -183,7 +183,7 @@ class ProfilePage extends Component
             $auth->friendsTo()->attach($this->user->id, ['accepted' => 0]);
             Notification::create([
                 'sender' => auth()->user()->id,
-                'reciver' => $this->user->id,
+                'receiver' => $this->user->id,
                 'type' => 'FRIENDSHIP-REQUEST',
                 'body' => 'send you a friend request'
             ]);
@@ -206,7 +206,7 @@ class ProfilePage extends Component
                     $this->user->friendsTo()->updateExistingPivot($authUser->id, ['accepted' => 1]);
                     Notification::create([
                         'sender' => auth()->user()->id,
-                        'reciver' => $this->user->id,
+                        'receiver' => $this->user->id,
                         'type' => 'FRIENDSHIP-REQUEST',
                         'body' => 'accepted your friend request'
                     ]);

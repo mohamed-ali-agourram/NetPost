@@ -25,7 +25,7 @@ class CommentForm extends Component
         if ($this->post->author->id !== auth()->user()->id) {
             Notification::create([
                 'sender' => auth()->user()->id,
-                'reciver' => $this->post->author->id,
+                'receiver' => $this->post->author->id,
                 'type' => 'POST-REACTION',
                 'body' => 'commented your post'
             ]);
