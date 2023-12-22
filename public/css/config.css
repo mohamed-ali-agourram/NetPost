@@ -483,6 +483,7 @@ a {
                 position: absolute;
                 bottom: 10px;
                 right: 10px;
+                background: #00000066;
             }
         }
 
@@ -578,19 +579,12 @@ a {
                 color: white;
                 padding: 1.5vh 3vh;
                 border-radius: 5px;
+                background: #00000078;
 
                 &:hover {
                     margin-top: -1px;
                 }
 
-            }
-
-            .cancel {
-                background: #1d2b42;
-            }
-
-            .submit {
-                background: #591616;
             }
         }
     }
@@ -743,7 +737,7 @@ html {
         }
 
         .update_image_backdrop {
-            width: 80% !important;
+            width: 80%;
         }
     }
 }
