@@ -34,14 +34,13 @@ class MyAlert extends Component
                 $this->sender["image"] = $notification->sender_->profile_image();
             }
             $this->created_at = Carbon::parse($notification->created_at)->diffForHumans();
-            $this->dispatch('refreshTimer');
         }
     }
 
     public function close($notificationId = null)
     {
+        $this->is_open = false;
         if ($notificationId !== null) {
-            $this->is_open = false;
             if ($notificationId != null && !$this->is_profile) {
                 $notification = Notification::where("id", $notificationId)->first();
                 if (isset($notification)) {
