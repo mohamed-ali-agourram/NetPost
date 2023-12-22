@@ -1271,7 +1271,7 @@
         }
 
         .p_cta_btn {
-            background: #00000077;
+            background: #0000001c;
             border: none;
             padding: 10px;
             color: white;
@@ -1282,9 +1282,10 @@
             gap: 10px;
             font-size: 1rem;
             cursor: pointer;
+            transition: all .3s ease;
 
             &:hover {
-                background: #000;
+                background: #0000004d;
             }
         }
 
