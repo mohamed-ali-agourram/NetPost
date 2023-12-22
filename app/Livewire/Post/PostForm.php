@@ -53,10 +53,10 @@ class PostForm extends Component
     }
 
     #[On("update-profile-image")]
-    public function create(string $imagePath = null)
+    public function create(string $imagePath = null, string $coverImagePath = null)
     {
         $data = $this->validate();
-        if ($imagePath != null) {
+        if ($imagePath != null || $coverImagePath != null) {
             $this->visibility = "friends";
         }
         $data["visibility"] = $this->visibility;
@@ -70,6 +70,10 @@ class PostForm extends Component
         if ($imagePath != null) {
             $data["is_profile_update"] = "1";
             $data["image"] = $imagePath;
+        }
+        if ($coverImagePath != null) {
+            $data["is_cover_update"] = "1";
+            $data["image"] = $coverImagePath;
         }
         Post::create($data);
         $this->dispatch("new-post");

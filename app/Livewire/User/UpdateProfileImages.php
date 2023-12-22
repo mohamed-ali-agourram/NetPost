@@ -50,6 +50,7 @@ class UpdateProfileImages extends Component
             $user->update([
                 "cover_image" => $cover_image_path
             ]);
+            $this->dispatch("update-profile-image", coverImagePath: $cover_image_path);
         }
         $this->dispatch("update-profile");
         $this->dispatch("notify-profile", status: true, is_profile: true);

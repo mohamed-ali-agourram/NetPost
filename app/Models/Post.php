@@ -17,6 +17,7 @@ class Post extends Model
         "image",
         "published_at",
         "is_profile_update",
+        "is_cover_update",
         "shared_post",
         "shared"
     ];

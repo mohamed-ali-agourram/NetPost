@@ -49,7 +49,7 @@
             <div>
                 <a wire:navigate href="{{ route('profile', ['slug' => $post->author->slug]) }}">
                     <b>{{ $post->author->name }}</b>
-                    <span>{{ $post->is_profile_update ? 'changed his profile picture' : null }}</span>
+                    <span>{{ $post->is_profile_update ? 'changed his profile picture' : ($post->is_cover_update ? 'changed his cover image' : null) }}</span>
                 </a>
                 <p class="date_span">
                     <span>{{ $post->date() }}</span>

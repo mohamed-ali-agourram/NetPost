@@ -749,7 +749,7 @@
     .post_card_header {
         display: flex;
         justify-content: space-between;
-        padding: 1.5vh;
+        padding: 2vh 1.5vh;
         margin-bottom: -8px;
 
         .post_meta {
@@ -768,6 +768,10 @@
             align-items: center;
             gap: 5px;
             color: gray;
+
+            & i {
+                font-size: 13px;
+            }
         }
 
         .open_post_options {
@@ -896,8 +900,10 @@
             }
 
             & input {
+                height: 6.5vh;
                 background: var(--main-color);
                 padding: 1.5vh;
+                font-size: 15px;
                 color: white;
                 border: none;
                 border-radius: 25px;
@@ -1046,7 +1052,7 @@
                 gap: 5px;
                 padding: 1vh 2vh;
                 border-radius: 5px;
-                transition: all 0.3s ease 0s;
+                transition: all 0.3s ease;
                 border-width: initial;
                 border-style: none;
                 border-color: initial;
