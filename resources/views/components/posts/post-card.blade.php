@@ -39,6 +39,15 @@
             border: var(--main-color) 3px solid;
         }
     }
+
+    @media screen and (max-width: 425px) {
+        .new_profile_pic {
+            & img {
+                height: 40vh;
+                width: 40vh;
+            }
+        }
+    }
 </style>
 <div class="post_card {{ $addedClass }}">
     <div class="post_card_header">

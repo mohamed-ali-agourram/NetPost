@@ -56,11 +56,10 @@
                     @enderror
                 </label>
             </div>
-            <div class="btns">
-                <button type="button" wire:click='$dispatch("close-update-profile-modal")'
-                    class="cancel">Cancel</button>
-                <button class="submit">Submit</button>
-            </div>
+        </div>
+        <div class="btns">
+            <button type="button" wire:click='$dispatch("close-update-profile-modal")' class="cancel">Cancel</button>
+            <button class="submit">Submit</button>
         </div>
     </form>
 </div>

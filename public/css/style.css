@@ -2164,7 +2164,7 @@
     .content {
         & header {
             .toggleNav {
-                font-size: 30px;
+                font-size: 25px;
                 cursor: pointer;
                 padding: 0 2vh;
                 display: block;
@@ -2514,6 +2514,24 @@
 }
 
 @media screen and (max-width: 425px) {
+    .btns {
+        justify-content: space-between;
+
+        & button {
+            width: 50%;
+        }
+    }
+
+    .update_image_backdrop {
+        justify-content: space-between !important;
+        min-height: 75vh;
+        width: 98% !important;
+    }
+
+    header {
+        padding: 2vh !important;
+    }
+
     .pcf_icons>p {
         width: 75px !important;
     }
@@ -2595,8 +2613,8 @@
 
             & a {
                 & img {
-                    width: 40px;
-                    height: 40px;
+                    width: 30px;
+                    height: 30px;
                 }
 
                 & p {
@@ -2610,7 +2628,6 @@
                 gap: 5px;
 
                 .bell {
-                    padding: 1.5vh;
 
                     & i {
                         font-size: 14px;
@@ -2623,8 +2640,8 @@
                 }
 
                 & img {
-                    width: 40px;
-                    height: 40px;
+                    width: 35px;
+                    height: 35px;
                 }
             }
         }

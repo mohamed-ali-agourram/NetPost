@@ -2,6 +2,19 @@
     $is_auth = $user->slug === auth()->user()->slug;
 @endphp
 <div class="profile_main_content">
+    <style>
+        .skeleton_wrapper {
+            margin-top: -15px;
+        }
+
+        @media screen and (max-width: 425px) {
+            .skeleton_wrapper {
+                & .skeleton {
+                    width: 100% !important;
+                }
+            }
+        }
+    </style>
     <div class="profile_header">
         <div class="cover_pic" style="background-image: url({{ $cover_image }});">
             @if ($is_auth)
