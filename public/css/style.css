@@ -2881,6 +2881,34 @@
 
     .user-card {
         width: 97% !important;
+        padding: 5px;
+    }
+
+    .users-list .link {
+        font-size: 14px;
+    }
+
+    .first_result {
+        & img {
+            width: 75px !important;
+            height: 75px !important;
+        }
+
+        .user-card_header {
+            padding: 1.5vh 1vh;
+        }
+
+        .status {
+            font-size: 14.5px;
+        }
+
+        .activities {
+            padding: 0 1.5vh;
+
+            .user_activity {
+                justify-content: space-between;
+            }
+        }
     }
 
     .user-card-btn {
@@ -2893,6 +2921,11 @@
         & i {
             display: block !important;
         }
+    }
+
+    .users-list {
+        width: 97% !important;
+        border-radius: 5px;
     }
 
     .post_from_model {
