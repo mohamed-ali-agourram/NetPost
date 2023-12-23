@@ -1,4 +1,4 @@
-@props(['user', 'is_friendpage' => false, 'friend' => null])
+@props(['user', 'is_friendpage' => false, 'friend' => null, 'is_first' => true])
 @php
     $auth = auth()->user();
 @endphp
@@ -9,8 +9,12 @@
     }
 </style>
 @if ($user->id === $auth->id)
-    <button> <a class="a" wire:navigate href="{{ route('profile', ['slug' => $auth->slug]) }}">Show
-            Profile</a></button>
+    <button @class(['user-card-btn' => $is_first])>
+        <a class="a" wire:navigate href="{{ route('profile', ['slug' => $auth->slug]) }}">
+            <span>Show Profile</span>
+            <i style="display: none" class="fa-solid fa-user"></i>
+        </a>
+    </button>
 @else
     @php
         $is_freindship = $auth
@@ -26,11 +30,19 @@
                     class="unfreind"><i class="fa-solid fa-user-xmark"></i> <span>unfriend</span> </abbr>
             </button>
         @else
-            <button> <a class="a" wire:navigate
-                    href="{{ route('profile', ['slug' => $user->slug]) }}">Friends</a></button>
+            <button @class(['user-card-btn' => $is_first])>
+                <a class="a" wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">
+                    <span>Friends</span>
+                    <i style="display: none" class="fa-solid fa-user"></i>
+                </a>
+            </button>
         @endif
     @else
-        <button> <a class="a" wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">Show
-                Profile</a></button>
+        <button @class(['user-card-btn' => $is_first])>
+            <a class="a" wire:navigate href="{{ route('profile', ['slug' => $user->slug]) }}">
+                <span>Show Profile</span>
+                <i style="display: none" class="fa-solid fa-user"></i>
+            </a>
+        </button>
     @endif
 @endif

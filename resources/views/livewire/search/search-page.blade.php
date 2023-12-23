@@ -37,10 +37,10 @@
         @endphp
         @if ($users->isNotEmpty())
             @if ($filter === 'all')
-                <div class="user-card">
+                <div class="user-card first_result">
                     <div class="user-card_header">
                         <a wire:navigate href="{{ route('profile', ['slug' => $users[0]->slug]) }}">
-                            <img src="{{ $users[0]->profile_image() }}" alt="profile">
+                            <img class="img_first" src="{{ $users[0]->profile_image() }}" alt="profile">
                         </a>
                         <div>
                             <h3><a wire:navigate
@@ -49,7 +49,7 @@
                             <p class="status"><span>status: </span>{{ $users[0]->status }}</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="activities">
                         <h4 style="text-decoration: underline">activities</h4>
                         <div class="user_activity">
                             @php
@@ -70,8 +70,7 @@
                             </p>
                         </div>
                     </div>
-                    <x-user-card-btn :user="$users[0]" />
-
+                    <x-user-card-btn :is_first="false" :user="$users[0]" />
                 </div>
                 @if ($users->count() > 1)
                     <div class="users-list">
@@ -164,7 +163,7 @@
             @endunless
         @endif
     @else
-        <h1 style="color: white">Nothing Found....</h1>
+        <h1 style="color: gray">Nothing Found....</h1>
     @endif
 
 </div>
