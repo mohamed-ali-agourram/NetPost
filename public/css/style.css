@@ -2807,6 +2807,24 @@
 }
 
 @media screen and (max-width: 425px) {
+    .search_navbar {
+        width: 100%;
+
+        & .search_input {
+            & input {
+                width: 85%;
+            }
+
+            & button i {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .search_content h1 {
+        font-size: 25px;
+    }
+
     .skeleton_wrapper {
         .skeleton {
             width: 97% !important;

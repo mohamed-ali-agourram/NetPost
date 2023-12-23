@@ -164,7 +164,7 @@
             @endunless
         @endif
     @else
-        <h1 style="color: white">Nothing Found....</h1>
+        <h1 style="color: gray">Nothing Found....</h1>
     @endif
 
 </div>
