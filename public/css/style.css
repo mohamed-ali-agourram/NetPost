@@ -338,10 +338,10 @@
 
         & input {
             background: var(--main-color);
-            padding: 2vh;
+            padding: 2.5vh;
             color: white;
-            border: solid 1px gray;
-            border-radius: 10px;
+            border: none;
+            border-radius: 5px;
             width: 100%;
         }
 
@@ -1811,10 +1811,6 @@
     }
 }
 
-/* .phpdebugbar-restore-btn {
-    display: none !important;
-} */
-
 @keyframes fadeInFromBottomLeft {
     to {
         opacity: 1;
@@ -2065,212 +2061,6 @@
     }
 }
 
-/*responisvity*/
-
-/* responsivity */
-@media screen and (max-width: 1050px) {
-
-    .freinds_list {
-        display: none;
-    }
-
-    .posts {
-        width: 100%;
-    }
-
-    .routes {
-        width: 30%;
-    }
-
-    .content {
-        width: 80%;
-
-        & header {
-            .explore {
-                margin-left: -15%;
-            }
-        }
-    }
-
-    .post_from_model form {
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 980px) {
-    .search_box button {
-        font-size: 25px !important;
-    }
-
-    .skeleton_wrapper {
-        .skeleton {
-            width: 80% !important;
-        }
-    }
-
-    .post-card-model {
-        width: 85%;
-    }
-
-    .alert {
-        width: 40%;
-    }
-
-    .content {
-        & header {
-            .explore {
-                margin-left: 0%;
-            }
-        }
-    }
-
-    .freind_card {
-        width: 30% !important;
-    }
-}
-
-@media screen and (max-width: 880px) {
-    .user-card {
-        width: 85% !important;
-    }
-
-    .users-list {
-        width: 85% !important;
-    }
-
-    .search_navbar {
-        display: flex !important;
-    }
-
-    .search_routes {
-        display: none !important;
-    }
-
-    .skeleton_wrapper {
-        .skeleton {
-            width: 85% !important;
-        }
-    }
-
-    .post_from_model form {
-        width: 80%;
-    }
-
-    .main_content,
-    .profile_body {
-        padding: 2vh 0;
-    }
-
-    .content {
-        & header {
-            .toggleNav {
-                font-size: 25px;
-                cursor: pointer;
-                padding: 0 2vh;
-                display: block;
-                color: var(--text-color);
-            }
-
-            .route {
-                display: none;
-            }
-        }
-    }
-
-    .routes {
-        position: fixed;
-        top: 0;
-        left: -120vw;
-        width: 100%;
-        z-index: 9;
-        transition: .3s;
-
-        & input {
-            font-size: 1.5rem;
-        }
-
-        & a li,
-        .logout a div {
-            font-size: 1.5rem;
-        }
-
-        .logo {
-            & i {
-                display: block;
-            }
-
-            .mobile_a {
-                text-align: center;
-                margin-left: 50%;
-                transform: translateX(-50%);
-            }
-
-            &:hover {
-                background: transparent;
-            }
-        }
-    }
-
-    .content {
-        width: 100%;
-
-        .explore {
-            margin-left: 0 !important;
-        }
-    }
-
-    .container {
-        .notification {
-            max-height: 80vh;
-            width: 55vw;
-        }
-    }
-
-    .profile_main_content {
-        .p_cta_btn {
-            font-size: 15px !important;
-            right: 15px !important;
-        }
-
-        .profile_header {
-            .cover_pic {
-                .p_cta_btn {
-                    font-size: 1.5rem !important;
-
-                    & p {
-                        display: none;
-                    }
-                }
-            }
-
-            .p_h_body {
-                flex-direction: column;
-                align-items: center !important;
-                gap: 15px;
-
-                .phb_a {
-                    flex-direction: column;
-                    align-items: center !important;
-                    width: 100%;
-
-                    .profile_info {
-                        text-align: center;
-                    }
-                }
-            }
-        }
-
-    }
-
-    .settings_main_content {
-        .settings_routes {
-            & a {
-                font-size: 17px;
-            }
-        }
-    }
-}
-
 /* freinds-page */
 .friends-page {
     display: flex;
@@ -2340,369 +2130,6 @@
 .img div:hover {
     width: 90%;
     height: 90%;
-}
-
-@media screen and (max-width: 604px) {
-    .bottom {
-        font-size: 15px;
-    }
-
-    .skeleton_wrapper {
-        .skeleton {
-            width: 90% !important;
-        }
-    }
-
-    .post_from_model form {
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-    }
-
-    .posts {
-        padding: 0;
-
-        .open_model {
-            border-radius: 0;
-        }
-
-        .post_card {
-            border-radius: 0;
-        }
-    }
-
-    .freind_card {
-        width: 45% !important;
-    }
-
-    .container {
-        .notification {
-            max-height: 85vh;
-            width: 98vw;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .empty-notification-list {
-            font-size: 15px;
-        }
-    }
-
-    .content {
-        & header {
-            .explore {
-                display: none;
-            }
-
-            & a {
-                display: flex !important;
-                align-items: center;
-                gap: 5px;
-
-                & img {
-                    width: 50px;
-                    height: 50px;
-                }
-
-                & p {
-                    color: red;
-                    font-size: 30px;
-                    font-weight: bold;
-                }
-            }
-        }
-    }
-
-    .profile_main_content {
-        .modify_pubs {
-            border-radius: 0;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: -5%;
-
-            & h2 {
-                width: 100%;
-                text-align: center;
-            }
-
-            .mp_btns {
-                width: 100%;
-                gap: 15px;
-            }
-        }
-    }
-
-    .settings_main_content {
-        margin: 5% 0;
-        border-radius: 0;
-        flex-direction: column;
-        overflow-x: hidden;
-
-        .active_settings {
-            background: var(--second-color);
-        }
-
-        .settings_routes {
-            width: 100%;
-            display: none;
-            border: none;
-
-            & a {
-                width: 100%;
-                padding: 3vh;
-                border: unset;
-
-                &:hover {
-                    border: unset;
-                }
-
-                &:last-child {
-                    margin-bottom: -2% !important;
-                }
-            }
-        }
-
-        .gear {
-            display: inherit !important;
-        }
-
-        .settings_content {
-            width: 100%;
-            padding: 3vh 0;
-            gap: 7px;
-
-            .acount_settings_header {
-                border-radius: unset;
-            }
-
-            & ul {
-                border-radius: unset;
-            }
-        }
-
-        .action_div {
-            width: 100%;
-            border-radius: unset !important;
-        }
-
-        .posts_settings {
-            height: 83vh !important;
-
-            .settings_content_header {
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center !important;
-                gap: 1vh;
-
-                & button {
-                    width: 100%;
-                    padding: 2vh !important;
-                    gap: 10px;
-                    font-size: 17px;
-                }
-            }
-
-            .manage_post_card {
-                & img {
-                    width: 110px;
-                    height: 110px;
-                }
-            }
-        }
-
-    }
-}
-
-@media screen and (max-width: 425px) {
-    .skeleton_wrapper {
-        .skeleton {
-            width: 97% !important;
-
-            & .skeleton_btn {
-                width: 35px;
-            }
-        }
-    }
-
-    .unfreind {
-        & span {
-            display: none;
-        }
-    }
-
-    .btns {
-        justify-content: space-between;
-
-        & button {
-            width: 50%;
-        }
-    }
-
-    .update_image_backdrop {
-        justify-content: space-between !important;
-        min-height: 75vh;
-        width: 98% !important;
-    }
-
-    header {
-        padding: 2vh !important;
-    }
-
-    .pcf_icons>p {
-        width: 75px !important;
-    }
-
-    .skeleton_card_header>span {
-        width: 100px !important;
-    }
-
-    .notif_header {
-        font-size: 13px;
-    }
-
-    .close_notif {
-        font-size: 1.8rem;
-    }
-
-    .post-card-model {
-        width: 100% !important;
-    }
-
-    .post_from_model {
-
-        & form {
-
-            & h1,
-            .cancel {
-                font-size: 25px;
-            }
-
-            & .textarea textarea {
-                height: 40vh;
-                font-size: 15px;
-            }
-        }
-
-    }
-
-    .profile_pic {
-        margin-top: -22% !important;
-    }
-
-    .modify_pubs {
-        & button {
-            width: 100%;
-            height: unset !important;
-            margin: 1%;
-            font-size: 15px !important;
-        }
-    }
-
-    .filters button {
-        width: 45%;
-        height: 50% !important;
-    }
-
-    .settings_content {
-        .acount_settings_header {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        & ul {
-            & li {
-                justify-content: space-between;
-            }
-        }
-    }
-
-}
-
-@media screen and (max-width: 375px) {
-    .content {
-        & header {
-            .explore {
-                display: none;
-            }
-
-            & a {
-                & img {
-                    width: 30px;
-                    height: 30px;
-                }
-
-                & p {
-                    color: red;
-                    font-size: 25px;
-                    font-weight: bold;
-                }
-            }
-
-            .header__profile {
-                gap: 5px;
-
-                .bell {
-
-                    & i {
-                        font-size: 14px;
-                    }
-
-                    .n_notif {
-                        font-size: 10px;
-                        top: -5px;
-                    }
-                }
-
-                & img {
-                    width: 35px;
-                    height: 35px;
-                }
-            }
-        }
-
-        .posts {
-            .post_card {
-                .post_card_footer {
-                    .pcf_icons {
-                        & p {
-                            gap: 3px;
-                        }
-
-                        & span {
-                            padding: 0.4vh;
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-
-    .settings_content {
-        .profile_info {
-            & h1 {
-                font-size: 22px;
-            }
-        }
-
-        & ul {
-            & li {
-                & span {
-                    display: none;
-                }
-
-                & button {
-                    font-size: 10px !important;
-                }
-            }
-        }
-
-        .action_div {
-            flex-direction: column;
-        }
-    }
 }
 
 .manage_post_card {
@@ -2999,6 +2426,605 @@
                     background: black;
                 }
             }
+        }
+    }
+}
+
+
+/* responsivity */
+@media screen and (max-width: 1050px) {
+
+    .freinds_list {
+        display: none;
+    }
+
+    .posts {
+        width: 100%;
+    }
+
+    .routes {
+        width: 30%;
+    }
+
+    .content {
+        width: 80%;
+
+        & header {
+            .explore {
+                margin-left: -15%;
+            }
+        }
+    }
+
+    .post_from_model form {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .search_box button {
+        font-size: 25px !important;
+    }
+
+    .skeleton_wrapper {
+        .skeleton {
+            width: 80% !important;
+        }
+    }
+
+    .post-card-model {
+        width: 85%;
+    }
+
+    .alert {
+        width: 40%;
+    }
+
+    .content {
+        & header {
+            .explore {
+                margin-left: 0%;
+            }
+        }
+    }
+
+    .freind_card {
+        width: 30% !important;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .user-card {
+        width: 85% !important;
+    }
+
+    .users-list {
+        width: 85% !important;
+    }
+
+    .search_navbar {
+        display: flex !important;
+    }
+
+    .search_routes {
+        display: none !important;
+    }
+
+    .skeleton_wrapper {
+        .skeleton {
+            width: 85% !important;
+        }
+    }
+
+    .post_from_model form {
+        width: 80%;
+    }
+
+    .main_content,
+    .profile_body {
+        padding: 2vh 0;
+    }
+
+    .content {
+        & header {
+            .toggleNav {
+                font-size: 25px;
+                cursor: pointer;
+                padding: 0 2vh;
+                display: block;
+                color: var(--text-color);
+            }
+
+            .route {
+                display: none;
+            }
+        }
+    }
+
+    .routes {
+        position: fixed;
+        top: 0;
+        left: -120vw;
+        width: 100%;
+        z-index: 9;
+        transition: .3s;
+
+        & input {
+            font-size: 1.5rem;
+        }
+
+        & a li,
+        .logout a div {
+            font-size: 1.5rem;
+        }
+
+        .logo {
+            & i {
+                display: block;
+            }
+
+            .mobile_a {
+                text-align: center;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+
+    .content {
+        width: 100%;
+
+        .explore {
+            margin-left: 0 !important;
+        }
+    }
+
+    .container {
+        .notification {
+            max-height: 80vh;
+            width: 55vw;
+        }
+    }
+
+    .profile_main_content {
+        .p_cta_btn {
+            font-size: 15px !important;
+            right: 15px !important;
+        }
+
+        .profile_header {
+            .cover_pic {
+                .p_cta_btn {
+                    font-size: 1.5rem !important;
+
+                    & p {
+                        display: none;
+                    }
+                }
+            }
+
+            .p_h_body {
+                flex-direction: column;
+                align-items: center !important;
+                gap: 15px;
+
+                .phb_a {
+                    flex-direction: column;
+                    align-items: center !important;
+                    width: 100%;
+
+                    .profile_info {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .settings_main_content {
+        .settings_routes {
+            & a {
+                font-size: 17px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 604px) {
+    .bottom {
+        font-size: 15px;
+    }
+
+    .skeleton_wrapper {
+        .skeleton {
+            width: 90% !important;
+        }
+    }
+
+    .post_from_model form {
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .posts {
+        padding: 0;
+
+        .open_model {
+            border-radius: 0;
+        }
+
+        .post_card {
+            border-radius: 0;
+        }
+    }
+
+    .freind_card {
+        width: 45% !important;
+    }
+
+    .container {
+        .notification {
+            max-height: 85vh;
+            width: 98vw;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .empty-notification-list {
+            font-size: 15px;
+        }
+    }
+
+    .content {
+        & header {
+            .explore {
+                display: none;
+            }
+
+            & a {
+                display: flex !important;
+                align-items: center;
+                gap: 5px;
+
+                & img {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                & p {
+                    color: red;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .profile_main_content {
+        .modify_pubs {
+            border-radius: 0;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: -5%;
+
+            & h2 {
+                width: 100%;
+                text-align: center;
+            }
+
+            .mp_btns {
+                width: 100%;
+                gap: 15px;
+            }
+        }
+    }
+
+    .settings_main_content {
+        margin: 5% 0;
+        border-radius: 0;
+        flex-direction: column;
+        overflow-x: hidden;
+
+        .active_settings {
+            background: var(--second-color);
+        }
+
+        .settings_routes {
+            width: 100%;
+            display: none;
+            border: none;
+
+            & a {
+                width: 100%;
+                padding: 3vh;
+                border: unset;
+
+                &:hover {
+                    border: unset;
+                }
+
+                &:last-child {
+                    margin-bottom: -2% !important;
+                }
+            }
+        }
+
+        .gear {
+            display: inherit !important;
+        }
+
+        .settings_content {
+            width: 100%;
+            padding: 3vh 0;
+            gap: 7px;
+
+            .acount_settings_header {
+                border-radius: unset;
+            }
+
+            & ul {
+                border-radius: unset;
+            }
+        }
+
+        .action_div {
+            width: 100%;
+            border-radius: unset !important;
+        }
+
+        .posts_settings {
+            height: 83vh !important;
+
+            .settings_content_header {
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center !important;
+                gap: 1vh;
+
+                & button {
+                    width: 100%;
+                    padding: 2vh !important;
+                    gap: 10px;
+                    font-size: 17px;
+                }
+            }
+
+            .manage_post_card {
+                & img {
+                    width: 110px;
+                    height: 110px;
+                }
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .skeleton_wrapper {
+        .skeleton {
+            width: 97% !important;
+
+            & .skeleton_btn {
+                width: 35px;
+            }
+        }
+    }
+
+    .unfreind {
+        & span {
+            display: none;
+        }
+    }
+
+    .btns {
+        justify-content: space-between;
+
+        & button {
+            width: 50%;
+        }
+    }
+
+    .update_image_backdrop {
+        justify-content: space-between !important;
+        min-height: 75vh;
+        width: 98% !important;
+    }
+
+    header {
+        padding: 2vh !important;
+    }
+
+    .pcf_icons>p {
+        width: 75px !important;
+    }
+
+    .skeleton_card_header>span {
+        width: 100px !important;
+    }
+
+    .notif_header {
+        font-size: 13px;
+    }
+
+    .close_notif {
+        font-size: 1.8rem;
+    }
+
+    .post-card-model {
+        width: 100% !important;
+    }
+
+    .post_from_model {
+
+        & form {
+
+            & h1,
+            .cancel {
+                font-size: 25px;
+            }
+
+            & .textarea textarea {
+                height: 40vh;
+                font-size: 15px;
+            }
+        }
+
+    }
+
+    .profile_pic {
+        margin-top: -22% !important;
+    }
+
+    .modify_pubs {
+        & button {
+            width: 100%;
+            height: unset !important;
+            margin: 1%;
+            font-size: 15px !important;
+        }
+    }
+
+    .filters button {
+        width: 45%;
+        height: 50% !important;
+    }
+
+    .settings_content {
+        .acount_settings_header {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        & ul {
+            & li {
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .logo {
+        & img {
+            width: 35px !important;
+            height: 35px !important;
+        }
+
+        & p {
+            font-size: 25px;
+        }
+
+        & i {
+            font-size: 18px;
+        }
+    }
+
+    .routes {
+        & input {
+            font-size: 18px;
+        }
+
+        & a li,
+        .logout a div {
+            font-size: 18px;
+        }
+    }
+
+    .nav {
+        & button i {
+            font-size: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .content {
+        & header {
+            .explore {
+                display: none;
+            }
+
+            & a {
+                & img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                & p {
+                    color: red;
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+            }
+
+            .header__profile {
+                gap: 5px;
+
+                .bell {
+
+                    & i {
+                        font-size: 14px;
+                    }
+
+                    .n_notif {
+                        font-size: 10px;
+                        top: -5px;
+                    }
+                }
+
+                & img {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+
+        .posts {
+            .post_card {
+                .post_card_footer {
+                    .pcf_icons {
+                        & p {
+                            gap: 3px;
+                        }
+
+                        & span {
+                            padding: 0.4vh;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .settings_content {
+        .profile_info {
+            & h1 {
+                font-size: 22px;
+            }
+        }
+
+        & ul {
+            & li {
+                & span {
+                    display: none;
+                }
+
+                & button {
+                    font-size: 10px !important;
+                }
+            }
+        }
+
+        .action_div {
+            flex-direction: column;
         }
     }
 }
