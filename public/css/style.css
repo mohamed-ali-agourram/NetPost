@@ -2777,6 +2777,14 @@
 }
 
 @media screen and (max-width: 425px) {
+    .app_settings_card {
+        font-size: 15px;
+
+        #theme {
+            display: none;
+        }
+    }
+
     .alert {
         height: 17.5vh;
         width: 80%;
