@@ -34,6 +34,21 @@
             <livewire:utilities.navbar />
             {{ $slot }}
         </main>
+        @php
+            $route = request()
+                ->route()
+                ->getName();
+        @endphp
+        @if ($route === 'freinds-posts' || $route === 'home')
+            <div class="explore explore_links">
+                <p>Explore the NET</p>
+                <a @class(['is_active' => $route === 'home']) wire:navigate href="{{ route('home') }}"><i
+                        class="fa-solid fa-globe"></i>Freinds</a>
+                <a @class(['is_active' => $route === 'freinds-posts']) wire:navigate href="{{ route('freinds-posts') }}"><i
+                        class="fa-solid fa-users"></i>Community</a>
+            </div>
+        @endif
+
     </div>
 
     <script src="{{ asset('js/effects.js') }}"></script>

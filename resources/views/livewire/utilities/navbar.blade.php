@@ -20,9 +20,9 @@
     <div class="explore">
         <p>Explore the NET</p>
         <a @class(['is_active' => $route === 'home']) wire:navigate href="{{ route('home') }}"><i
-                class="fa-solid fa-globe"></i>Community</a>
+                class="fa-solid fa-globe"></i>Freinds</a>
         <a @class(['is_active' => $route === 'freinds-posts']) wire:navigate href="{{ route('freinds-posts') }}"><i
-                class="fa-solid fa-users"></i>Freinds</a>
+                class="fa-solid fa-users"></i>Community</a>
     </div>
     <div class="header__profile">
         <div wire:poll.5s class="bell">
