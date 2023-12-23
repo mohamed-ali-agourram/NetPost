@@ -6,6 +6,7 @@
                 flex-direction: row;
                 align-items: center;
                 padding: 2vh 3vh;
+                border-radius: 5px;
 
                 & img {
                     height: 45px;
@@ -20,6 +21,25 @@
 
             .status {
                 font-size: 15.5px !important;
+            }
+
+            @media screen and (max-width: 425px) {
+                .skeleton_wrapper {
+                    gap: 15px !important;
+                }
+
+                .skeleton {
+                    width: 97% !important;
+                }
+
+                .user-card {
+                    width: 97% !important;
+
+                    & button {
+                        width: fit-content;
+                        border-radius: 4px;
+                    }
+                }
             }
         </style>
         @forelse ($this->friends as $friend)
