@@ -2777,6 +2777,17 @@
 }
 
 @media screen and (max-width: 425px) {
+    .alert {
+        height: 17.5vh;
+        width: 80%;
+        font-size: 15px;
+
+        & img {
+            width: 70px !important;
+            height: 70px !important;
+        }
+    }
+
     .explore_links {
         display: inherit;
     }
@@ -3085,6 +3096,16 @@
 }
 
 @media screen and (max-width: 320px) {
+    .alert {
+        width: 85%;
+        font-size: 14px;
+
+        & img {
+            width: 65px !important;
+            height: 65px !important;
+        }
+    }
+
     .post_from_model form {
         width: 105%;
         height: 105%;
