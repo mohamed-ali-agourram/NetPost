@@ -1,11 +1,11 @@
-<form wire:submit.prevent="{{$is_register ? 'register' : 'login' }}">
+<form wire:submit.prevent="{{ $is_register ? 'register' : 'login' }}">
     <h2 class="logo gray">
         <img src="{{ asset('images/logo.png') }}" alt="logo">
-        <span>NETPOST</span>
+        <span style="color: red">NETPOST</span>
     </h2>
     <div>
         <h1>{{ $is_register ? 'Register Now' : 'Welcome Back!' }}</h1>
-        <p class="gray">{{ $is_register ? 'Lorem ipsum dolor sit amet' : 'Please login to your account' }}</p>
+        <p class="gray">{{ $is_register ? 'Create an account' : 'Please login to your account' }}</p>
     </div>
     <div class="form_controller">
         @if ($is_register)
@@ -37,10 +37,14 @@
         </button>
     </div>
     @if ($is_register)
-        <p class="gray form_footer">Alraedy have an account? <a wire:navigate href={{ route('auth.login') }}>Connect
-                now</a></p>
+        <p class="gray form_footer">
+            Alraedy have an account?
+            <a style="font-weight: bold" wire:navigate href={{ route('auth.login') }}>Connect now</a>
+        </p>
     @else
-        <p class="gray">Don't have an account yet? <a wire:navigate href="{{ route('auth.register') }}">Crete an
-                acount</a></p>
+        <p class="gray">
+            Don't have an account yet?
+            <a style="font-weight: bold" wire:navigate href="{{ route('auth.register') }}">Create an account</a>
+        </p>
     @endif
 </form>
