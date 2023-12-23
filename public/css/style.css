@@ -1937,7 +1937,7 @@
     color: white;
     background-color: var(--second-color);
     width: 65%;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 3vh;
     display: flex;
     flex-direction: column;
@@ -2877,6 +2877,22 @@
 
     .post-card-model {
         width: 100% !important;
+    }
+
+    .user-card {
+        width: 97% !important;
+    }
+
+    .user-card-btn {
+        width: 50px !important;
+
+        & span {
+            display: none;
+        }
+
+        & i {
+            display: block !important;
+        }
     }
 
     .post_from_model {
