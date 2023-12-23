@@ -35,36 +35,6 @@
             }
         }
 
-        .explore {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            background: var(--third-color);
-            padding: 6px;
-            border-radius: 10px;
-            margin-left: -25%;
-
-            & p {
-                background: #000000b5 !important;
-            }
-
-            & a,
-            p {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 8px;
-                padding: 2vh;
-                border-radius: 10px;
-                background: var(--explore-links-bg);
-
-                &:hover {
-                    background: var(--explore-hover-links-bg);
-                }
-            }
-        }
-
         .header__profile {
             & img {
                 width: 41px;
@@ -130,7 +100,7 @@
     border-radius: 10px;
     overflow-y: scroll;
     padding: 1vh;
-    z-index: 9;
+    z-index: 11;
     transition: top 0.3s;
 
     .delete_btn {
@@ -275,7 +245,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 10;
 }
 
 /* aside */
@@ -2807,6 +2777,10 @@
 }
 
 @media screen and (max-width: 425px) {
+    .explore_links {
+        display: inherit;
+    }
+
     .search_navbar {
         width: 100%;
 
@@ -3012,6 +2986,20 @@
 }
 
 @media screen and (max-width: 375px) {
+    .explore_links {
+        justify-content: center;
+        gap: 7px;
+        font-size: 14px;
+
+        & p {
+            display: none;
+        }
+
+        & a {
+            width: 53%;
+        }
+    }
+
     .content {
         & header {
             .explore {

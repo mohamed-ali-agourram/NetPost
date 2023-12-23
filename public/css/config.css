@@ -621,9 +621,66 @@ textarea:focus {
 }
 
 .container {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
+}
+
+.explore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: var(--third-color);
+    padding: 6px;
+    border-radius: 10px;
+    margin-left: -25%;
+
+    & p {
+        background: #000000b5 !important;
+    }
+
+    & a,
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 2vh;
+        border-radius: 10px;
+        background: var(--explore-links-bg);
+
+        &:hover {
+            background: var(--explore-hover-links-bg);
+        }
+    }
+}
+
+.explore_links {
+    display: none;
+    position: fixed;
+    border-radius: 0;
+    margin-left: 0;
+    bottom: 0;
+    font-size: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    width: 99%;
+    justify-content: space-between;
+    background: var(--main-color);
+    height: 11vh;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    box-shadow: var(--shadow);
+
+    & a,
+    p {
+        border-radius: 5px;
+        width: 30%;
+    }
 }
 
 .notification::-webkit-scrollbar {
