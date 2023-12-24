@@ -44,6 +44,7 @@ input[type="search"]::-webkit-search-cancel-button {
     --explore-hover-links-bg: rgb(43, 43, 43);
     --open_ps-hover-bg: #45454538;
     --explore-p: #0000000d;
+    --animation: glowAnimation_light 3s infinite;
 }
 
 .DARK {
@@ -68,6 +69,7 @@ input[type="search"]::-webkit-search-cancel-button {
     --explore-hover-links-bg: rgba(0, 0, 0, 0.589);
     --open_ps-hover-bg: #45454538;
     --explore-p: #00000081;
+    --animation: glowAnimation 3s infinite;
 }
 
 body {
@@ -316,6 +318,19 @@ a {
     }
 }
 
+@keyframes glowAnimation_light {
+
+    0%,
+    100% {
+        background: hsl(0, 0%, 64%);
+    }
+
+    50% {
+        background: hsl(204, 6%, 84%);
+    }
+}
+
+
 .skeleton_wrapper {
     margin-bottom: 10px;
     display: flex;
@@ -328,11 +343,11 @@ a {
         width: 100%;
 
         .img {
-            animation: glowAnimation 3s infinite;
+            animation: var(--animation);
             width: 50px;
             height: 50px;
             border-radius: 100%;
-            animation: glowAnimation 3s infinite;
+            animation: var(--animation);
         }
 
         & .post_card_header {
@@ -348,7 +363,7 @@ a {
 
             & span,
             p {
-                animation: glowAnimation 3s infinite;
+                animation: var(--animation);
                 padding: 1vh;
                 border-radius: 25px;
                 width: 150px;
@@ -366,7 +381,7 @@ a {
                 padding: 1vh;
                 border-radius: 25px;
                 width: 100px;
-                animation: glowAnimation 3s infinite;
+                animation: var(--animation);
 
             }
         }
