@@ -15,7 +15,7 @@ class PostForm extends Component
 
     public Post $post;
 
-    public $visibility = "private";
+    public $visibility = "friends";
     #[Rule("max:5000")]
     public $body;
     #[Rule("nullable|sometimes|image|max:5024")]

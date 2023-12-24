@@ -98,8 +98,10 @@ class User extends Authenticatable
     public function friendsPosts()
     {
         $friendsIds = $this->acceptedFriendsTo->pluck('id')->merge($this->acceptedFriendsFrom->pluck('id'));
+        $friendsIds->push($this->id);
         return Post::friends()->whereIn('user_id', $friendsIds)->orderBy("published_at", "desc")->get();
     }
+
 
     public function friendsTo()
     {
