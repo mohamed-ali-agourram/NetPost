@@ -25,8 +25,8 @@ input[type="search"]::-webkit-search-cancel-button {
 .LIGHT {
     --main-color: rgb(240 242 245);
     --second-color: rgb(255 255 255);
-    --third-color: #d1d1d1;
-    --shadow: rgba(129, 122, 122, 0.527) 0px 3px 8px;
+    --third-color: #eeeeee;
+    --shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     --like-bg: rgb(46 46 46 / 21%);
     --like-hover-bg: rgb(202, 200, 200);
     --text-color: black;
@@ -45,6 +45,8 @@ input[type="search"]::-webkit-search-cancel-button {
     --open_ps-hover-bg: #45454538;
     --explore-p: #0000000d;
     --animation: glowAnimation_light 3s infinite;
+    --hover-link: rgba(0, 0, 0, 0.062);
+    --route-color: gray;
 }
 
 .DARK {
@@ -70,6 +72,8 @@ input[type="search"]::-webkit-search-cancel-button {
     --open_ps-hover-bg: #45454538;
     --explore-p: #00000081;
     --animation: glowAnimation 3s infinite;
+    --hover-link: rgba(0, 0, 0, 0.16);
+    --route-color: white;
 }
 
 body {
@@ -120,7 +124,7 @@ ul {
 }
 
 a {
-    color: var(--nav-li-color);
+    color: var(--route-color);
     text-decoration: none;
 }
 
@@ -657,8 +661,6 @@ textarea:focus {
     margin-left: -25%;
 
     & p {
-        background: var(--explore-p) !important;
-        color: gray !important;
         font-weight: bold;
     }
 
@@ -668,14 +670,14 @@ textarea:focus {
 
     & a,
     p {
-        color: white;
+        color: var(--route-color) !important;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 8px;
         padding: 2vh;
         border-radius: 10px;
-        background: var(--explore-links-bg);
+        background: var(--explore-p);
 
         &:hover {
             background: rgba(0, 0, 0, 0.16);
@@ -704,6 +706,7 @@ textarea:focus {
 
     & a,
     p {
+        color: var(--route-color) !important;
         border-radius: 5px;
         width: 30%;
     }

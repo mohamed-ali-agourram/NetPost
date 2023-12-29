@@ -13,7 +13,6 @@
         position: sticky;
         top: 0;
         transition: top 0.3s;
-        z-index: 99;
 
         .toggleNav {
             display: none;
@@ -261,6 +260,7 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    z-index: 1;
 
     .logo {
         display: flex;
@@ -304,6 +304,7 @@
         & form,
         & a {
             width: 100%;
+            color: var(--route-color);
         }
 
         & input {
@@ -326,7 +327,7 @@
 }
 
 .active {
-    background: rgba(0, 0, 0, 0.16);
+    background: var(--hover-link);
     color: red;
     border-radius: 5px;
     font-weight: bold;
@@ -354,7 +355,8 @@
     }
 
     &:hover {
-        background: rgba(0, 0, 0, 0.16);
+        background: var(--hover-link);
+        background: var(--hover-link);
     }
 }
 
