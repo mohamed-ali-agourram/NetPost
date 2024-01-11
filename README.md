@@ -12,7 +12,7 @@ Secure user authentication is at the core of our Social Media Web App. Users can
 
 ### 2. CRUD System (Create, Read, Update, Delete)
 Empower users with a comprehensive CRUD system, allowing them to create, modify, read, and delete posts effortlessly. The system ensures a seamless content management experience.
-![Uploading Capture d'écran 2024-01-11 173258.png…]()
+![Capture d'écran 2024-01-11 173258](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/bffddaba-a251-44e5-92b2-551a5ff6056c)
 ![Capture d'écran 2024-01-11 172715](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/112b9cce-2a55-4043-bf49-2053502f584f)
 ![Capture d'écran 2024-01-11 172741](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/36dac49b-30dd-4d78-aaf3-4999bb67d857)
 
