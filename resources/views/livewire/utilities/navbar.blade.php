@@ -14,7 +14,8 @@
     </div>
     <style>
         .is_active {
-            background-color: rgba(0, 0, 0, 0.589) !important;
+            background-color: rgba(0, 0, 0, 0.16) !important;
+            color: white !important;
         }
     </style>
     <div class="explore">

@@ -118,6 +118,11 @@
                 </h2>
             @endforelse
             <div x-intersect="$wire.load_more()"></div>
+            <style>
+                .skeleton_wrapper .skeleton {
+                    width: 100% !important;
+                }
+            </style>
             @unless ($is_bottom && !$loadingMore)
                 <x-utilities.skeleton />
             @endunless
