@@ -10,11 +10,9 @@ Welcome to our Social Media Web App, a platform designed for seamless social int
 Secure user authentication is at the core of our Social Media Web App. Users can sign up, log in, and enjoy a personalized experience.
 ![Capture d'écran 2024-01-11 172328](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/26dd7da0-01dd-461f-8113-09a166b1b4c4)
 
-
-
 ### 2. CRUD System (Create, Read, Update, Delete)
 Empower users with a comprehensive CRUD system, allowing them to create, modify, read, and delete posts effortlessly. The system ensures a seamless content management experience.
-![Capture d'écran 2024-01-11 172509](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/6296c56f-11cf-46a7-a229-0b26264a3c6a)
+![Uploading Capture d'écran 2024-01-11 173258.png…]()
 ![Capture d'écran 2024-01-11 172715](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/112b9cce-2a55-4043-bf49-2053502f584f)
 ![Capture d'écran 2024-01-11 172741](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/36dac49b-30dd-4d78-aaf3-4999bb67d857)
 
