@@ -8,18 +8,19 @@ Welcome to our Social Media Web App, a platform designed for seamless social int
 
 ### 1. User Authentication
 Secure user authentication is at the core of our Social Media Web App. Users can sign up, log in, and enjoy a personalized experience.
-![User-Authentication](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/c27f400c-8a9b-4c79-be50-bd048afe3203)
+![Capture d'écran 2024-01-11 172328](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/26dd7da0-01dd-461f-8113-09a166b1b4c4)
+
 
 
 ### 2. CRUD System (Create, Read, Update, Delete)
 Empower users with a comprehensive CRUD system, allowing them to create, modify, read, and delete posts effortlessly. The system ensures a seamless content management experience.
-![CRUD-System](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/24fc9129-02bb-4fa5-9c9c-d694eaf0e6ee)
-
+![Capture d'écran 2024-01-11 172509](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/6296c56f-11cf-46a7-a229-0b26264a3c6a)
+![Capture d'écran 2024-01-11 172715](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/112b9cce-2a55-4043-bf49-2053502f584f)
+![Capture d'écran 2024-01-11 172741](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/36dac49b-30dd-4d78-aaf3-4999bb67d857)
 
 ### 3. Like, Comment, and Share Posts
 Enhance user engagement through interactive features such as liking, commenting, and sharing posts. Fostering meaningful interactions, these functionalities contribute to a vibrant and dynamic user community.
-![comments](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/0592b1b2-317e-4149-8a52-f216b814adaa)
-
+![Capture d'écran 2024-01-11 172909](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/696924a2-fdb4-4faa-ab1b-84d045ee8a59)
 
 ### 4. Friendship System
 Facilitate connections with a robust friendship system. Users can send and receive friend requests, manage connections, and stay in touch with their network easily.
@@ -28,7 +29,7 @@ Facilitate connections with a robust friendship system. Users can send and recei
 
 ### 5. Alert System
 Implement a responsive alert system to keep users informed in real-time. Receive instant notifications for likes, comments, friend requests, and other relevant activities, ensuring users stay connected and engaged.
-![Alert-System](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/84f2d7fb-c54e-4cf5-8754-6ea3997b6ba0)
+![Capture d'écran 2024-01-11 173026](https://github.com/mohamed-ali-agourram/NetPost/assets/95295909/75e424c1-5e49-481f-82f6-1c7b33b8df3e)
 
 ## Technologies Used 
 
@@ -41,8 +42,8 @@ Implement a responsive alert system to keep users informed in real-time. Receive
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/mohamed-ali-agourram/NetPost.git`
-2. Navigate to the project folder: `cd social-media-app`
-3. Install dependencies: `composer install && npm install`
+2. Navigate to the project folder: `cd NetPost`
+3. Install dependencies: `composer install`
 4. Set up the environment: `cp .env.example .env` and configure your database settings
 5. Generate application key: `php artisan key:generate`
 6. Run migrations: `php artisan migrate`
