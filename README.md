@@ -39,13 +39,21 @@ Implement a responsive alert system to keep users informed in real-time. Receive
 
 ## Installation
 
-`git clone https://github.com/mohamed-ali-agourram/NetPost.git
+```
+git clone https://github.com/mohamed-ali-agourram/NetPost.git
+
 cd NetPost
+
 composer install
+
 cp .env.example .env
+
 php artisan key:generate
+
 php artisan migrate
-php artisan serve`
+
+php artisan serve
+```
 
 Visit [http://localhost:8000](http://localhost:8000) in your browser to explore the Social Media Web App.
 
