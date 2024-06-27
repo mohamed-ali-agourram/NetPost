@@ -39,13 +39,13 @@ Implement a responsive alert system to keep users informed in real-time. Receive
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/mohamed-ali-agourram/NetPost.git`
-2. Navigate to the project folder: `cd NetPost`
-3. Install dependencies: `composer install`
-4. Set up the environment: `cp .env.example .env` and configure your database settings
-5. Generate application key: `php artisan key:generate`
-6. Run migrations: `php artisan migrate`
-7. Start the development server: `php artisan serve`
+`git clone https://github.com/mohamed-ali-agourram/NetPost.git
+cd NetPost
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve`
 
 Visit [http://localhost:8000](http://localhost:8000) in your browser to explore the Social Media Web App.
 
