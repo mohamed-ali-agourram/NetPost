@@ -23,6 +23,6 @@ class AppLayout extends Component
     {
         $config_theme = auth()->user()->configuration->theme;
         $theme = session('theme', $config_theme);
-        return view('layouts.app-layout', ["theme" => $theme]);
+        return view('components.layouts.app-layout', ["theme" => $theme]);
     }
 }
