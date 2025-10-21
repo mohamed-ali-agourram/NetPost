@@ -4,7 +4,7 @@ namespace App\Livewire\Utilities;
 
 use Livewire\Component;
 
-class SideBar extends Component
+class Sidebar extends Component
 {
     public function logout()
     {
