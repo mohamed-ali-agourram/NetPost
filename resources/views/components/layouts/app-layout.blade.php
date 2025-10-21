@@ -20,7 +20,7 @@
     <title>NETPOST</title>
 </head>
 
-<body class="{{ $theme }}">
+<body class="{{ empty($theme) ? 'dark' : $theme }}">
     <div class="container">
         <livewire:utilities.my-alert />
         <livewire:utilities.confirm-modal />
