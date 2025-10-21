@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
+    public $theme;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $config_theme = auth()->user()->configuration->theme;
+        $this->theme = session('theme', $config_theme);
     }
 
     /**
@@ -21,8 +24,6 @@ class AppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        $config_theme = auth()->user()->configuration->theme;
-        $theme = session('theme', $config_theme);
-        return view('components.layouts.app-layout', ["theme" => $theme]);
+        return view('components.layouts.app-layout');
     }
 }
