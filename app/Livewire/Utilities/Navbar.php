@@ -8,7 +8,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class NavBar extends Component
+class Navbar extends Component
 {
     public $route;
     public function mount()

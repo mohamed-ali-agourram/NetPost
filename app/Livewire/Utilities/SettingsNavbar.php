@@ -4,7 +4,7 @@ namespace App\Livewire\Utilities;
 
 use Livewire\Component;
 
-class SettingsNavBar extends Component
+class SettingsNavbar extends Component
 {
     public function render()
     {

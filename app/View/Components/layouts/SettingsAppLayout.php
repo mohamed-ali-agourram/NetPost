@@ -21,6 +21,6 @@ class SettingsAppLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.settings-app-layout');
+        return view('components.layouts.settings-app-layout');
     }
 }
